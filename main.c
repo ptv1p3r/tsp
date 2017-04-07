@@ -11,8 +11,8 @@ typedef struct cidade {
     float y;
 };
 
-float calculaDistancia(cidade a, cidade b){
-    return sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)  );
+float calculaDistancia(struct cidade a, struct cidade b){
+    return (float) sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)  );
 }
 
 int main() {
