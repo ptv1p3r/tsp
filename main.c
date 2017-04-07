@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <math.h>
 
+// command line app
 // abre ficheiro
 // calcula rota
-// guarda rota
+// cria eps com cidades
+// cria ficheiro rota (tour + cost)
+// cria eps com rota grafica, texto tour + text cost + text date/time
 
 typedef struct cidade {
     int cidadeId;
