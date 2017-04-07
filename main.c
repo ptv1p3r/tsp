@@ -8,7 +8,7 @@
 // cria ficheiro rota (tour + cost)
 // cria eps com rota grafica, texto tour + text cost + text date/time
 
-typedef struct  {
+typedef struct {
     int cidadeId;
     float x;
     float y;
