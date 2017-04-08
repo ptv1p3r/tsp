@@ -59,10 +59,10 @@ int main(int argc, char *argv[]) {
     struct cidade Cidades[5];
     float min_x, min_y;
     float max_x, max_y;
-
+    float total = 0.0;
     int height = 800;
     int width = 600;
-
+    int myArray[5] = { 0 };
 
 
     float square_scale = 1.0f;
@@ -150,11 +150,27 @@ int main(int argc, char *argv[]) {
 
                     }
 
-                    drawLink(file_ptr, (rgb){0,0,1}, 10, 10, 100-50, 200-50, 2);
+                    drawLink(file_ptr, (rgb){0,0,1}, 10, 10, 180, 155, 2); // desenha o link entre cidades
 
                     fprintf(file_ptr, "showpage\n");
                     fprintf(file_ptr, "%%%%EOF");
                     fclose(file_ptr);
+
+                    myArray[0] = Cidades[0].id;
+
+                    // local search
+                    for (int i=0;i<n;i++) {
+                        Cidades[i].visited = 1 ;
+
+                        for(int j = i + 1; j < n - 1; j++) {
+
+                            if (Cidades[j].visited != 1){
+                                total = computeDistance(Cidades[i],Cidades[j]);
+                            }
+                        }
+                    }
+
+
 
                 } else {
                     printf("Uso: -o [directory]\n");
