@@ -24,5 +24,3 @@ void drawText(FILE * file_ptr, rgb color, int scale, int x, int y, char * text);
 void drawArray(FILE * file_ptr, int * array, int start, int end, int x, int y, int scale, rgb bgcolor, rgb fgcolor);
 
 void drawCircle(FILE * ptr_file, int x, int y, float radius, int startAngle, int endAngle, float strokeWidth);
-
-int binary_search(int * array, int n, int x, FILE * file_ptr, int ypos, int scale);

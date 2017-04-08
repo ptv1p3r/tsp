@@ -9,8 +9,7 @@
 
 #define MAX_SCALE 12
 
-void setHeader(FILE * ptr_file, char * title, int width, int height)
-{
+void setHeader(FILE * ptr_file, char * title, int width, int height){
     time_t timer;
     char date[26];
     struct tm* tm_info;
