@@ -7,8 +7,7 @@
 
 #endif //EPS_EPS_H
 
-typedef struct _rgb
-{
+typedef struct {
     float r;
     float g;
     float b;
@@ -27,9 +26,3 @@ void drawArray(FILE * file_ptr, int * array, int start, int end, int x, int y, i
 void drawCircle(FILE * ptr_file, int x, int y, float radius, int startAngle, int endAngle, float strokeWidth);
 
 int binary_search(int * array, int n, int x, FILE * file_ptr, int ypos, int scale);
-
-void selection_sort(int * array, int n, FILE * file_ptr, int ypos, float scale);
-
-void insertion_sort(int * array, int n, FILE * file_ptr, int ypos, float scale);
-
-void bubble_sort(int * array, int n, FILE * file_ptr, int ypos, float scale);
