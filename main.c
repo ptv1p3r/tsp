@@ -13,6 +13,8 @@
 // cria eps com rota grafica, texto tour + text cost + text date/time
 
 #define DATAPATH_OUTPUT "./output"
+#define PI 3.141592653589793238
+#define SPACE_BETWEEN_CIRCLES_RATIO 0.05
 
 typedef struct cidade{
     int id;
@@ -21,8 +23,24 @@ typedef struct cidade{
     int visited;
 } cidade;
 
+int isValidTour(cidade * cities, int n)
+{
+    int i, j;
+    for(i = 0; i < n - 1; i++)
+    {
+        for(j = i + 1; j < n - 1; j++)
+        {
+            if(cities[i].id == cities[j].id)
+            {
+                return 0; // it is not valid
+            }
+        }
+    }
+    return 1; // it is a valid tour
+}
 
-float calculaDistancia(cidade a, cidade b){
+
+float computeDistance(cidade a, cidade b){
     return (float) sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y) );
 }
 
@@ -35,13 +53,16 @@ void printHelp() {
 }
 
 int main(int argc, char *argv[]) {
-    int count;
+    int count, n=5;
     char * file_path = "../results/out.eps";
     char *chrDataLocation;
     struct cidade Cidades[5];
+    float min_x, min_y;
+    float max_x, max_y;
 
-    int width = 300;
-    int height = 300;
+    int height = 800;
+    int width = 600;
+
 
 
     float square_scale = 1.0f;
@@ -95,12 +116,41 @@ int main(int argc, char *argv[]) {
                     drawText(file_ptr, (rgb){0,0,0}, 40,  0, height -50, "Cities: 5");
                     drawLine(file_ptr, (rgb){0,0,0}, 2, height -52 ,  width -2, height -52, 1);
 
-                    for (int i=0;i<5;i++) {
+                    // normaliza a posicao das cidades no viewport do eps
+                    min_x = Cidades[0].x;
+                    min_y = Cidades[0].y;
+                    max_x = Cidades[0].x;
+                    max_y = Cidades[0].y;
+
+                    for(int i = 1; i < n; i++) {
+                        if(Cidades[i].x < min_x)
+                            min_x = Cidades[i].x;
+                        else if(Cidades[i].x > max_x)
+                            max_x = Cidades[i].x;
+                        if(Cidades[i].y < min_y)
+                            min_y = Cidades[i].y;
+                        else if(Cidades[i].y > max_y)
+                            max_y = Cidades[i].y;
+                    }
+
+                    for (int i=0;i<n;i++) {
+
+                        // calculate the radius
+                        float radius = sqrt((width * height / (float) n) / 2 * PI) * SPACE_BETWEEN_CIRCLES_RATIO;
+
+                        // calculate the correct x and y and shift for the edge positions
+                        float x = (radius) + (Cidades[i].x - min_x) / (max_x - min_x) * (width - (2 * radius));
+                        float y = (radius) + (Cidades[i].y - min_y) / (max_y - min_y) * (height - (2 * radius));
+
+
                         char str[5];
                         sprintf(str, "%d", Cidades[i].id);
-                        drawText(file_ptr, (rgb){0,0,0}, 5, Cidades[i].x ,  Cidades[i].y + 5, str);
-                        drawCircle(file_ptr,Cidades[i].x,Cidades[i].y,5.0,0,360,0.25);
+                        drawCircle(file_ptr,x,y,radius,0,360,0.25);
+                        drawText(file_ptr, (rgb){0,0,0}, radius, x ,  y , str);
+
                     }
+
+                    drawLink(file_ptr, (rgb){0,0,1}, 10, 10, 100-50, 200-50, 2);
 
                     fprintf(file_ptr, "showpage\n");
                     fprintf(file_ptr, "%%%%EOF");

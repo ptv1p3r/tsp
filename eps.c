@@ -25,6 +25,22 @@ void setHeader(FILE * ptr_file, char * title, int width, int height){
     fprintf(ptr_file, "%%%%BoundingBox: 0 0 %d %d \n", width, height);
     fprintf(ptr_file, "%%%%CreationDate:%s\n", date);
     fprintf(ptr_file, "%%%%Copyright:Pedro Roldan ISMAT 2017 a21501217 / a21501217 Leandro Moreira AED \n");
+
+    // write down all procedures
+    fprintf(ptr_file, "/arrowhead {%% stack: s x1 y1, current point: x0 y0\n");
+    fprintf(ptr_file, "gsave\n");
+    fprintf(ptr_file, "currentpoint   %% s x1 y1 x0 y0 \n");
+    fprintf(ptr_file, "4 2 roll exch  %% s x0 y0 y1 x1 \n");
+    fprintf(ptr_file, "4 -1 roll exch %% s y0 y1 x0 x1 \n");
+    fprintf(ptr_file, "sub 3 1 roll   %% s x1-x2 y0 y1 \n");
+    fprintf(ptr_file, "sub exch       %% s y0-y1 x1-x2 \n");
+    fprintf(ptr_file, "atan rotate    %% rotate over arctan((y0-y1)/(x1-x2)) \n");
+    fprintf(ptr_file, "dup scale      %% scale by factor s \n");
+    fprintf(ptr_file, "-7 2 rlineto 1 -2 rlineto -1 -2 rlineto \n");
+    fprintf(ptr_file, "closepath fill  %% fill arrowhead \n");
+    fprintf(ptr_file, "grestore \n");
+    fprintf(ptr_file, "newpath \n");
+    fprintf(ptr_file, "} def \n");
 }
 
 void drawText(FILE * file_ptr, rgb color, int scale, float x, float y, char * text){
@@ -53,12 +69,12 @@ void drawLine(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, float 
 }
 
 void drawCircle(FILE * ptr_file, float x, float y, float radius, int startAngle, int endAngle, float strokeWidth){
-    fprintf(ptr_file, "%f setlinewidth\n", strokeWidth);
-    fprintf(ptr_file, "%.2f %.2f %.2f %d %d arc closepath stroke\n", x, y, radius, startAngle, endAngle);
+    fprintf(ptr_file, "newpath %.2f %.2f %.2f %d %d arc closepath %f setlinewidth stroke \n", x, y, radius, startAngle, endAngle, strokeWidth);
+
 }
 
-void drawLink(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, int width){
+void drawLink(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, float strokeWidth){
     fprintf(file_ptr, "%d %d translate\n", x1, y1);
     fprintf(file_ptr, "%f %f %f setrgbcolor 0 0 moveto %d %d lineto stroke\n", color.r, color.g, color.b, x2, y2 );
-    fprintf(file_ptr, "newpath %d %d moveto %d 0 0 arrowhead \n", x2, y2, width);
+    fprintf(file_ptr, "newpath %d %d moveto %.2f 0 0 arrowhead \n", x2, y2, strokeWidth);
 }

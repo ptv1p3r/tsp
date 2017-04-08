@@ -25,4 +25,4 @@ void drawArray(FILE * file_ptr, int * array, int start, int end, int x, int y, i
 
 void drawCircle(FILE * ptr_file, float x, float y, float radius, int startAngle, int endAngle, float strokeWidth);
 
-void drawLink(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, int width);
+void drawLink(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, float strokeWidth);
