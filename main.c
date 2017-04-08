@@ -15,16 +15,17 @@
 #define DATAPATH_OUTPUT "./output"
 
 typedef struct cidade{
-    int cidadeId;
+    int id;
     float x;
     float y;
+    int visited;
 } cidade;
 
-/*
+
 float calculaDistancia(cidade a, cidade b){
-    return (float) sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)  );
+    return (float) sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y) );
 }
-*/
+
 
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
@@ -34,12 +35,11 @@ void printHelp() {
 }
 
 int main(int argc, char *argv[]) {
-    int count, tt=0;
+    int count;
     char * file_path = "../results/out.eps";
     char *chrDataLocation;
     struct cidade Cidades[5];
 
-    int margin = 100;
     int width = 300;
     int height = 300;
 
@@ -65,25 +65,30 @@ int main(int argc, char *argv[]) {
 
                     //Cidades = malloc(5 * sizeof(cidade));
 
-                    Cidades[0].cidadeId = 1;
+                    Cidades[0].id = 1;
                     Cidades[0].x = 10.0;
                     Cidades[0].y = 10.0;
+                    Cidades[0].visited = 0;
 
-                    Cidades[1].cidadeId = 2;
+                    Cidades[1].id = 2;
                     Cidades[1].x = 80.7;
                     Cidades[1].y = 55.5;
+                    Cidades[1].visited = 0;
 
-                    Cidades[2].cidadeId = 3;
+                    Cidades[2].id = 3;
                     Cidades[2].x = 33.8555;
                     Cidades[2].y = 122.225;
+                    Cidades[2].visited = 0;
 
-                    Cidades[3].cidadeId = 4;
+                    Cidades[3].id = 4;
                     Cidades[3].x = 100.0;
                     Cidades[3].y = 100.0;
+                    Cidades[3].visited = 0;
 
-                    Cidades[4].cidadeId = 5;
+                    Cidades[4].id = 5;
                     Cidades[4].x = 100.0;
                     Cidades[4].y = 55.555;
+                    Cidades[4].visited = 0;
 
                     FILE * file_ptr = fopen(file_path, "w+");
                     setHeader(file_ptr, "Travel Salesman Problem", width, height);
@@ -91,10 +96,11 @@ int main(int argc, char *argv[]) {
                     drawLine(file_ptr, (rgb){0,0,0}, 2, height -52 ,  width -2, height -52, 1);
 
                     for (int i=0;i<5;i++) {
-                        //char t = itoa(Cidades[i].cidadeId);
-                        drawText(file_ptr, (rgb){0,0,0}, 5, Cidades[i].x ,  Cidades[i].y + 5, "121112");
-                        drawCircle(file_ptr,Cidades[i].x,Cidades[i].y,5.0,0,360,1.0);
-                   }
+                        char str[5];
+                        sprintf(str, "%d", Cidades[i].id);
+                        drawText(file_ptr, (rgb){0,0,0}, 5, Cidades[i].x ,  Cidades[i].y + 5, str);
+                        drawCircle(file_ptr,Cidades[i].x,Cidades[i].y,5.0,0,360,0.25);
+                    }
 
                     fprintf(file_ptr, "showpage\n");
                     fprintf(file_ptr, "%%%%EOF");

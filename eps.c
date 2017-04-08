@@ -24,7 +24,7 @@ void setHeader(FILE * ptr_file, char * title, int width, int height){
     fprintf(ptr_file, "%%%%Title:%s\n", title);
     fprintf(ptr_file, "%%%%BoundingBox: 0 0 %d %d \n", width, height);
     fprintf(ptr_file, "%%%%CreationDate:%s\n", date);
-    fprintf(ptr_file, "%%%%Copyright:Pedro Roldan ISMAT 2017 a21501217 AED \n");
+    fprintf(ptr_file, "%%%%Copyright:Pedro Roldan ISMAT 2017 a21501217 / a21501217 Leandro Moreira AED \n");
 }
 
 void drawText(FILE * file_ptr, rgb color, int scale, float x, float y, char * text){
@@ -55,4 +55,10 @@ void drawLine(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, float 
 void drawCircle(FILE * ptr_file, float x, float y, float radius, int startAngle, int endAngle, float strokeWidth){
     fprintf(ptr_file, "%f setlinewidth\n", strokeWidth);
     fprintf(ptr_file, "%.2f %.2f %.2f %d %d arc closepath stroke\n", x, y, radius, startAngle, endAngle);
+}
+
+void drawLink(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, int width){
+    fprintf(file_ptr, "%d %d translate\n", x1, y1);
+    fprintf(file_ptr, "%f %f %f setrgbcolor 0 0 moveto %d %d lineto stroke\n", color.r, color.g, color.b, x2, y2 );
+    fprintf(file_ptr, "newpath %d %d moveto %d 0 0 arrowhead \n", x2, y2, width);
 }
