@@ -67,6 +67,8 @@ int main(int argc, char *argv[]) {
 
     float square_scale = 1.0f;
 
+    //Test para a parte dos files
+    //readFromDirectory("/home/slyer/Documents/Algoritmia e Estrutura de Dados/tsp/tspdata");
 
     if (argc > 1) { /* Valida número de argumentos */
 

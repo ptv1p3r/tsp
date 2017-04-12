@@ -7,4 +7,5 @@
 
 #endif //TSP_FILE_H
 
+void readFromDirectory(char * path);
 
