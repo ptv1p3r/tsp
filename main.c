@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
     int count, n=5;
     char * file_path = "../results/out.eps";
     char *chrDataLocation;
-    struct cidade Cidades[5];
+    struct cidade *Cidades = NULL;
     float min_x, min_y;
     float max_x, max_y;
     float total = 0.0;
@@ -67,8 +67,28 @@ int main(int argc, char *argv[]) {
 
     float square_scale = 1.0f;
 
-    //Test para a parte dos files
-    //readFromDirectory("../tspdata");
+    //---------- Test para a parte dos files ----------//
+//    char **filesToRead = NULL;
+//    filesToRead=readFromDirectory("../tspdata");
+//    printString(filesToRead);
+//
+//    if (filesToRead!=NULL) {
+//        for (int i = 0; i < 10; ++i) {
+//            printf("--------- %d ----------\n", i + 1);
+//
+//            char* temp = filesToRead[i];
+//
+//            Cidades = readFromFile(temp);
+//            printStruct(Cidades);
+//
+//            free(Cidades);
+//
+//            printf("-----------------------\n");
+//
+//        }
+//    }
+    //-------------------------------------------------//
+
 
     if (argc > 1) { /* Valida número de argumentos */
 
