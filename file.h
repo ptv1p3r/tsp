@@ -7,10 +7,16 @@
 
 #endif //TSP_FILE_H
 
-char** readFromDirectory(char * path);
+int readFromDirectory(char * path);
+
 void addPathToFile (char * path, char ** filesToRead);
+
 void sortFileNames (char ** filesToRead);
+
 void printString (char ** string);
-struct cidade * readFromFile (char* fileName);
+
+struct cidade * readFromFile (int fileNumber);
+
 void printStruct (struct cidade *Cidades);
 
+char * returnstr (int i);

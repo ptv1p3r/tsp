@@ -11,7 +11,7 @@
 
 int numberOfFiles = 0;  //numero de ficheiros a ler
 int numberOfCities = NULL;
-//char **filesToRead = NULL;  //TODO: array provisorio
+char **filesToRead = NULL;  //TODO: array provisorio
 
 typedef struct cidade{
     int id;
@@ -24,9 +24,8 @@ typedef struct cidade{
  * Método para ler todos os ficheiros existentes numa diretoria
  * @param path, diretoria de onde ler
  */
-char** readFromDirectory(char * path) {
+int readFromDirectory(char * path) {
 
-    char **filesToRead = NULL;
     DIR *d = opendir(path); //abre a diretoria selecionada
     struct dirent *dir; //struct da library <dirent.h>
 
@@ -44,33 +43,43 @@ char** readFromDirectory(char * path) {
 
     closedir(d);    //fecha a directoria (provisorio)
 
-    d = opendir(path);  //volta a abrir a adirectoria (provisorio
+    //verifica se foi lido alguma coisa
+    if (numberOfFiles > 0) {
 
-    filesToRead = malloc(sizeof(char*) * numberOfFiles);    //alloca memoria para um array com os nomes dos ficheiros a abrir
+        d = opendir(path);  //volta a abrir a adirectoria (provisorio
 
-    int i =0;
-    while (((dir = readdir(d)) != NULL)) {  //enquanto que existe algo na diretoria, entra
+        filesToRead = (char **) malloc (sizeof(char*) * numberOfFiles);    //alloca memoria para um array com os nomes dos ficheiros a abrir
 
-        if ((dir -> d_type != DT_DIR)) {    //se nao for uma diretoria entra, se não ignora
+        int i =0;
+        while (((dir = readdir(d)) != NULL)) {  //enquanto que existe algo na diretoria, entra
 
-            filesToRead[i] = dir->d_name; //guarda o nome do ficheiro no array
-            //printf("%d -> %s\n", i+1, filesToRead[i]);
-            i++;
+            if ((dir -> d_type != DT_DIR)) {    //se nao for uma diretoria entra, se não ignora
+
+                filesToRead[i] = dir->d_name; //guarda o nome do ficheiro no array
+                //printf("%d -> %s\n", i+1, filesToRead[i]);
+                i++;
+            }
         }
+
+        //--------- Test Print ----------//
+        printf("\n%d\n", numberOfFiles);    //verificar se foram todos lidos
+        //-------------------------------//
+
+        closedir(d);    //fecha a diretoria
+
+        sortFileNames(filesToRead);    //chama a função de ordenação
+
+        addPathToFile("../tspdata/", filesToRead);  //adiciona o path ao nome do ficheiro (temporario)
+
+        printString(filesToRead);   //imprime os ficheiros a ler
+
+        return 1;   //success
+
+    } else { //caso contrario devolve 0
+
+        printf("Não foram lidos ficheiros");
+        return 0;   //failure
     }
-
-    //--------- Test Print ----------//
-    printf("\n%d\n", numberOfFiles);    //verificar se foram todos lidos
-    //-------------------------------//
-
-    closedir(d);    //fecha a diretoria
-
-    sortFileNames(filesToRead);    //chama a função de ordenação
-
-    addPathToFile("../tspdata/", filesToRead);
-
-    return filesToRead;
-
 };
 
 /**
@@ -84,13 +93,13 @@ void addPathToFile (char * path, char ** filesToRead) {
 
         char *temp = filesToRead[i];
 
-        char *completePath = (char *) malloc(sizeof(char) * (sizeof(path) / sizeof(char)) + (sizeof(temp) / sizeof(char)));
+        //alloca uma string com o size exato do path
+        char *completePath = (char *) malloc (sizeof(char) * (strlen(path) / sizeof(char)) + (strlen(temp) / sizeof(char)) + sizeof(char));
 
         strcpy(completePath, path);
         strcat(completePath, temp);
-        strcat(completePath, "\0");
 
-        strcpy(filesToRead[i], completePath);
+        strcpy(filesToRead[i], completePath);   //adiciona a noca string ao array
 
         free(completePath);
     }
@@ -191,10 +200,13 @@ void sortFileNames (char ** filesToRead) {
  */
 void printString (char ** string) {
 
+    printf("---------- Ficheiros a abrir ----------\n");
+
     for (int i = 0 ; i < numberOfFiles ; ++i) {
         printf("%d -> %s\n", i+1, string[i]);
     }
 
+    printf("---------------------------------------\n\n");
 };
 
 /**
@@ -202,23 +214,25 @@ void printString (char ** string) {
  * @param fileName nome do fichero a abrir
  * @return struct cidade
  */
-struct cidade * readFromFile (char* fileName) {
+struct cidade * readFromFile (int fileNumber) {
 
-    printf("%s\n", fileName);
+    printf("%s\n", filesToRead[fileNumber]);    //teste de impressao do nome do ficheiro
 
-    FILE *file = fopen(fileName, "r");
+    char * temp = filesToRead[fileNumber];  //teste de usar outra variavel para abrir o ficheiro
+
+    FILE *file = fopen(temp, "r");
     int i=0;
     struct cidade *Cidades = NULL;
 
     if (file == NULL) {
-        printf("Erro ao abrir ficheiro -> %s\n", fileName);
+        printf("Erro ao abrir ficheiro -> %s\n", filesToRead[fileNumber]);
     }
 
     fscanf(file, "%d\n", &numberOfCities);
 
     Cidades = malloc(numberOfCities * sizeof(struct cidade));
 
-    for (i=0 ; i<numberOfCities ; i++) {
+    for (i=0 ; i<numberOfCities ; i++) {    //le a informacao do ficheiro e guarda no array de struct Cidades
 
         fscanf(file, "%f %f", &Cidades[i].x, &Cidades[i].y);
         Cidades[i].id = i+1;
@@ -234,8 +248,10 @@ struct cidade * readFromFile (char* fileName) {
  */
 void printStruct (struct cidade *Cidades) {
 
-    for (int i=0 ; i<numberOfCities ; i++) {
+    printf("\t\t Id\t x\t\t y\t\t visited\n");  //header
 
-        printf("%d -> %d - %.2f - %.2f - %d\n", i+1, Cidades[i].id, Cidades[i].x, Cidades[i].y, Cidades[i].visited);
+    for (int i=0 ; i<numberOfCities ; i++) {    //print da informacao
+
+        printf("%d ->\t %d\t %.2f\t %.2f\t %d\n", i+1, Cidades[i].id, Cidades[i].x, Cidades[i].y, Cidades[i].visited);
     }
 };
