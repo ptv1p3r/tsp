@@ -239,6 +239,8 @@ struct cidade * readFromFile (int fileNumber) {
         Cidades[i].visited = 0;
     }
 
+    fclose(file);
+
     return Cidades;
 };
 
