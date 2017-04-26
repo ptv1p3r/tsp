@@ -5,6 +5,8 @@
 #ifndef TSP_FILE_H
 #define TSP_FILE_H
 
+typedef struct _cidade * cidade;
+
 #endif //TSP_FILE_H
 
 int readFromDirectory(char * path);
@@ -15,8 +17,8 @@ void sortFileNames (char ** filesToRead);
 
 void printString (char ** string);
 
-struct cidade * readFromFile (int fileNumber);
+cidade readFromFile (int fileNumber);
 
-void printStruct (struct cidade *Cidades);
+void printStruct (cidade cidades);
 
 char * returnstr (int i);

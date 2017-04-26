@@ -13,12 +13,12 @@ int numberOfFiles = 0;  //numero de ficheiros a ler
 int numberOfCities = NULL;
 char **filesToRead = NULL;  //TODO: array provisorio
 
-typedef struct cidade{
+struct _cidade{
     int id;
     float x;
     float y;
     int visited;
-} cidade;
+};
 
 /**
  * Método para ler todos os ficheiros existentes numa diretoria
@@ -214,7 +214,7 @@ void printString (char ** string) {
  * @param fileName nome do fichero a abrir
  * @return struct cidade
  */
-struct cidade * readFromFile (int fileNumber) {
+cidade readFromFile (int fileNumber) {
 
     printf("%s\n", filesToRead[fileNumber]);    //teste de impressao do nome do ficheiro
 
@@ -222,7 +222,7 @@ struct cidade * readFromFile (int fileNumber) {
 
     FILE *file = fopen(temp, "r");
     int i=0;
-    struct cidade *Cidades = NULL;
+    cidade city = NULL;
 
     if (file == NULL) {
         printf("Erro ao abrir ficheiro -> %s\n", filesToRead[fileNumber]);
@@ -230,30 +230,30 @@ struct cidade * readFromFile (int fileNumber) {
 
     fscanf(file, "%d\n", &numberOfCities);
 
-    Cidades = malloc(numberOfCities * sizeof(struct cidade));
+    city = malloc(numberOfCities * sizeof(cidade));
 
     for (i=0 ; i<numberOfCities ; i++) {    //le a informacao do ficheiro e guarda no array de struct Cidades
 
-        fscanf(file, "%f %f", &Cidades[i].x, &Cidades[i].y);
-        Cidades[i].id = i+1;
-        Cidades[i].visited = 0;
+        fscanf(file, "%f %f", &city[i].x, &city[i].y);
+        city[i].id = i+1;
+        city[i].visited = 0;
     }
 
     fclose(file);
 
-    return Cidades;
+    return city;
 };
 
 /**
  * Teste para imprimir a struct
  * @param Cidades
  */
-void printStruct (struct cidade *Cidades) {
+void printStruct (cidade cidades) {
 
     printf("\t\t Id\t x\t\t y\t\t visited\n");  //header
 
     for (int i=0 ; i<numberOfCities ; i++) {    //print da informacao
 
-        printf("%d ->\t %d\t %.2f\t %.2f\t %d\n", i+1, Cidades[i].id, Cidades[i].x, Cidades[i].y, Cidades[i].visited);
+        printf("%d ->\t %d\t %.2f\t %.2f\t %d\n", i+1, cidades[i].id, cidades[i].x, cidades[i].y, cidades[i].visited);
     }
 };
