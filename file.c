@@ -33,10 +33,6 @@ int readFromDirectory(char * path) {
 
         if ((dir -> d_type != DT_DIR)) {    //se nao for uma diretoria entra, se não ignora
 
-            //--------- Test Print ----------//
-            //printf("%s\n", dir->d_name);
-            //-------------------------------//
-
             numberOfFiles++;    //incrementa o numero de ficheiros a ler
         }
     }
@@ -218,10 +214,7 @@ cidade readFromFile (int fileNumber) {
 
     printf("%s\n", filesToRead[fileNumber]);    //teste de impressao do nome do ficheiro
 
-    char * temp = filesToRead[fileNumber];  //teste de usar outra variavel para abrir o ficheiro
-
-    FILE *file = fopen(temp, "r");
-    int i=0;
+    FILE *file = fopen(filesToRead[fileNumber], "r");
     cidade city = NULL;
 
     if (file == NULL) {
@@ -230,8 +223,9 @@ cidade readFromFile (int fileNumber) {
 
     fscanf(file, "%d\n", &numberOfCities);
 
-    city = malloc(numberOfCities * sizeof(cidade));
+    city = (cidade) malloc(numberOfCities * sizeof(cidade));
 
+    int i=0;
     for (i=0 ; i<numberOfCities ; i++) {    //le a informacao do ficheiro e guarda no array de struct Cidades
 
         fscanf(file, "%f %f", &city[i].x, &city[i].y);
@@ -239,7 +233,10 @@ cidade readFromFile (int fileNumber) {
         city[i].visited = 0;
     }
 
-    fclose(file);
+//    printf("----- Test Print -----\n");
+//    printStruct(city);
+
+    //fclose(file);
 
     return city;
 };
