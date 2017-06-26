@@ -74,33 +74,6 @@ int main(int argc, char *argv[]) {
 //                    printf("input %s \n", chrDataLocation);
 //                    // TODO Envio da localizacao de dados para recolha
 
-                    //cidades = malloc(5 * sizeof(cidade));
-
-//                    cidades[0].id = 1;
-//                    cidades[0].x = 10.0;
-//                    cidades[0].y = 10.0;
-//                    cidades[0].visited = 0;
-//
-//                    cidades[1].id = 2;
-//                    cidades[1].x = 80.7;
-//                    cidades[1].y = 55.5;
-//                    cidades[1].visited = 0;
-//
-//                    cidades[2].id = 3;
-//                    cidades[2].x = 33.8555;
-//                    cidades[2].y = 122.225;
-//                    cidades[2].visited = 0;
-//
-//                    cidades[3].id = 4;
-//                    cidades[3].x = 100.0;
-//                    cidades[3].y = 100.0;
-//                    cidades[3].visited = 0;
-//
-//                    cidades[4].id = 5;
-//                    cidades[4].x = 100.0;
-//                    cidades[4].y = 55.555;
-//                    cidades[4].visited = 0;
-
                     FILE * file_ptr = fopen(file_path, "w+");
                     setHeader(file_ptr, "Travel Salesman Problem", width, height);
 
