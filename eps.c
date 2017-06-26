@@ -45,7 +45,7 @@ void setHeader(FILE * ptr_file, char * title, int width, int height){
 }
 
 void drawText(FILE * file_ptr, rgb color, float scale, float x, float y, char * text){
-    fprintf(file_ptr, "/Times-Roman findfont %f %f %f setrgbcolor %.2f scalefont setfont newpath %f %f moveto (%s) show\n",
+    fprintf(file_ptr, "/Times-Roman findfont %f %f %f setrgbcolor %.2f scalefont setfont newpath %.2f %.2f moveto (%s) show\n",
             color.r, color.g, color.b, scale, x, y, text);
 }
 
@@ -62,7 +62,7 @@ void drawArray(FILE * file_ptr, int * array, int start, int end, int x, int y, i
 
 void drawSquare(FILE * file_ptr, rgb color,  int x1, int y1, int x2, int y2, float width){
     fprintf(file_ptr, "%.2f %.2f %.2f setrgbcolor newpath %d %d moveto %d %d rlineto %d %d rlineto %d %d rlineto %d %d rlineto  closepath  %.2f setlinewidth stroke \n",
-            color.r, color.g, color.b, x1, y1, 0, y2, y2, 0, 0, -y2, -y2, 0, width );
+            color.r, color.g, color.b, x1, y1, 0, x2, y2, 0, 0, -y2, -y2, 0, width );
 }
 
 void drawLine(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, float width){

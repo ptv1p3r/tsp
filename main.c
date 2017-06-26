@@ -110,7 +110,8 @@ int main(int argc, char *argv[]) {
                     printf("Number of cities is: %d \n", n);
                     // normaliza a posicao das cidades no viewport do eps
                     draw_tsp(file_ptr, n, width, height);
-                    drawLink(file_ptr, (rgb){0,0,1},cidades[0].normX,cidades[0].normY,cidades[3].normX,cidades[3].normY, 2); // desenha o link entre cidades
+                    drawLink(file_ptr, (rgb){0,0,1},cidades[0].normX,cidades[0].normY,cidades[1].normX,cidades[1].normY, 2); // desenha o link entre cidades
+                    drawLink(file_ptr, (rgb){0,0,1},cidades[1].normX,cidades[1].normY,cidades[3].normX,cidades[3].normY, 2); // desenha o link entre cidades
                     fprintf(file_ptr, "showpage\n");
                     fprintf(file_ptr, "%%%%EOF");
                     fclose(file_ptr);
