@@ -27,6 +27,7 @@ void printHelp() {
 int main(int argc, char *argv[]) {
 
     int count;
+    float custo=0.0;
     char * file_path = "../results/out.eps";
     //char * file_path = "../out.eps";
     char *chrDataLocation;
@@ -79,20 +80,32 @@ int main(int argc, char *argv[]) {
                     char headerText[50];
                     sprintf( headerText, "Cities: %d", numberOfCities );
 
-                    drawText(file_ptr, (rgb){0,0,0}, 40,  0, height -50, headerText);
+                    drawText(file_ptr, (rgb){0,0,0}, 20,  0, height -50, headerText);
                     drawLine(file_ptr, (rgb){0,0,0}, 2, height -52 ,  width -2, height -52, 1);
 
-                    printf("Number of cities is: %d \n", numberOfCities);
+                    //printf("Number of cities is: %d \n", numberOfCities);
                     // normaliza a posicao das cidades no viewport do eps
                     draw_tsp(file_ptr, numberOfCities, width-2, height-55);
 
-                    // TODO percorrer a struct de cidades e desenhar o link entre cada uma
-                    for (int i=0 ; i < numberOfCities-1; i++) {
+                    for (int i=0 ; i < numberOfCities-1; i++) { // percorre todas as cidades e efetua a ligacao entre cada uma
 
                         drawLine(file_ptr, (rgb){0,0,1}, cidades[i].normX, cidades[i].normY, cidades[i+1].normX,cidades[i+1].normY, 2); // desenha o link entre cidades
                         //drawLink(file_ptr, (rgb){0,0,1}, cidades[2].normX, cidades[2].normY, cidades[3].normX - cidades[2].normX, cidades[3].normY - cidades[2].normY, 2); // desenha o link entre cidades
+
+                        custo += distance(cidades[i], cidades[i+1]);
                     }
-                    drawLine(file_ptr, (rgb){0,0,1}, cidades[numberOfCities-1].normX, cidades[numberOfCities-1].normY, cidades[0].normX,cidades[0].normY, 2); // desenha o link entre cidades
+
+                    drawLine(file_ptr, (rgb){0,0,1}, cidades[numberOfCities-1].normX, cidades[numberOfCities-1].normY, cidades[0].normX,cidades[0].normY, 2); // desenha o link entre ultima cidade e casa
+                    custo += distance(cidades[numberOfCities-1], cidades[0]); // addiciona custo final entre ultima cidade e casa020
+                    //printf("custo: %.2f \n", custo);
+
+                    char costText[50];
+                    sprintf( costText, "Tour cost: %.2f", custo );
+                    drawText(file_ptr, (rgb){0,0,0}, 20,  100, height -50, costText);
+
+                    fprintf(file_ptr, "showpage\n");
+                    fprintf(file_ptr, "%%%%EOF");
+                    fclose(file_ptr);
 
                     // TODO Aplicar o 2 opt ao array de struct
 
@@ -100,9 +113,7 @@ int main(int argc, char *argv[]) {
                     // TODO Imprimir novo eps com os links entre cada cidade optimizada
 
 
-                    fprintf(file_ptr, "showpage\n");
-                    fprintf(file_ptr, "%%%%EOF");
-                    fclose(file_ptr);
+
 
 //                    myArray[0] = cidades[0].id;
 //
