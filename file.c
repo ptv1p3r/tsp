@@ -38,7 +38,7 @@ int readFromDirectory(char * path) {
         d = opendir(path);  //volta a abrir a adirectoria (provisorio
 
         filesToRead = malloc (sizeof(char*) * numberOfFiles);    //alloca memoria para um array com os nomes dos ficheiros a abrir
-
+        fileNames = malloc (sizeof(char*) * numberOfFiles);    //alloca memoria para um array com apenas os nomes dos ficheiros
 
 
         i = 0;
@@ -48,6 +48,9 @@ int readFromDirectory(char * path) {
 
                 filesToRead[i] = (char *) malloc (strlen(dir->d_name) + 1);
                 strcpy(filesToRead[i] , dir->d_name); //guarda o nome do ficheiro no array
+
+                fileNames[i] = (char *) malloc (strlen(dir->d_name) + 1);
+                strcpy(fileNames[i] , dir->d_name); //guarda o nome do ficheiro no array
                 //printf("%d -> %s\n", i+1, filesToRead[i]);
                 i++;
             }
@@ -58,7 +61,8 @@ int readFromDirectory(char * path) {
 
         closedir(d);    //fecha a diretoria
 
-        insertionSort();    //chama a função de ordenação
+        insertionSort(filesToRead);    //chama a função de ordenação
+        insertionSort(fileNames);    //chama a função de ordenação
 
         addPathToFile("../tspdata/");  //adiciona o path ao nome do ficheiro (temporario)
 
@@ -99,7 +103,7 @@ void addPathToFile (char * path) {
 /**
  * Metodo para ordenar os ficheiros lidos de uma diretoria
  */
-void insertionSort() {    //TODO: Finish this shit
+void insertionSort(char ** array) {    //TODO: Finish this shit
 
     int i, j;
     char key[MAX_LENGHT];
@@ -107,29 +111,29 @@ void insertionSort() {    //TODO: Finish this shit
 
     for (i = 1; i < numberOfFiles; ++i) {
 
-        strcpy(key, filesToRead[i]);  //copies the next value to check to key
+        strcpy(key, array[i]);  //copies the next value to check to key
 
         j = i - 1;
 
         while (j >= 0) {
 
-            if (strlen(filesToRead[j]) == strlen(key)) {   //checks if lengths are equal
+            if (strlen(array[j]) == strlen(key)) {   //checks if lengths are equal
 
-                if ((strcasecmp(filesToRead[j], key) > 0)) {    //compares the values
+                if ((strcasecmp(array[j], key) > 0)) {    //compares the values
 
                     //swapping
-                    strcpy(temp, filesToRead[j]);
-                    strcpy(filesToRead[j], filesToRead[j + 1]);
-                    strcpy(filesToRead[j + 1], temp);
+                    strcpy(temp, array[j]);
+                    strcpy(array[j], array[j + 1]);
+                    strcpy(array[j + 1], temp);
                 }
 
-            } else if (strlen(filesToRead[j]) > strlen(key)) {
+            } else if (strlen(array[j]) > strlen(key)) {
                 //if length of current position is bigger than the key while comparing in a crescent way, swap.
 
                 //swapping
-                strcpy(temp, filesToRead[j]);
-                strcpy(filesToRead[j], filesToRead[j + 1]);
-                strcpy(filesToRead[j + 1], temp);
+                strcpy(temp, array[j]);
+                strcpy(array[j], array[j + 1]);
+                strcpy(array[j + 1], temp);
 
             } else {    //gets out of the loop
 

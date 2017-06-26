@@ -18,6 +18,7 @@ cidade * cidades;
 int numberOfFiles;  //numero de ficheiros a ler
 int numberOfCities;
 char **filesToRead;
+char **fileNames;
 
 #endif //TSP_FILE_H
 
@@ -25,7 +26,7 @@ int readFromDirectory(char * path);
 
 void addPathToFile (char * path);
 
-void insertionSort ();
+void insertionSort (char ** array);
 
 void printString (char ** string);
 

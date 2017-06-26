@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     int status = readFromDirectory("../tspdata");
 
     if (status!=0) {
-        for (int i = 0 ; i <1 ; ++i) {
+        for (int i = 1 ; i <2 ; ++i) {
             printf("--------- %d ----------\n", i + 1);
 
             readFromFile(i);    //le o file da lista
@@ -52,6 +52,7 @@ int main(int argc, char *argv[]) {
             printStruct();  //test print
 
             //free(cidades);
+            printf("%s\n", fileNames[i]);
 
             printf("-----------------------\n\n");
 
@@ -108,6 +109,24 @@ int main(int argc, char *argv[]) {
                     fclose(file_ptr);
 
                     // TODO Aplicar o 2 opt ao array de struct
+//    float improve;
+//
+//    while ( improve == 0 ) {
+//        double best_distance = custo;
+//
+//        for ( int i = 0; i < numberOfCities - 1; i++ ) {
+//
+//            for ( int k = i + 1; k < numberOfCities; k++) {
+//
+//                new_route = 2optSwap(existing_route, i, k)
+//                new_distance = calculateTotalDistance(new_route)
+//                if (new_distance < best_distance) {
+//                    existing_route = new_route
+//                    goto start_again
+//                }
+//            }
+//        }
+//    }
 
 
                     // TODO Imprimir novo eps com os links entre cada cidade optimizada
