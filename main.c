@@ -17,29 +17,6 @@
 #define PI 3.141592653589793238
 #define SPACE_BETWEEN_CIRCLES_RATIO 0.05
 
-/*
-int isValidTour(cidade * cities, int n)
-{
-    int i, j;
-    for(i = 0; i < n - 1; i++)
-    {
-        for(j = i + 1; j < n - 1; j++)
-        {
-            if(cities[i].id == cities[j].id)
-            {
-                return 0; // it is not valid
-            }
-        }
-    }
-    return 1; // it is a valid tour
-}
-*/
-
-float computeDistance(cidade a, cidade b){
-    return (float) sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y) );
-}
-
-
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
     printf("Opção           Descrição\n");
@@ -50,8 +27,8 @@ void printHelp() {
 int main(int argc, char *argv[]) {
 
     int count, n=5;
-    //char * file_path = "../results/out.eps";
-    char * file_path = "out.eps";
+    char * file_path = "../results/out.eps";
+    //char * file_path = "../out.eps";
     char *chrDataLocation;
     float min_x, min_y;
     float max_x, max_y;
@@ -149,7 +126,7 @@ int main(int argc, char *argv[]) {
                         for(int j = i + 1; j < n - 1; j++) {
 
                             if (cidades[j].visited != 1){
-                                total = computeDistance(cidades[i],cidades[j]);
+                                total = distance(cidades[i],cidades[j]);
 
 
                             }

@@ -1,0 +1,19 @@
+\select@language {portuguese}
+\contentsline {section}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{2}
+\contentsline {subsection}{\numberline {1.1}Requisitos Minimos}{2}
+\contentsline {subsection}{\numberline {1.2}O circuito main}{3}
+\contentsline {subsubsection}{\numberline {1.2.1}Matriz de leds}{4}
+\contentsline {subsection}{\numberline {1.3}Display de 7 segmentos}{4}
+\contentsline {subsubsection}{\numberline {1.3.1}Mapa Veitch-Karnaugh}{5}
+\contentsline {subsubsection}{\numberline {1.3.2}DSP Decoder}{7}
+\contentsline {subsection}{\numberline {1.4}LED Decoder}{8}
+\contentsline {subsubsection}{\numberline {1.4.1}RGB Decoder}{10}
+\contentsline {subsection}{\numberline {1.5}ROM}{11}
+\contentsline {subsubsection}{\numberline {1.5.1}BCD - Binary Coded Decimal}{12}
+\contentsline {subsubsection}{\numberline {1.5.2}ROM Decoder}{13}
+\contentsline {section}{\numberline {2}Enquadramento}{14}
+\contentsline {subsection}{\numberline {2.1}Motiva\IeC {\c c}\IeC {\~a}o}{14}
+\contentsline {subsection}{\numberline {2.2}Objectivos}{14}
+\contentsline {section}{\numberline {3}Conclus\IeC {\~o}es}{14}
+\contentsline {section}{\numberline {4}Bibliografia}{15}
+\contentsline {section}{\numberline {5}Anexos}{16}
