@@ -15,7 +15,7 @@ typedef struct {
 
 void setHeader(FILE * ptr_file, char * title, int width, int height);
 
-void drawLine(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, float width);
+void drawLine(FILE * file_ptr, rgb color, float x1, float y1, float x2, float y2, float width);
 
 void drawSquare(FILE * file_ptr, rgb color,  int x1, int y1, int x2, int y2, float width);
 
