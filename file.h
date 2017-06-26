@@ -9,6 +9,8 @@ typedef struct _cidade{
     int id;
     float x;
     float y;
+    float normX;
+    float normY;
     int visited;
 } cidade;
 

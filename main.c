@@ -110,28 +110,26 @@ int main(int argc, char *argv[]) {
                     printf("Number of cities is: %d \n", n);
                     // normaliza a posicao das cidades no viewport do eps
                     draw_tsp(file_ptr, n, width, height);
-
-                    //drawLink(file_ptr, (rgb){0,0,1}, 10, 10, 180, 155, 2); // desenha o link entre cidades
-
+                    drawLink(file_ptr, (rgb){0,0,1},cidades[0].normX,cidades[0].normY,cidades[3].normX,cidades[3].normY, 2); // desenha o link entre cidades
                     fprintf(file_ptr, "showpage\n");
                     fprintf(file_ptr, "%%%%EOF");
                     fclose(file_ptr);
 
-                    myArray[0] = cidades[0].id;
-
-                    // local search
-                    for (int i=0;i<n;i++) {
-                        cidades[i].visited = 1 ;
-
-                        for(int j = i + 1; j < n - 1; j++) {
-
-                            if (cidades[j].visited != 1){
-                                total = distance(cidades[i],cidades[j]);
-
-
-                            }
-                        }
-                    }
+//                    myArray[0] = cidades[0].id;
+//
+//                    // local search
+//                    for (int i=0;i<n;i++) {
+//                        cidades[i].visited = 1 ;
+//
+//                        for(int j = i + 1; j < n - 1; j++) {
+//
+//                            if (cidades[j].visited != 1){
+//                                total = distance(cidades[i],cidades[j]);
+//
+//
+//                            }
+//                        }
+//                    }
 
 
 

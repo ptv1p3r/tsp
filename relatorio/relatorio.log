@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.4)  26 JUN 2017 11:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.4)  26 JUN 2017 11:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -646,39 +646,43 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [1]
-Underfull \hbox (badness 10000) in paragraph at lines 52--55
+Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--61
+Underfull \hbox (badness 10000) in paragraph at lines 55--57
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--61
+Underfull \hbox (badness 10000) in paragraph at lines 55--57
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 62.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 58.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 62.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 58.
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--65
+
+ []
 
 <imagens/main.png, id=21, 1056.94875pt x 692.5875pt>
 File: imagens/main.png Graphic file (type png)
  <use imagens/main.png>
-Package pdftex.def Info: imagens/main.png used on input line 69.
+Package pdftex.def Info: imagens/main.png used on input line 66.
 (pdftex.def)             Requested size: 390.0pt x 255.55586pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--72
+Underfull \hbox (badness 10000) in paragraph at lines 66--69
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
 
@@ -686,15 +690,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--80
 File: imagens/ledmatrix.png Graphic file (type png)
 
 <use imagens/ledmatrix.png>
-Package pdftex.def Info: imagens/ledmatrix.png used on input line 90.
+Package pdftex.def Info: imagens/ledmatrix.png used on input line 87.
 (pdftex.def)             Requested size: 210.21352pt x 172.74684pt.
 
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 81--94
+Overfull \hbox (39.00238pt too wide) in paragraph at lines 78--91
 $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--94
+Underfull \hbox (badness 10000) in paragraph at lines 78--91
 
  []
 
@@ -702,10 +706,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 81--94
 File: imagens/7digit.png Graphic file (type png)
 
 <use imagens/7digit.png>
-Package pdftex.def Info: imagens/7digit.png used on input line 97.
+Package pdftex.def Info: imagens/7digit.png used on input line 94.
 (pdftex.def)             Requested size: 195.0pt x 107.25296pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--132
+Underfull \hbox (badness 10000) in paragraph at lines 92--129
 
  []
 
@@ -713,75 +717,75 @@ Underfull \hbox (badness 10000) in paragraph at lines 95--132
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (113.81097pt too wide) detected at line 139
+Overfull \hbox (113.81097pt too wide) detected at line 136
 []
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 140.
+(Font)              <10.95> on input line 137.
 
-Overfull \hbox (113.81097pt too wide) detected at line 146
+Overfull \hbox (113.81097pt too wide) detected at line 143
 []
  []
 
 
-Overfull \hbox (113.81097pt too wide) detected at line 153
+Overfull \hbox (113.81097pt too wide) detected at line 150
 []
  []
 
 
-Overfull \hbox (113.81097pt too wide) detected at line 159
+Overfull \hbox (113.81097pt too wide) detected at line 156
 []
  []
 
 
-Overfull \hbox (113.81097pt too wide) detected at line 166
+Overfull \hbox (113.81097pt too wide) detected at line 163
 []
  []
 
 
-Overfull \hbox (113.81097pt too wide) detected at line 172
+Overfull \hbox (113.81097pt too wide) detected at line 169
 []
  []
 
 
-Overfull \hbox (113.81097pt too wide) detected at line 179
+Overfull \hbox (113.81097pt too wide) detected at line 176
 []
  []
 
 
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 133--187
+Overfull \hbox (39.00238pt too wide) in paragraph at lines 130--184
 []$ 
  []
 
 
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 133--187
+Overfull \hbox (39.00238pt too wide) in paragraph at lines 130--184
 []$ 
  []
 
 
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 133--187
+Overfull \hbox (39.00238pt too wide) in paragraph at lines 130--184
 []$ 
  []
 
 
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 133--187
+Overfull \hbox (39.00238pt too wide) in paragraph at lines 130--184
 []$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--187
+Underfull \hbox (badness 10000) in paragraph at lines 130--184
 
  []
 
 
-Overfull \hbox (9.72862pt too wide) in paragraph at lines 133--187
+Overfull \hbox (9.72862pt too wide) in paragraph at lines 130--184
 \T1/cmr/m/n/12 supõem-se va-lo-res con-ve-ni-en-tes para for-mar gru-pos os mai
 -o-res pos-sí-veis.Quanto
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--187
+Underfull \hbox (badness 10000) in paragraph at lines 130--184
 
  []
 
@@ -790,56 +794,56 @@ Underfull \hbox (badness 10000) in paragraph at lines 133--187
 File: imagens/dspdec.png Graphic file (type png)
 
 <use imagens/dspdec.png>
-Package pdftex.def Info: imagens/dspdec.png used on input line 190.
+Package pdftex.def Info: imagens/dspdec.png used on input line 187.
 (pdftex.def)             Requested size: 390.0pt x 236.96814pt.
 
 
 Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 191.
+(caption)                outside box or environment on input line 188.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--191
+Underfull \hbox (badness 10000) in paragraph at lines 185--188
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--191
+Underfull \hbox (badness 10000) in paragraph at lines 185--188
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--191
+Underfull \hbox (badness 10000) in paragraph at lines 185--188
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 192--195
+Underfull \hbox (badness 10000) in paragraph at lines 189--192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--195
+Underfull \hbox (badness 10000) in paragraph at lines 189--192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
 
  []
 
 <imagens/7dispon.png, id=51, 310.15875pt x 264.99pt>
 File: imagens/7dispon.png Graphic file (type png)
  <use imagens/7dispon.png>
-Package pdftex.def Info: imagens/7dispon.png used on input line 203.
+Package pdftex.def Info: imagens/7dispon.png used on input line 200.
 (pdftex.def)             Requested size: 147.14882pt x 125.7179pt.
 
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 196--207
+Overfull \hbox (39.00238pt too wide) in paragraph at lines 193--204
 []$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--207
+Underfull \hbox (badness 10000) in paragraph at lines 193--204
 
  []
 
@@ -848,20 +852,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 196--207
 File: imagens/leddec.png Graphic file (type png)
 
 <use imagens/leddec.png>
-Package pdftex.def Info: imagens/leddec.png used on input line 210.
+Package pdftex.def Info: imagens/leddec.png used on input line 207.
 (pdftex.def)             Requested size: 390.0pt x 387.1824pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--211
+Underfull \hbox (badness 10000) in paragraph at lines 205--208
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--211
+Underfull \hbox (badness 10000) in paragraph at lines 205--208
 
  []
 
 [8 <./imagens/7dispon.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 212--214
+Underfull \hbox (badness 10000) in paragraph at lines 209--211
 
  []
 
@@ -870,10 +874,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 212--214
 File: imagens/rgbdec.png Graphic file (type png)
 
 <use imagens/rgbdec.png>
-Package pdftex.def Info: imagens/rgbdec.png used on input line 217.
+Package pdftex.def Info: imagens/rgbdec.png used on input line 214.
 (pdftex.def)             Requested size: 390.0pt x 163.66684pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 219--220
+Underfull \hbox (badness 10000) in paragraph at lines 216--217
 
  []
 
@@ -881,31 +885,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 219--220
 <imagens/romr1.png, id=73, 1327.96124pt x 457.71pt>
 File: imagens/romr1.png Graphic file (type png)
  <use imagens/romr1.png>
-Package pdftex.def Info: imagens/romr1.png used on input line 223.
+Package pdftex.def Info: imagens/romr1.png used on input line 220.
 (pdftex.def)             Requested size: 390.0pt x 134.42265pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 222--224
+Underfull \hbox (badness 10000) in paragraph at lines 219--221
 
  []
 
 <imagens/rom1.png, id=74, 259.97125pt x 151.56625pt>
 File: imagens/rom1.png Graphic file (type png)
  <use imagens/rom1.png>
-Package pdftex.def Info: imagens/rom1.png used on input line 229.
+Package pdftex.def Info: imagens/rom1.png used on input line 226.
 (pdftex.def)             Requested size: 195.0pt x 113.68596pt.
 
-Underfull \hbox (badness 1048) in paragraph at lines 231--233
+Underfull \hbox (badness 1048) in paragraph at lines 228--230
 []\T1/cmr/m/n/12 Cada ROM tem uma es-tru-tura di-men-si-o-nada para cada con-ju
 nto de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--233
+Underfull \hbox (badness 10000) in paragraph at lines 228--230
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--258
+Underfull \hbox (badness 10000) in paragraph at lines 231--255
 
  []
 
@@ -913,47 +917,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 234--258
 <imagens/romdec.png, id=80, 748.7975pt x 602.25pt>
 File: imagens/romdec.png Graphic file (type png)
  <use imagens/romdec.png>
-Package pdftex.def Info: imagens/romdec.png used on input line 259.
+Package pdftex.def Info: imagens/romdec.png used on input line 256.
 (pdftex.def)             Requested size: 390.0pt x 313.67722pt.
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 261--286
+Underfull \hbox (badness 10000) in paragraph at lines 258--283
 
  []
 
 [13 <./imagens/romdec.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 289--290
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
 
  []
 
 
-Underfull \hbox (badness 1552) in paragraph at lines 291--294
+Underfull \hbox (badness 1552) in paragraph at lines 288--291
 \T1/cmr/m/n/12 Pretende-se atra-vés deste tra-ba-lho, criar um sis-tema de lu-z
 es como
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 291--294
+Underfull \hbox (badness 10000) in paragraph at lines 288--291
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--298
+Underfull \hbox (badness 10000) in paragraph at lines 292--295
 
  []
 
 [14] (./relatorio.bbl) [15]
-Underfull \hbox (badness 10000) in paragraph at lines 305--307
+Underfull \hbox (badness 10000) in paragraph at lines 302--304
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--307
+Underfull \hbox (badness 10000) in paragraph at lines 302--304
 
  []
 
@@ -987,9 +991,9 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on relatorio.pdf (17 pages, 329304 bytes).
+Output written on relatorio.pdf (17 pages, 328983 bytes).
 PDF statistics:
- 547 PDF objects out of 1000 (max. 8388607)
+ 545 PDF objects out of 1000 (max. 8388607)
  118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)

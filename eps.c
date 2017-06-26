@@ -44,8 +44,8 @@ void setHeader(FILE * ptr_file, char * title, int width, int height){
     fprintf(ptr_file, "} def \n");
 }
 
-void drawText(FILE * file_ptr, rgb color, int scale, float x, float y, char * text){
-    fprintf(file_ptr, "/Times-Roman findfont %f %f %f setrgbcolor %d scalefont setfont newpath %f %f moveto (%s) show\n",
+void drawText(FILE * file_ptr, rgb color, float scale, float x, float y, char * text){
+    fprintf(file_ptr, "/Times-Roman findfont %f %f %f setrgbcolor %.2f scalefont setfont newpath %f %f moveto (%s) show\n",
             color.r, color.g, color.b, scale, x, y, text);
 }
 
@@ -74,8 +74,8 @@ void drawCircle(FILE * ptr_file, rgb color,float x, float y, float radius, float
 
 }
 
-void drawLink(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, float strokeWidth){
-    fprintf(file_ptr, "%d %d translate\n", x1, y1);
-    fprintf(file_ptr, "%f %f %f setrgbcolor 0 0 moveto %d %d lineto stroke\n", color.r, color.g, color.b, x2, y2 );
-    fprintf(file_ptr, "newpath %d %d moveto %.2f 0 0 arrowhead \n", x2, y2, strokeWidth);
+void drawLink(FILE * file_ptr, rgb color, float x1, float y1, float x2, float y2, float strokeWidth){
+    fprintf(file_ptr, "%.2f %.2f translate\n", x1, y1);
+    fprintf(file_ptr, "%f %f %f setrgbcolor 0 0 moveto %.2f %.2f lineto stroke\n", color.r, color.g, color.b, x2, y2 );
+    fprintf(file_ptr, "newpath %.2f %.2f moveto %.2f 0 0 arrowhead \n", x2, y2, strokeWidth);
 }

@@ -49,22 +49,19 @@
 	
 	\newpage
 	\section{Introdução}
-		E NATAL! Por todo o lado vemos luzes de natal, quer em  árvores de natal, ou em edifícios,
-		no exterior e no interior. Estes sistemas de luzes são tipicamente agregados de dezenas ou	
-		centenas de luzes, feitas de lâmpadas de filamentos, ou segundo a tendência atual, feitas de LEDs (\textbf{Light Emitting Diode}), com cores e que piscam segundo um ou vários padroes.\\
+		O travel salesman problem (TSP) é um problema bastante comum largamente encontrado em diversas aplicações tais como: empresas de transporte (e.g. UPS), escalas de tripulação de companhias aéreas, etc.\\
+		Em principio, um vendedor necessita de efetuar uma viagem por diversas cidades, onde inicia a viagem numa determinada cidade (Casa), visita todas as cidades para vender os seus produtos, e retorna a casa.\\
 		\subsection{Requisitos Minimos}	
-			Um sistema de luzes com diferentes cores, que piscam segundo padrões a sua	
-			escolha. O sistema devera ter um modulo que de alguma forma permita escolher o padrao	
-			de funcionamento das luzes. Poderá, por exemplo, dispor de um botão que seleciona um	
-			novo padrao.\\\\
-			O sistema devera ter:\\
+			O TSP pode ser representado por uma lista de nós, sendo o objectivo descobrir uma serie de caminhos (Edges) entre cada um dos nós.\\\\
+			Sendo que:\\
 			\begin{itemize}
-				\item No minimo Luzes de 3 cores diferentes.
-				\item Para cada cor deverão existir pelo menos 3 LEDs diferentes.
-				\item O sistema devera ter o mínimo de 2 padrões de funcionamento.
-				\item LEDs de cores diferentes tem de piscar de forma diferente.
-				\item Um mostrador que indica o padrão selecionado.
+				\item Cada nó (Cidade) pode ser visitado apenas 1 vez.
+				\item Os caminhos formam uma Tour.
+				\item O custo da Tour deve ser o minimo possivel.
 			\end{itemize}
+			A tour TSP é um grafico direcionado, onde cada nó representa uma cidade, e cada edge representa um caminho entre 2 cidades.\\
+			Cada edge têm um peso, que é no seu caso mais simples a distancia euclidiana entre os seus nós.\\
+			Este peso pode ser composto por diversos fatores, no entanto neste projeto apenas se considera a distancia entre nós.\\ 			
 		\subsection{O circuito main}
 			\includegraphics[width=1.0\textwidth]{imagens/main}\\
 			Esta é a representação geral do circuito digital.\\
@@ -284,7 +281,7 @@
 					}
 				\end{table}\\
 	\section{Enquadramento}
-	O trabalho descrito neste relatório foi realizado recorrendo ao simulador Logisim, assim como os recursos disponibilizados na unidade curricular.\\
+	O trabalho descrito neste relatório foi realizado recorrendo à linguagem de programação C, assim como os recursos disponibilizados na unidade curricular.\\
 		\subsection{Motivação}
 			A principal motivação para a realização deste trabalho, resulta da importância em criar e otimizar um sistema digital, assim como demonstrar os conhecimentos alcançados na disciplina de sistemas digitais.\\
 		\subsection{Objectivos}

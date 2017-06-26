@@ -14,7 +14,6 @@
 
 /** @brief Draw a TSP problem into an EPS file
  *  @param file_ptr FILE * struct of the EPS file
- *  @param city   city * struct of the cities.
  *  @param n   int, the number of cities
  *  @param eps_width float, the width of the eps canvas
  *  @param eps_height float, the height of the eps canvas
@@ -46,13 +45,17 @@ void draw_tsp(FILE * file_ptr, int n, float eps_width, float eps_height) {
 			max_y = cidades[i].y;
 	}
 
-	for(i = 1; i < n; i++) {
+	for(i = 0; i < n; i++)
+	{
 		// calculate the radius
 		float radius = sqrt((eps_width * eps_height / (float) n) / 2 * PI) * SPACE_BETWEEN_CIRCLES_RATIO;
 		// calculate the correct x and y and shift for the edge positions
 		float x = (radius) + (cidades[i].x - min_x) / (max_x - min_x) * (eps_width - (2 * radius));
 		float y = (radius) + (cidades[i].y - min_y) / (max_y - min_y) * (eps_height - (2 * radius));
-		
+
+        // guardamos as coordenadas normalizadas para a cidade
+        cidades[i].normX = x;
+        cidades[i].normY = y;
 
 		drawCircle(file_ptr, (rgb){0,1,0},x ,y , radius, 0.25);
 		char str[5];

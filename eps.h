@@ -19,10 +19,10 @@ void drawLine(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, float 
 
 void drawSquare(FILE * file_ptr, rgb color,  int x1, int y1, int x2, int y2, float width);
 
-void drawText(FILE * file_ptr, rgb color, int scale, float x, float y, char * text);
+void drawText(FILE * file_ptr, rgb color, float scale, float x, float y, char * text);
 
 void drawArray(FILE * file_ptr, int * array, int start, int end, int x, int y, int scale, rgb bgcolor, rgb fgcolor);
 
 void drawCircle(FILE * ptr_file, rgb color,float x, float y, float radius, float strokeWidth);
 
-void drawLink(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, float strokeWidth);
+void drawLink(FILE * file_ptr, rgb color, float x1, float y1, float x2, float y2, float strokeWidth);
