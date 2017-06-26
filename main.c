@@ -72,12 +72,14 @@ int main(int argc, char *argv[]) {
 //                if (count+1 < argc) {
 //                    chrDataLocation = argv[count+1];
 //                    printf("input %s \n", chrDataLocation);
-//                    // TODO Envio da localizacao de dados para recolha
 
                     FILE * file_ptr = fopen(file_path, "w+");
                     setHeader(file_ptr, "Travel Salesman Problem", width, height);
 
-                    drawText(file_ptr, (rgb){0,0,0}, 40,  0, height -50, "Cities: 5");
+                    char headerText[50];
+                    sprintf( headerText, "Cities: %d", numberOfCities );
+
+                    drawText(file_ptr, (rgb){0,0,0}, 40,  0, height -50, headerText);
                     drawLine(file_ptr, (rgb){0,0,0}, 2, height -52 ,  width -2, height -52, 1);
 
                     printf("Number of cities is: %d \n", numberOfCities);
