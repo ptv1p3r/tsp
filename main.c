@@ -85,8 +85,8 @@ int main(int argc, char *argv[]) {
                     draw_tsp(file_ptr, n, width, height);
 
                     // TODO percorrer a struct de cidades e desenhar o link entre cada uma
-                    drawLink(file_ptr, (rgb){0,0,1},cidades[0].normX,cidades[0].normY,cidades[1].normX,cidades[1].normY, 2); // desenha o link entre cidades
-                    drawLink(file_ptr, (rgb){0,0,1},cidades[1].normX,cidades[1].normY,cidades[3].normX,cidades[3].normY, 2); // desenha o link entre cidades
+                    drawLink(file_ptr, (rgb){0,0,1},cidades[0].normX,cidades[0].normY,cidades[1].normX-cidades[0].normX,cidades[1].normY-cidades[0].normY, 2); // desenha o link entre cidades
+                    drawLink(file_ptr, (rgb){0,0,1},cidades[1].normX,cidades[1].normY,cidades[3].normX-cidades[1].normX,cidades[3].normY-cidades[1].normY, 2); // desenha o link entre cidades
 
 
                     // TODO Aplicar o 2 opt ao array de struct
