@@ -84,7 +84,7 @@ int main(int argc, char *argv[]) {
                     // normaliza a posicao das cidades no viewport do eps
                     draw_tsp(file_ptr, numberOfCities, width, height);
 
-                    for (int i=3 ; i <= numberOfCities-1; i++) {
+                    for (int i=0 ; i < numberOfCities; i++) {
                         // TODO percorrer a struct de cidades e desenhar o link entre cada uma
                         drawLink(file_ptr, (rgb){0,0,1}, cidades[i].normX, cidades[i].normY, cidades[i+1].normX - cidades[i]. normX,cidades[i+1].normY - cidades[i].normY, 2); // desenha o link entre cidades
                         //drawLink(file_ptr, (rgb){0,0,1}, cidades[2].normX, cidades[2].normY, cidades[3].normX - cidades[2].normX, cidades[3].normY - cidades[2].normY, 2); // desenha o link entre cidades
