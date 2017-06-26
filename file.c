@@ -9,16 +9,8 @@
 #include <stdlib.h>
 #include "file.h"
 
-int numberOfFiles = 0;  //numero de ficheiros a ler
-int numberOfCities = NULL;
-char **filesToRead = NULL;  //TODO: array provisorio
+#define MAX_LENGHT 25
 
-struct _cidade{
-    int id;
-    float x;
-    float y;
-    int visited;
-};
 
 /**
  * Método para ler todos os ficheiros existentes numa diretoria
@@ -26,13 +18,14 @@ struct _cidade{
  */
 int readFromDirectory(char * path) {
 
+    int i=0;
     DIR *d = opendir(path); //abre a diretoria selecionada
     struct dirent *dir; //struct da library <dirent.h>
 
-    while (((dir = readdir(d)) != NULL)) {  //enquanto que existe algo na diretoria, entra
+    while ( (dir = readdir(d)) ) {  //enquanto que existe algo na diretoria, entra
 
         if ((dir -> d_type != DT_DIR)) {    //se nao for uma diretoria entra, se não ignora
-
+            printf("%d -> %s\n", ++i, dir->d_name);
             numberOfFiles++;    //incrementa o numero de ficheiros a ler
         }
     }
@@ -44,28 +37,30 @@ int readFromDirectory(char * path) {
 
         d = opendir(path);  //volta a abrir a adirectoria (provisorio
 
-        filesToRead = (char **) malloc (sizeof(char*) * numberOfFiles);    //alloca memoria para um array com os nomes dos ficheiros a abrir
+        filesToRead = malloc (sizeof(char*) * numberOfFiles);    //alloca memoria para um array com os nomes dos ficheiros a abrir
 
-        int i =0;
+
+
+        i = 0;
         while (((dir = readdir(d)) != NULL)) {  //enquanto que existe algo na diretoria, entra
 
             if ((dir -> d_type != DT_DIR)) {    //se nao for uma diretoria entra, se não ignora
 
-                filesToRead[i] = dir->d_name; //guarda o nome do ficheiro no array
+                filesToRead[i] = (char *) malloc (strlen(dir->d_name) + 1);
+                strcpy(filesToRead[i] , dir->d_name); //guarda o nome do ficheiro no array
                 //printf("%d -> %s\n", i+1, filesToRead[i]);
                 i++;
             }
         }
 
-        //--------- Test Print ----------//
         printf("\n%d\n", numberOfFiles);    //verificar se foram todos lidos
-        //-------------------------------//
+
 
         closedir(d);    //fecha a diretoria
 
-        sortFileNames(filesToRead);    //chama a função de ordenação
+        insertionSort();    //chama a função de ordenação
 
-        addPathToFile("../tspdata/", filesToRead);  //adiciona o path ao nome do ficheiro (temporario)
+        addPathToFile("../tspdata/");  //adiciona o path ao nome do ficheiro (temporario)
 
         printString(filesToRead);   //imprime os ficheiros a ler
 
@@ -83,7 +78,7 @@ int readFromDirectory(char * path) {
  * @param path
  * @param filesToRead
  */
-void addPathToFile (char * path, char ** filesToRead) {
+void addPathToFile (char * path) {
 
     for (int i=0 ; i<numberOfFiles ; i++) {
 
@@ -104,92 +99,48 @@ void addPathToFile (char * path, char ** filesToRead) {
 /**
  * Metodo para ordenar os ficheiros lidos de uma diretoria
  */
-void sortFileNames (char ** filesToRead) {
+void insertionSort() {    //TODO: Finish this shit
 
-    int i = 0, j = 0;
-    int intTemp1 = 0, intTemp2 = 0; //intTemp1 -> primeira posicao da matriz, intTemp2 -> segunda posicao da matriz
-    char *temp = NULL;  //temp para o nome do ficheiro
-    int **fileNumberOfCities[76][2];    //matriz para ajudar a ordenar os files
+    int i, j;
+    char key[MAX_LENGHT];
+    char temp[MAX_LENGHT];
 
-    for (i = 0 ; i < numberOfFiles ; i++) {
+    for (i = 1; i < numberOfFiles; ++i) {
 
-        char *pointer = filesToRead[i];
+        strcpy(key, filesToRead[i]);  //copies the next value to check to key
 
-        int position = 0; //define a primeira coluna
-        while (*pointer) {  //verifica se ainda ha algo para ler
+        j = i - 1;
 
-            if (isdigit(*pointer)) {    //verifica se a posição atual é digito
+        while (j >= 0) {
 
-                fileNumberOfCities[i][position] = (int **) (int) strtol(pointer, &pointer, 10);   //da posição e enquanto for numero, guarda o numero na matriz
+            if (strlen(filesToRead[j]) == strlen(key)) {   //checks if lengths are equal
 
-                position++; //passa para a 2 coluna
+                if ((strcasecmp(filesToRead[j], key) > 0)) {    //compares the values
 
-            } else {
-                pointer++;  //proxima posição
-            }
-
-        }
-    }
-
-
-    for (i = 0 ; i<numberOfFiles ; i++) {
-
-        for (j = 0 ; j<numberOfFiles-1 ; j++) {
-
-            if (fileNumberOfCities[j][0] > fileNumberOfCities[j+1][0]) {    //compara se a posição atual e maior que a próxima
-                                                                            //se for verdade troca a posicao na matriz e
-                                                                            //no array do nome do ficheiro
-                //TODO: arranjar maneira de meter o swap numa função
-                //Troca o primeiro numero
-                intTemp1 = (int) fileNumberOfCities[j][0];
-                fileNumberOfCities[j][0] = fileNumberOfCities[j+1][0];
-                fileNumberOfCities[j+1][0] = (int **) intTemp1;
-
-                //Troca o segundo numero
-                intTemp2 = (int) fileNumberOfCities[j][1];
-                fileNumberOfCities[j][1] = fileNumberOfCities[j+1][1];
-                fileNumberOfCities[j+1][1] = (int **) intTemp2;
-
-                //Troca o nome do ficheiro
-                temp = filesToRead[j];
-                filesToRead[j] = filesToRead[j+1];
-                filesToRead[j+1] = temp;
-
-            } else if (fileNumberOfCities[j][0] == fileNumberOfCities[j+1][0]) {    //verifica se os numeros sao iguais
-
-                if (fileNumberOfCities[j][1] > fileNumberOfCities[j+1][1]) {    //compara os numeros da 2 coluna da matriz e realiza as trocas
-
-                    //Troca o primeiro numero
-                    intTemp1 = (int) fileNumberOfCities[j][0];
-                    fileNumberOfCities[j][0] = fileNumberOfCities[j+1][0];
-                    fileNumberOfCities[j+1][0] = (int **) intTemp1;
-
-                    //Troca o segundo numero
-                    intTemp2 = (int) fileNumberOfCities[j][1];
-                    fileNumberOfCities[j][1] = fileNumberOfCities[j+1][1];
-                    fileNumberOfCities[j+1][1] = (int **) intTemp2;
-
-                    //Troca o nome do ficheiro
-                    temp = filesToRead[j];
-                    filesToRead[j] = filesToRead[j+1];
-                    filesToRead[j+1] = temp;
+                    //swapping
+                    strcpy(temp, filesToRead[j]);
+                    strcpy(filesToRead[j], filesToRead[j + 1]);
+                    strcpy(filesToRead[j + 1], temp);
                 }
+
+            } else if (strlen(filesToRead[j]) > strlen(key)) {
+                //if length of current position is bigger than the key while comparing in a crescent way, swap.
+
+                //swapping
+                strcpy(temp, filesToRead[j]);
+                strcpy(filesToRead[j], filesToRead[j + 1]);
+                strcpy(filesToRead[j + 1], temp);
+
+            } else {    //gets out of the loop
+
+                break;
             }
+
+            j--;
         }
     }
+}
 
-    //--------- Test Print ----------//
-    for (i = 0; i < numberOfFiles ; ++i) {
-        //printf("%d\n", fileNumberOfCities[i][0]);
-    }
-
-    printf("\n\n");
-
-    for (i = 0; i < numberOfFiles ; ++i) {
-        //printf("%s\n", filesToRead[i]);
-    }
-    //-------------------------------//
-};
 
 /**
  * Teste de string dos ficheiros a ler
@@ -198,24 +149,26 @@ void printString (char ** string) {
 
     printf("---------- Ficheiros a abrir ----------\n");
 
+    char name[15];
     for (int i = 0 ; i < numberOfFiles ; ++i) {
+
+        strcpy(name, string[i]);
         printf("%d -> %s\n", i+1, string[i]);
     }
 
     printf("---------------------------------------\n\n");
-};
+}
 
 /**
  * Le o conteudo de um determinado ficheiro e retorna uma struct da informacao
  * @param fileName nome do fichero a abrir
  * @return struct cidade
  */
-cidade readFromFile (int fileNumber) {
+void readFromFile (int fileNumber) {
 
     printf("%s\n", filesToRead[fileNumber]);    //teste de impressao do nome do ficheiro
 
     FILE *file = fopen(filesToRead[fileNumber], "r");
-    cidade city = NULL;
 
     if (file == NULL) {
         printf("Erro ao abrir ficheiro -> %s\n", filesToRead[fileNumber]);
@@ -223,29 +176,23 @@ cidade readFromFile (int fileNumber) {
 
     fscanf(file, "%d\n", &numberOfCities);
 
-    city = (cidade) malloc(numberOfCities * sizeof(cidade));
+    cidades = (cidade*) malloc(numberOfCities * sizeof(cidade));
 
     int i=0;
     for (i=0 ; i<numberOfCities ; i++) {    //le a informacao do ficheiro e guarda no array de struct Cidades
 
-        fscanf(file, "%f %f", &city[i].x, &city[i].y);
-        city[i].id = i+1;
-        city[i].visited = 0;
+        fscanf(file, "%f %f", &cidades[i].x, &cidades[i].y);
+        cidades[i].id = i+1;
+        cidades[i].visited = 0;
     }
 
-//    printf("----- Test Print -----\n");
-//    printStruct(city);
-
-    //fclose(file);
-
-    return city;
 };
 
 /**
  * Teste para imprimir a struct
  * @param Cidades
  */
-void printStruct (cidade cidades) {
+void printStruct () {
 
     printf("\t\t Id\t x\t\t y\t\t visited\n");  //header
 

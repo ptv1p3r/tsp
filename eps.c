@@ -14,10 +14,10 @@ void setHeader(FILE * ptr_file, char * title, int width, int height){
     char date[26];
     struct tm* tm_info;
 
-    time(&timer);
-    tm_info = localtime(&timer);
+    //time(&timer);
+    //tm_info = localtime(&timer);
 
-    strftime(date, 26, "%Y-%m-%d %H:%M:%S", tm_info);
+    //strftime(date, 26, "%Y-%m-%d %H:%M:%S", tm_info);
 
     fprintf(ptr_file, "%s\n", "%!PS-Adobe-3.0 EPSF-3.0");
     fprintf(ptr_file, "%%%%Creator:%s\n", "Eps Creator");
@@ -25,6 +25,7 @@ void setHeader(FILE * ptr_file, char * title, int width, int height){
     fprintf(ptr_file, "%%%%BoundingBox: 0 0 %d %d \n", width, height);
     fprintf(ptr_file, "%%%%CreationDate:%s\n", date);
     fprintf(ptr_file, "%%%%Copyright:Pedro Roldan ISMAT 2017 a21501217 / a21501217 Leandro Moreira AED \n");
+    fprintf(ptr_file, "%%%%EndComments\n");
 
     // write down all procedures
     fprintf(ptr_file, "/arrowhead {%% stack: s x1 y1, current point: x0 y0\n");
@@ -44,7 +45,7 @@ void setHeader(FILE * ptr_file, char * title, int width, int height){
 }
 
 void drawText(FILE * file_ptr, rgb color, int scale, float x, float y, char * text){
-    fprintf(file_ptr, "/Times-Roman findfont %.2f %.2f %.2f setrgbcolor %d scalefont setfont newpath %.2f %.2f moveto (%s) show\n",
+    fprintf(file_ptr, "/Times-Roman findfont %f %f %f setrgbcolor %d scalefont setfont newpath %f %f moveto (%s) show\n",
             color.r, color.g, color.b, scale, x, y, text);
 }
 
@@ -68,8 +69,8 @@ void drawLine(FILE * file_ptr, rgb color, int x1, int y1, int x2, int y2, float 
     fprintf(file_ptr, "%.2f %.2f %.2f setrgbcolor newpath %d %d moveto %d %d lineto %.2f setlinewidth stroke\n", color.r, color.g, color.b, x1, y1, x2, y2, width );
 }
 
-void drawCircle(FILE * ptr_file, float x, float y, float radius, int startAngle, int endAngle, float strokeWidth){
-    fprintf(ptr_file, "newpath %.2f %.2f %.2f %d %d arc closepath %f setlinewidth stroke \n", x, y, radius, startAngle, endAngle, strokeWidth);
+void drawCircle(FILE * ptr_file, rgb color,float x, float y, float radius, float strokeWidth){
+    fprintf(ptr_file, "newpath %.2f %.2f %.2f setrgbcolor newpath %.2f %.2f %.2f 0 360 arc closepath %.2f setlinewidth stroke \n", color.r, color.g, color.b, x, y, radius, strokeWidth);
 
 }
 
