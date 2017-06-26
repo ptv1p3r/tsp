@@ -26,7 +26,7 @@ void printHelp() {
 
 int main(int argc, char *argv[]) {
 
-    int count, n=5;
+    int count;
     char * file_path = "../results/out.eps";
     //char * file_path = "../out.eps";
     char *chrDataLocation;
@@ -80,13 +80,15 @@ int main(int argc, char *argv[]) {
 //                    drawText(file_ptr, (rgb){0,0,0}, 40,  0, height -50, "Cities: 5");
 //                    drawLine(file_ptr, (rgb){0,0,0}, 2, height -52 ,  width -2, height -52, 1);
 
-                    printf("Number of cities is: %d \n", n);
+                    printf("Number of cities is: %d \n", numberOfCities);
                     // normaliza a posicao das cidades no viewport do eps
-                    draw_tsp(file_ptr, n, width, height);
+                    draw_tsp(file_ptr, numberOfCities, width, height);
 
-                    // TODO percorrer a struct de cidades e desenhar o link entre cada uma
-                    drawLink(file_ptr, (rgb){0,0,1},cidades[0].normX,cidades[0].normY,cidades[1].normX-cidades[0].normX,cidades[1].normY-cidades[0].normY, 2); // desenha o link entre cidades
-                    drawLink(file_ptr, (rgb){0,0,1},cidades[1].normX,cidades[1].normY,cidades[3].normX-cidades[1].normX,cidades[3].normY-cidades[1].normY, 2); // desenha o link entre cidades
+                    for (int i=3 ; i <= numberOfCities-1; i++) {
+                        // TODO percorrer a struct de cidades e desenhar o link entre cada uma
+                        drawLink(file_ptr, (rgb){0,0,1}, cidades[i].normX, cidades[i].normY, cidades[i+1].normX - cidades[i]. normX,cidades[i+1].normY - cidades[i].normY, 2); // desenha o link entre cidades
+                        //drawLink(file_ptr, (rgb){0,0,1}, cidades[2].normX, cidades[2].normY, cidades[3].normX - cidades[2].normX, cidades[3].normY - cidades[2].normY, 2); // desenha o link entre cidades
+                    }
 
 
                     // TODO Aplicar o 2 opt ao array de struct
