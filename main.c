@@ -196,8 +196,8 @@ float getTourDistance(cidade * tour){
 void createTourFile(char * filename, int width, int height){
     float custo=0.0;
     char tourPath[100000]={};
+    char filePath[200]={};
 
-    char filePath[200];
     sprintf( filePath, "../results/%s.eps", filename );
 
     FILE * file_ptr = fopen(filePath, "w+");
