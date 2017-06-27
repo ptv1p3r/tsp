@@ -86,7 +86,8 @@ int main(int argc, char *argv[]) {
 
                     // TODO Aplicar o 2 opt ao array de struct
     //TESTING//
-    float improve=1, bestDistance;
+    int improve=1;
+    float bestDistance;
 
     cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
     newRoute = cidades;
@@ -102,8 +103,9 @@ int main(int argc, char *argv[]) {
 
                 float new_distance = 0;
                 for (int j = 0; j < numberOfCities-1 ; ++j) {
-                    new_distance += distance(cidades[j], cidades[j+1]);
+                    new_distance += distance(newRoute[j], newRoute[j+1]);
                 }
+                new_distance += distance(newRoute[0], newRoute[numberOfCities-1]);
 
                 if (new_distance < bestDistance) {
                     cidades = newRoute;
