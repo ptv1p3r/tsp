@@ -21,6 +21,7 @@ void createTourFile(char * file_path, char * filename, int width, int height);
 float getTourDistance(cidade * tour);
 cidade * swap2opt (cidade * newRoute, int i, int k);
 void setNewTour (cidade * tour, cidade * newTour);
+void copyTour (cidade * validTour, cidade * newTour);
 
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
@@ -90,7 +91,7 @@ int main(int argc, char *argv[]) {
     float bestDistance,new_distance = 0;
 
     cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
-    newRoute = cidades;
+    copyTour(newRoute , cidades);
 
 //    for (int j = 0; j < numberOfCities; j++) {
 //        printf("%d -> ", newRoute[j].id);
@@ -104,12 +105,12 @@ int main(int argc, char *argv[]) {
         for ( int i = 0; i < numberOfCities - 1; i++ ) {
             for ( int k = i + 1; k < numberOfCities; k++) {
 
-                newRoute = cidades;
+                copyTour(newRoute, cidades);
 
                 new_distance = getTourDistance(swap2opt(newRoute, i, k));
 
                 if (new_distance < bestDistance) {
-                    cidades = newRoute;
+                    copyTour(cidades , newRoute);
 
                     improve = 0;
                     printf("%.2f - %.2f\n", bestDistance, new_distance);
@@ -168,6 +169,13 @@ int main(int argc, char *argv[]) {
 //    }
     free(cidades);
     return 0;
+}
+
+void copyTour (cidade * tour1, cidade * tour2) {
+
+    for (int i = 0; i < numberOfCities; i++) {
+        tour1[i] = tour2[i];
+    }
 }
 
 cidade * swap2opt (cidade * newRoute, int i, int k) {
