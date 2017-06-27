@@ -24,7 +24,7 @@ void setHeader(FILE * ptr_file, char * title, int width, int height){
     fprintf(ptr_file, "%%%%Title:%s\n", title);
     fprintf(ptr_file, "%%%%BoundingBox: 0 0 %d %d \n", width, height);
     fprintf(ptr_file, "%%%%CreationDate:%s\n", date);
-    fprintf(ptr_file, "%%%%Copyright:Pedro Roldan ISMAT 2017 a21501217 / a21501217 Leandro Moreira AED \n");
+    fprintf(ptr_file, "%%%%Copyright:Pedro Roldan ISMAT 2017 a21501217 / a21601599 Leandro Moreira AED \n");
     fprintf(ptr_file, "%%%%EndComments\n");
 
     // write down all procedures
