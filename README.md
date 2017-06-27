@@ -1,3 +1,3 @@
 # tsp
-Travel Salesman Problem ISMAT 2017 
+Travel Salesman Problem AED ISMAT 2017
 Pedro Roldan / Leandro Moreira
