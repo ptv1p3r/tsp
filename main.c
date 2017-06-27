@@ -20,6 +20,7 @@
 void createTourFile(char * file_path, int width, int height);
 float getTourDistance(cidade * tour);
 cidade * swap2opt (cidade * newRoute, int i, int k);
+void setNewTour (cidade * tour, cidade * newTour);
 
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
@@ -92,14 +93,14 @@ int main(int argc, char *argv[]) {
     cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
     newRoute = cidades;
 
-//    for (int j = 0; j < numberOfCities; ++j) {
+//    for (int j = 0; j < numberOfCities; j++) {
 //        printf("%d -> ", newRoute[j].id);
 //    }
 //    printf("\n");
 
-    while ( improve < numberOfCities ) {
+    bestDistance = getTourDistance(cidades);
 
-        bestDistance = getTourDistance(cidades);
+    while ( improve < numberOfCities ) {
 
         for ( int i = 0; i < numberOfCities - 1; i++ ) {
             for ( int k = i + 1; k < numberOfCities; k++) {
@@ -118,10 +119,11 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+        printf("%d\n", improve);
         improve++;
     }
 
-//    for (int j = 0; j < numberOfCities; ++j) {
+//    for (int j = 0; j < numberOfCities; j++) {
 //        printf("%d -> ", cidades[j].id);
 //    }
 //    printf("\n");
