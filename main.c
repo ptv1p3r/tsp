@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
                     int status = readFromDirectory("../tspdata");
 
                     if (status!=0) {
-                        for (int i = 1 ; i <2 ; ++i) {
+                        for (int i = 0 ; i <1 ; ++i) {
                             printf("--------- %d ----------\n", i + 1);
 
                             readFromFile(i);    //le o file da lista
@@ -156,7 +156,7 @@ void testOpt (cidade * route, int inicial, int next) {
     for (int i = inicial; i < numberOfCities-1; i++) {
         for (int j = next; j < numberOfCities-1 ; j++) {
 
-            if (!(i == inicial-1) && !(i == inicial+2)) {
+            if ((i != inicial-1) && (i != inicial+2)) {
 
                 float custoNormal = distance(route[inicial], route[inicial+1]) + distance(route[i], route[j]),
                         custoAlterado = distance(route[inicial], route[i]) + distance(route[inicial+1], route[j]);
