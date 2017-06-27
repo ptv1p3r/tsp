@@ -13,7 +13,6 @@
 // cria ficheiro rota (tour + cost)
 // cria eps com rota grafica, texto tour + text cost + text date/time
 
-#define DATAPATH_OUTPUT "./output"
 #define PI 3.141592653589793238
 #define SPACE_BETWEEN_CIRCLES_RATIO 0.05
 
@@ -37,14 +36,6 @@ void printHelp() {
 
 int main(int argc, char *argv[]) {
 
-    int count;
-
-    //char * file_path = "../results/out.eps";
-    //char * file_path2 = "../results/out2.eps";
-    char *chrDataLocation;
-    float min_x, min_y;
-    float max_x, max_y;
-    float total = 0.0;
     int height = 800;
     int width = 600;
 
@@ -68,7 +59,7 @@ int main(int argc, char *argv[]) {
                     int status = readFromDirectory("../tspdata");
 
                     if (status!=0) {
-                        for (int i = 1 ; i <2 ; ++i) {
+                        for (int i = 0 ; i <6 ; ++i) {
                             printf("--------- %d ----------\n", i + 1);
 
                             readFromFile(i);    //le o file da lista
@@ -114,7 +105,7 @@ void tour2Opt () {
 
     bestDistance = getTourDistance(cidades);
 
-    while ( improve < numberOfCities ) {
+    while ( improve < numberOfCities-1 ) {
 
         for ( int i = 0; i < numberOfCities - 1 ; i++ ) {
             for ( int k = i + 1; k < numberOfCities-1; k++) {
@@ -141,7 +132,6 @@ void tour2Opt () {
                 }
             }
         }
-        //printf("%d\n", improve);
         improve++;
     }
 

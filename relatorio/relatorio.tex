@@ -62,91 +62,55 @@
 			A tour TSP é um grafico direcionado, onde cada nó representa uma cidade, e cada edge representa um caminho entre 2 cidades.\\
 			Cada edge têm um peso, que é no seu caso mais simples a distancia euclidiana entre os seus nós.\\
 			Este peso pode ser composto por diversos fatores, no entanto neste projeto apenas se considera a distancia entre nós.\\ 			
-
-			\includegraphics[width=1.0\textwidth]{imagens/1}
 			\newpage
-			\subsubsection{RGB Decoder} \label{ssec:num1}
-				A função deste circuito é a de ao receber a indicação de posição através do grupo binário de S0 e S1, efetuar a correspondência de cor para a saída do led correspondente, através da separação do grupo de 3 bits.\\
-				\includegraphics[width=1.0\textwidth]{imagens/rgbdec}
-				\captionof{figure}{RGB Decoder}
-				S0-S3: Conjunto binário de 4 bits correspondendo ao seu valor decimal\\
-		\newpage						
-
-			A ROM (read-only memory), é um tipo de memória que permite apenas a leitura, ou seja, as suas informações são gravadas uma única vez e após isso não podem ser alteradas ou apagadas, somente acedidas. São memórias cujo conteúdo é gravado permanentemente.\\\\
-			\includegraphics[width=1.0\textwidth]{imagens/romr1}
-			\captionof{figure}{Circuito de controle de ROMS}
-			EN: Bit de controlo de enable/disable\\
-			S0-S9: Bit de entrada para seleção de ROM\\
-			Q0: Conjunto de 3 bits para seleção de cor RGB\\
-			Cada ROM é controlada por um contador exclusivo e um clock partilhado.\\
-			\includegraphics[width=0.5\textwidth]{imagens/rom1}
-			\captionof{figure}{ROM Individual}
-			Cada ROM tem uma estrutura dimensionada para cada conjunto de sequencias ..\\
-			A ROM é controlada por um contador associado a um clock, que permite que, em cada ciclo o contador avançe para uma nova posição (index) da ROM e efetue a leitura da sequencia de bits armazenada, que por sua vez define o endereço do led na matriz, assim como a sua cor e estado.\\
-			\subsubsection{BCD - Binary Coded Decimal} \label{sssec:bcd}
-				O \cite{Garroz}\textbf{código BCD} foi criado para codificar os números decimais de 0 a 9, com 4 bits para cada dígito, ou seja, o BCD é a conversão dos decimais em um número binário de 4 bits e representa-se da seguinte forma:
-				\begin{table}[!h]
-					\centering
-					\caption{Tabela BCD}
-					\label{my-label}
-					\resizebox{0.5\textwidth}{!}{%
-						\begin{tabular}{@{}|l|l|@{}}
-							\toprule
-							\rowcolor[HTML]{BBDAFF} 
-							Digito Decimal & Codigo BCD \\ \midrule
-							0 & 0000 \\ \midrule
-							1 & 0001 \\ \midrule
-							2 & 0010 \\ \midrule
-							3 & 0011 \\ \midrule
-							4 & 0100 \\ \midrule
-							5 & 0101 \\ \midrule
-							6 & 0110 \\ \midrule
-							7 & 0111 \\ \midrule
-							8 & 1000 \\ \midrule
-							9 & 1001 \\ \bottomrule
-						\end{tabular}%
-					}
-				\end{table}\\
-				Desta forma foi realizada a codificação segundo cada palavra do código BCD, que corresponde ao digito decimal correspondente a cada ROM utilizada.\\
-			\subsubsection{ROM Decoder}
-				\includegraphics[width=1.0\textwidth]{imagens/romdec}
-				\captionof{figure}{Circuito ROM Decoder}			
-				EN: Bit de controlo de enable/disable\\
-				S0-S3: Conjunto de 4 bits de entra que determina a escolha da ROM a ser utilizada\\
-				Q0-Q9: Bit de controlo de saída com escolha de ROM \\
-				\begin{table}[!ht]
-					\centering
-					\caption{Tabela de Seleção de ROM}
-					\label{romd}
-					\resizebox{0.7\textwidth}{!}{%
-						\begin{tabular}{@{}|l|llll|llllllllll|@{}}
-							\toprule
-							\rowcolor[HTML]{BBDAFF} 
-							& S3 & S2 & S1 & S0 & Q0 & Q1 & Q2 & Q3 & Q4 & Q5 & Q6 & Q7 & Q8 & Q9\\ \midrule
-							0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-							1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-							2 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-							3 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
-							4 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
-							5 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
-							6 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\
-							7 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
-							8 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
-							9 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\ \bottomrule
-						\end{tabular}
-					}
-				\end{table}\\
+	\section{2-Opt} \label{ssec:num1}
+			O algoritmo 2-Opt foi proposto por Croes em 1958, embora o movimento basico tenha sido sugerido por Flood em 1956.\\ 
+			O algoritmo 2-Opt basicamente remove 2 nós (Edges) da tour, e reconnecta os dois caminhos criados. Isto é normalmente referido como um movimento 2-Opt.\\
+			\subsection{Técnica 2-Opt}	
+			\includegraphics[width=1.0\textwidth]{imagens/1}
+			Aqui vamos utilizar uma lista de 6 nós, em que a distancia total da tour é de 47.\\
+			\newpage
+			Em primeiro lugar selecionamos um edge, neste caso \textbf{AD}, vamos de seguida selecionar outro edge que não seja adjacente ao egde em uso,\textbf{AD}.\\
+			Neste exemplo apenas dispomos de um edge possivel \textbf{BE}.\\
+			Podemos assim trocar \textbf{AD} e \textbf{BE} por \textbf{AB} e \textbf{BE}.\\
+			\includegraphics[width=1.0\textwidth]{imagens/2}
+			No entanto, a soma das distancias dos edges possiveis de trocar é \textbf{maior} que a soma das distancias dos edges originais. Assim sendo não trocamos os edges.\\
+			\newpage
+			Considerando o proximo edge \textbf{DC}, apenas dispoe de 1 edge não-adjacente,
+			\includegraphics[width=1.0\textwidth]{imagens/3}
+			Aqui, como a soma das distancias dos edges originais é \textbf{maior} que a soma das distancias dos edges possiveis de trocar, efetuamos a troca de edges.\\\\
+			\newpage
+			Considerando o edge \textbf{DE}, este edge dispoe do edge não-adjacente \textbf{CF}.\\
+			\includegraphics[width=1.0\textwidth]{imagens/4}
+			Como a soma das distancias dos edges possiveis de trocar são maiores que a soma das distancias dos edges originais, não se efetua trocas.\\\\
+			\newpage
+			No proximo passo o edge selecionado é \textbf{EB}.O edge não-adjacente a este edge é \textbf{FA}.\\
+			\includegraphics[width=1.0\textwidth]{imagens/5}
+			Não é necessário efetuar trocas de edges.\\\\
+			\newpage
+			Vamos selecionar o proximo edge, \textbf{BC}.O edge não-adjacente a este é \textbf{AD}.
+			\includegraphics[width=1.0\textwidth]{imagens/6}
+			Este cenário não garante alterações ao caminho.\\\\
+			\newpage
+			Agora vamos considerar o edge \textbf{CF}.O edge não-adjacente a este é \textbf{DE}\\
+			\includegraphics[width=1.0\textwidth]{imagens/7}
+			Aqui, não é necessário efetuar alterações ao caminho visto que a soma da distancia dos edges possiveis de trocar é inferior quando comparado com os edges existentes.\\\\
+			\newpage
+			O proximo edge a ser considerado é  \textbf{FA}. O edge não adjacente é \textbf{EB}.\\
+			\includegraphics[width=1.0\textwidth]{imagens/8}
+			Este também é um caso em que não existe necessidade de se efetuar trocas de edges.\\\\
+			\includegraphics[width=1.0\textwidth]{imagens/9}
+			Finalmente chegamos a uma solução optimizada. A solução apresenta um custo de 41, efetivamente inferior ao custo da solução inicial.\\\\
+			\newpage
 	\section{Enquadramento}
-	O trabalho descrito neste relatório foi realizado recorrendo à linguagem de programação C, assim como os recursos disponibilizados na unidade curricular.\\
+	O trabalho descrito neste relatório foi realizado recorrendo à linguagem de programação ANSI C, assim como os recursos disponibilizados na unidade curricular.\\
 		\subsection{Motivação}
-			A principal motivação para a realização deste trabalho, resulta da importância em criar e otimizar um sistema digital, assim como demonstrar os conhecimentos alcançados na disciplina de sistemas digitais.\\
+			A principal motivação para a realização deste trabalho, resulta da importância em implementar o algoritmo 2-Opt ao problema Travel Salesman, assim como demonstrar os conhecimentos alcançados na disciplina de Algoritmia e Estrutura de Dados.\\
 		\subsection{Objectivos}
-			Pretende-se através deste trabalho, criar um sistema de luzes como 	
-			Em ultima analise o sistema digital é um sistema eletrónico onde os níveis de tensão elétrica são  mapeados como “0” e “1”.\\
-			Na saída do circuito encontram-se ligados LEDs que estarão acesos ou apagados com “1” ou “0”, respetivamente.\\
+			Pretende-se através deste trabalho, atingir uma solução válida para o Travel Salesman Problem, implementando o algoritmo 2-Opt.\\
 	\section{Conclusões}
-		A matriz de leds desenvolvida, para além de permitir os requisitos pedidos no enunciado do trabalho prático, permite também o uso de animações com leds mais complexas, mais padrões disponíveis e sendo modular torna-se mais escalável, entre outras funcionalidades.\\
-		De frisar que devido à liberdade proporcionada para a construção dos circuitos, quer na sua forma de desenvolvimento quer na implementação permitiu desta forma aguçar a curiosidade para o uso de diversos componentes do simulador Logisim.\\
+		A implementação do algoritmo 2-Opt ao TSP desenvolvida, para além de permitir os requisitos pedidos no enunciado do trabalho prático, permite também a possivel implementação de outros algoritmos,pois sendo modular torna-se mais escalável, entre outras funcionalidades.\\
+		De frisar que devido à liberdade proporcionada, quer na sua forma de desenvolvimento quer na implementação permitiu desta forma aguçar a curiosidade para o uso de diversos algoritmos para a solução do Travel Salesman Problem.\\
 		Foi sem duvida um desafio interessante, mas que por limitação de tempo, deixa ainda uma larga margem para melhoramentos.\\
 	\newpage
 	\section{Bibliografia}

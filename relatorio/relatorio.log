@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.4)  27 JUN 2017 15:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.4)  27 JUN 2017 23:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -671,144 +671,196 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--65
 
  []
 
-<imagens/1.png, id=21, 499.8675pt x 563.10374pt>
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 67--69
+
+ []
+
+<imagens/1.png, id=26, 499.8675pt x 563.10374pt>
 File: imagens/1.png Graphic file (type png)
  <use imagens/1.png>
-Package pdftex.def Info: imagens/1.png used on input line 66.
+Package pdftex.def Info: imagens/1.png used on input line 70.
 (pdftex.def)             Requested size: 390.0pt x 439.35663pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 66--67
-[][] 
- []
-
-[2] [3 <./imagens/1.png>]
-<imagens/rgbdec.png, id=31, 418.56375pt x 175.65625pt>
-File: imagens/rgbdec.png Graphic file (type png)
-
-<use imagens/rgbdec.png>
-Package pdftex.def Info: imagens/rgbdec.png used on input line 70.
-(pdftex.def)             Requested size: 390.0pt x 163.66684pt.
-
-
-Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 71.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 72--73
+Underfull \hbox (badness 10000) in paragraph at lines 70--72
 
  []
 
-[4 <./imagens/rgbdec.png>] <imagens/romr1.png, id=38, 1327.96124pt x 457.71pt>
-File: imagens/romr1.png Graphic file (type png)
+[3] [4 <./imagens/1.png>] <imagens/2.png, id=34, 427.5975pt x 360.34625pt>
+File: imagens/2.png Graphic file (type png)
 
-<use imagens/romr1.png>
-Package pdftex.def Info: imagens/romr1.png used on input line 76.
-(pdftex.def)             Requested size: 390.0pt x 134.42265pt.
+<use imagens/2.png>
+Package pdftex.def Info: imagens/2.png used on input line 76.
+(pdftex.def)             Requested size: 390.0pt x 328.66338pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--77
+Underfull \hbox (badness 10000) in paragraph at lines 73--78
 
  []
 
-<imagens/rom1.png, id=39, 259.97125pt x 151.56625pt>
-File: imagens/rom1.png Graphic file (type png)
- <use imagens/rom1.png>
-Package pdftex.def Info: imagens/rom1.png used on input line 82.
-(pdftex.def)             Requested size: 195.0pt x 113.68596pt.
+[5 <./imagens/2.png>] <imagens/3.png, id=39, 592.2125pt x 352.31625pt>
+File: imagens/3.png Graphic file (type png)
 
-Underfull \hbox (badness 1048) in paragraph at lines 84--86
-[]\T1/cmr/m/n/12 Cada ROM tem uma es-tru-tura di-men-si-o-nada para cada con-ju
-nto de
- []
+<use imagens/3.png>
+Package pdftex.def Info: imagens/3.png used on input line 80.
+(pdftex.def)             Requested size: 390.0pt x 232.0241pt.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 84--86
+Underfull \hbox (badness 10000) in paragraph at lines 79--82
 
  []
 
 
-LaTeX Warning: Citation `Garroz' on page 5 undefined on input line 87.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--111
+Underfull \hbox (badness 10000) in paragraph at lines 79--82
 
  []
 
-[5 <./imagens/romr1.png> <./imagens/rom1.png>]
-<imagens/romdec.png, id=45, 748.7975pt x 602.25pt>
-File: imagens/romdec.png Graphic file (type png)
- <use imagens/romdec.png>
-Package pdftex.def Info: imagens/romdec.png used on input line 112.
-(pdftex.def)             Requested size: 390.0pt x 313.67722pt.
+[6 <./imagens/3.png>] <imagens/4.png, id=45, 415.5525pt x 352.31625pt>
+File: imagens/4.png Graphic file (type png)
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 114--139
+<use imagens/4.png>
+Package pdftex.def Info: imagens/4.png used on input line 84.
+(pdftex.def)             Requested size: 390.0pt x 330.6666pt.
 
- []
-
-[7 <./imagens/romdec.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
+Underfull \hbox (badness 10000) in paragraph at lines 83--86
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
+Underfull \hbox (badness 10000) in paragraph at lines 83--86
+
+ []
+
+[7 <./imagens/4.png>] <imagens/5.png, id=50, 394.47375pt x 350.30875pt>
+File: imagens/5.png Graphic file (type png)
+
+<use imagens/5.png>
+Package pdftex.def Info: imagens/5.png used on input line 88.
+(pdftex.def)             Requested size: 390.0pt x 346.33635pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--147
+Underfull \hbox (badness 10000) in paragraph at lines 87--90
+
+ []
+
+[8 <./imagens/5.png>] <imagens/6.png, id=55, 342.27875pt x 363.3575pt>
+File: imagens/6.png Graphic file (type png)
+
+<use imagens/6.png>
+Package pdftex.def Info: imagens/6.png used on input line 92.
+(pdftex.def)             Requested size: 390.0pt x 414.04887pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--94
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--151
+Underfull \hbox (badness 10000) in paragraph at lines 91--94
 
  []
 
-[8] (./relatorio.bbl) [9]
-Underfull \hbox (badness 10000) in paragraph at lines 158--160
+[9 <./imagens/6.png>] <imagens/7.png, id=60, 342.27875pt x 367.3725pt>
+File: imagens/7.png Graphic file (type png)
+
+<use imagens/7.png>
+Package pdftex.def Info: imagens/7.png used on input line 96.
+(pdftex.def)             Requested size: 390.0pt x 418.624pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--98
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--160
+Underfull \hbox (badness 10000) in paragraph at lines 95--98
+
+ []
+
+[10 <./imagens/7.png>] <imagens/8.png, id=65, 342.27875pt x 367.3725pt>
+File: imagens/8.png Graphic file (type png)
+
+<use imagens/8.png>
+Package pdftex.def Info: imagens/8.png used on input line 100.
+(pdftex.def)             Requested size: 390.0pt x 418.624pt.
+ <imagens/9.png, id=66, 331.2375pt x 356.33125pt>
+File: imagens/9.png Graphic file (type png)
+
+<use imagens/9.png>
+Package pdftex.def Info: imagens/9.png used on input line 102.
+(pdftex.def)             Requested size: 390.0pt x 419.56465pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--104
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--104
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--104
+
+ []
+
+[11 <./imagens/8.png>] [12 <./imagens/9.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--115
+
+ []
+
+[13] (./relatorio.bbl) [14]
+Underfull \hbox (badness 10000) in paragraph at lines 122--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--124
 
  []
 
 
 AED: lastpage setting LastPage
-[10] (./relatorio.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[15] (./relatorio.aux) ) 
 Here is how much of TeX's memory you used:
- 6033 strings out of 494929
- 84242 string characters out of 6180143
- 174387 words of memory out of 5000000
- 9205 multiletter control sequences out of 15000+600000
- 18948 words of font info for 40 fonts, out of 8000000 for 9000
+ 6041 strings out of 494929
+ 84304 string characters out of 6180143
+ 162355 words of memory out of 5000000
+ 9211 multiletter control sequences out of 15000+600000
+ 17396 words of font info for 38 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 38i,16n,43p,311b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0800.600pk> </home/v
-1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/v1p3r/.texmf
--var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/v1p3r/.texmf-var/fonts/
-pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecbx1440.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecbx1200.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.60
-0pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </home
-/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/v1p3r/.tex
-mf-var/fonts/pk/ljfour/jknappen/ec/eccc1440.600pk> </home/v1p3r/.texmf-var/font
-s/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour
-/jknappen/ec/ecti1440.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecbx2488.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.
-600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-
-Output written on relatorio.pdf (11 pages, 205573 bytes).
+ 38i,15n,43p,304b,275s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ec
+ti0800.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600p
+k> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/v
+1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/v1p3r/.texmf
+-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/v1p3r/.texmf-var/fonts/
+pk/ljfour/jknappen/ec/ecrm0800.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/j
+knappen/ec/ecrm1200.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+eccc1440.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.60
+0pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1440.600pk> </home
+/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/v1p3r/.tex
+mf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on relatorio.pdf (16 pages, 324389 bytes).
 PDF statistics:
- 438 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 408 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
