@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
                             createTourFile(fileName,width,height);
 
                             free(cidades);
-
+//
                             printf("-----------------------\n\n");
 
                         }
