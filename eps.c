@@ -7,6 +7,8 @@
 #include <limits.h>
 #include <string.h>
 
+#define PI 3.141592653589793238
+#define SPACE_BETWEEN_CIRCLES_RATIO 0.05
 #define MAX_SCALE 12
 
 void setHeader(FILE * ptr_file, char * title, int width, int height){

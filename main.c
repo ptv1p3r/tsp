@@ -6,9 +6,6 @@
 #include "file.h"
 #include "tsp.h"
 
-#define PI 3.141592653589793238
-#define SPACE_BETWEEN_CIRCLES_RATIO 0.05
-
 void createTourFile(char * filename, int width, int height);
 float getTourDistance(cidade * tour);
 cidade * swap2opt (cidade * newRoute, int i, int k);
