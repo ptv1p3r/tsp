@@ -123,7 +123,7 @@ int main(int argc, char *argv[]) {
 
     while ( improve > 0 ) {
 
-        bestDistance = custo;
+        bestDistance = distance(cidades[0], cidades[1]);;
 
         for ( int i = 0; i < numberOfCities - 1; i++ ) {
             for ( int k = i + 1; k < numberOfCities; k++) {
