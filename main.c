@@ -112,7 +112,7 @@ void tour2Opt () {
 
     while ( improve < numberOfCities ) {
 
-        for ( int i = 1; i < numberOfCities - 2; i++ ) {
+        for ( int i = 1; i < numberOfCities - 1; i++ ) {
             for ( int k = i + 1; k < numberOfCities-1; k++) {
 
                 copyTour(newRoute, cidades);
@@ -240,8 +240,17 @@ void createTourFile(char * filename, int width, int height){
 
     drawText(file_ptr, (rgb){0,0,0}, 5,  0, height -30, tourPath);
 
-
     fprintf(file_ptr, "showpage\n");
     fprintf(file_ptr, "%%%%EOF");
     fclose(file_ptr);
+
+    sprintf( filePath, "../results/%s.txt", filename );
+
+    FILE *f = fopen(filePath, "w");
+    if (!f){
+        printf("Error opening file!\n");
+        exit(1);
+    }
+    fprintf(f, "%.2f\n%s\n", custo, tourPath);
+    fclose(f);
 }
