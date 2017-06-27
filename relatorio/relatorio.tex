@@ -52,49 +52,49 @@
 		O travel salesman problem (TSP) é um problema bastante comum largamente encontrado em diversas aplicações tais como: empresas de transporte (e.g. UPS), escalas de tripulação de companhias aéreas, etc.\\
 		Em principio, um vendedor necessita de efetuar uma viagem por diversas cidades, onde inicia a viagem numa determinada cidade (Casa), visita todas as cidades para vender os seus produtos, e retorna a casa.\\
 		\subsection{Requisitos Minimos}	
-			O TSP pode ser representado por uma lista de nós, sendo o objectivo descobrir uma serie de caminhos (Edges) entre cada um dos nós.\\\\
+			O TSP pode ser representado por uma lista de nós, sendo o objetivo descobrir uma serie de caminhos (Edges) entre cada um dos nós.\\\\
 			Sendo que:\\
 			\begin{itemize}
 				\item Cada nó (Cidade) pode ser visitado apenas 1 vez.
 				\item Os caminhos formam uma Tour.
-				\item O custo da Tour deve ser o minimo possivel.
+				\item O custo da Tour deve ser o mínimo possível.
 			\end{itemize}
-			A tour TSP é um grafico direcionado, onde cada nó representa uma cidade, e cada edge representa um caminho entre 2 cidades.\\
+			A tour TSP é um gráfico direcionado, onde cada nó representa uma cidade, e cada edge representa um caminho entre 2 cidades.\\
 			Cada edge têm um peso, que é no seu caso mais simples a distancia euclidiana entre os seus nós.\\
 			Este peso pode ser composto por diversos fatores, no entanto neste projeto apenas se considera a distancia entre nós.\\ 			
 			\newpage
 	\section{2-Opt} \label{ssec:num1}
-			O algoritmo 2-Opt foi proposto por Croes em 1958, embora o movimento basico tenha sido sugerido por Flood em 1956.\\ 
-			O algoritmo 2-Opt basicamente remove 2 nós (Edges) da tour, e reconnecta os dois caminhos criados. Isto é normalmente referido como um movimento 2-Opt.\\
+			O algoritmo 2-Opt foi proposto por Croes em 1958, embora o movimento básico tenha sido sugerido por Flood em 1956.\\ 
+			O algoritmo 2-Opt basicamente remove 2 nós (Edges) da tour, e conecta os dois caminhos criados. Isto é normalmente referido como um movimento 2-Opt.\\
 			\subsection{Técnica 2-Opt}	
 			\includegraphics[width=1.0\textwidth]{imagens/1}
 			Aqui vamos utilizar uma lista de 6 nós, em que a distancia total da tour é de 47.\\
 			\newpage
 			Em primeiro lugar selecionamos um edge, neste caso \textbf{AD}, vamos de seguida selecionar outro edge que não seja adjacente ao egde em uso,\textbf{AD}.\\
-			Neste exemplo apenas dispomos de um edge possivel \textbf{BE}.\\
+			Neste exemplo apenas dispomos de um edge possível \textbf{BE}.\\
 			Podemos assim trocar \textbf{AD} e \textbf{BE} por \textbf{AB} e \textbf{BE}.\\
 			\includegraphics[width=1.0\textwidth]{imagens/2}
-			No entanto, a soma das distancias dos edges possiveis de trocar é \textbf{maior} que a soma das distancias dos edges originais. Assim sendo não trocamos os edges.\\
+			No entanto, a soma das distancias dos edges possíveis de trocar é \textbf{maior} que a soma das distancias dos edges originais. Assim sendo não trocamos os edges.\\
 			\newpage
-			Considerando o proximo edge \textbf{DC}, apenas dispoe de 1 edge não-adjacente,
+			Considerando o próximo edge \textbf{DC}, apenas dispõe de 1 edge não-adjacente,
 			\includegraphics[width=1.0\textwidth]{imagens/3}
-			Aqui, como a soma das distancias dos edges originais é \textbf{maior} que a soma das distancias dos edges possiveis de trocar, efetuamos a troca de edges.\\\\
+			Aqui, como a soma das distancias dos edges originais é \textbf{maior} que a soma das distancias dos edges possíveis de trocar, efetuamos a troca de edges.\\\\
 			\newpage
-			Considerando o edge \textbf{DE}, este edge dispoe do edge não-adjacente \textbf{CF}.\\
+			Considerando o edge \textbf{DE}, este edge dispõe do edge não-adjacente \textbf{CF}.\\
 			\includegraphics[width=1.0\textwidth]{imagens/4}
-			Como a soma das distancias dos edges possiveis de trocar são maiores que a soma das distancias dos edges originais, não se efetua trocas.\\\\
+			Como a soma das distancias dos edges possíveis de trocar são maiores que a soma das distancias dos edges originais, não se efetua trocas.\\\\
 			\newpage
 			No proximo passo o edge selecionado é \textbf{EB}.O edge não-adjacente a este edge é \textbf{FA}.\\
 			\includegraphics[width=1.0\textwidth]{imagens/5}
 			Não é necessário efetuar trocas de edges.\\\\
 			\newpage
-			Vamos selecionar o proximo edge, \textbf{BC}.O edge não-adjacente a este é \textbf{AD}.
+			Vamos selecionar o próximo edge, \textbf{BC}.O edge não-adjacente a este é \textbf{AD}.
 			\includegraphics[width=1.0\textwidth]{imagens/6}
 			Este cenário não garante alterações ao caminho.\\\\
 			\newpage
 			Agora vamos considerar o edge \textbf{CF}.O edge não-adjacente a este é \textbf{DE}\\
 			\includegraphics[width=1.0\textwidth]{imagens/7}
-			Aqui, não é necessário efetuar alterações ao caminho visto que a soma da distancia dos edges possiveis de trocar é inferior quando comparado com os edges existentes.\\\\
+			Aqui, não é necessário efetuar alterações ao caminho visto que a soma da distancia dos edges possíveis de trocar é inferior quando comparado com os edges existentes.\\\\
 			\newpage
 			O proximo edge a ser considerado é  \textbf{FA}. O edge não adjacente é \textbf{EB}.\\
 			\includegraphics[width=1.0\textwidth]{imagens/8}
@@ -109,7 +109,7 @@
 		\subsection{Objectivos}
 			Pretende-se através deste trabalho, atingir uma solução válida para o Travel Salesman Problem, implementando o algoritmo 2-Opt.\\
 	\section{Conclusões}
-		A implementação do algoritmo 2-Opt ao TSP desenvolvida, para além de permitir os requisitos pedidos no enunciado do trabalho prático, permite também a possivel implementação de outros algoritmos,pois sendo modular torna-se mais escalável, entre outras funcionalidades.\\
+		A implementação do algoritmo 2-Opt ao TSP desenvolvida, para além de permitir os requisitos pedidos no enunciado do trabalho prático, permite também a possível implementação de outros algoritmos,pois sendo modular torna-se mais escalável, entre outras funcionalidades.\\
 		De frisar que devido à liberdade proporcionada, quer na sua forma de desenvolvimento quer na implementação permitiu desta forma aguçar a curiosidade para o uso de diversos algoritmos para a solução do Travel Salesman Problem.\\
 		Foi sem duvida um desafio interessante, mas que por limitação de tempo, deixa ainda uma larga margem para melhoramentos.\\
 	\newpage
@@ -119,6 +119,6 @@
 
 	\newpage
 	\section{Anexos}
-		Ficheiro "relatorio.pdf" e "ledmatrix.circ" compactado num ficheiro "trabalho.zip".\\\\
+		Ficheiro "relatorio.pdf" e "eps.c, eps.h, tsp.c, tsp.h, file.c, file.h, main.c", assim como as pastas "tspdata, results", compactado num ficheiro "trabalho.zip".\\\\
 		Não existem quaisquer códigos ou listagens adicionais.\\					
 \end{document}          
