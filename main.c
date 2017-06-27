@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
     int count;
 
     char * file_path = "../results/out.eps";
-    //char * file_path = "../out.eps";
+    char * file_path2 = "../results/out2.eps";
     char *chrDataLocation;
     float min_x, min_y;
     float max_x, max_y;
@@ -105,13 +105,13 @@ int main(int argc, char *argv[]) {
 
                 if (new_distance < bestDistance) {
                     cidades = newRoute;
-                    improve = 0;
+                    improve = numberOfCities;
                 }
             }
         }
         improve++;
     }
-
+    createTourFile(file_path2,width,height);
 
     //TESTING//
 
