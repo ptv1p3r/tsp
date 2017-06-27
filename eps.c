@@ -67,7 +67,6 @@ void drawSquare(FILE * file_ptr, rgb color,  int x1, int y1, int x2, int y2, flo
 
 void drawLine(FILE * file_ptr, rgb color, float x1, float y1, float x2, float y2, float width){
     fprintf(file_ptr, "%.2f %.2f %.2f setrgbcolor newpath %.2f %.2f moveto %.2f %.2f lineto %.2f setlinewidth stroke \n", color.r, color.g, color.b, x1, y1, x2, y2, width );
-    //fprintf(file_ptr, "newpath %.2f %.2f moveto %.2f 0 0 arrowhead \n", x2, y2, width);
 }
 
 void drawCircle(FILE * ptr_file, rgb color,float x, float y, float radius, float strokeWidth){
@@ -78,5 +77,5 @@ void drawCircle(FILE * ptr_file, rgb color,float x, float y, float radius, float
 void drawLink(FILE * file_ptr, rgb color, float x1, float y1, float x2, float y2, float strokeWidth){
     fprintf(file_ptr, "%.2f %.2f translate\n", x1, y1);
     fprintf(file_ptr, "%.2f %.2f %.2f setrgbcolor 0 0 moveto %.2f %.2f lineto stroke\n", color.r, color.g, color.b, x2, y2 );
-    fprintf(file_ptr, "newpath %.2f %.2f moveto %.2f 0 0 arrowhead\n", x2, y2, strokeWidth);
+    fprintf(file_ptr, "newpath %.2f %.2f moveto %.2f 0 0 arrowhead stroke\n", x2, y2,strokeWidth);
 }
