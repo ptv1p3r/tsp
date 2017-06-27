@@ -26,6 +26,41 @@ void printHelp() {
     printf(" -o directory   Directoria onde se encontra os ficheiros de dados\n");
 }
 
+//TESTING//
+cidade * swap2opt (int i, int k) {
+
+    cidade temp;
+
+    // 1. take route[0] to route[i-1] and add them in order to new_route
+    for ( int c = 0; c <= i - 1; ++c ) {
+        temp = cidades[c];
+        cidades[c] = cidades[c+1];
+        cidades[c+1] = temp;
+
+    }
+
+    // 2. take route[i] to route[k] and add them in reverse order to new_route
+    int dec = 0;
+    for ( int c = i; c <= k; ++c )
+    {
+
+        temp = cidades[c];
+        cidades[c] = cidades[ k - dec ];
+        cidades[ k - dec ] = temp;
+
+        dec++;
+    }
+
+    // 3. take route[k+1] to end and add them in order to new_route
+    for ( int c = k + 1; c < numberOfCities; ++c )
+    {
+
+        temp = cidades[c];
+        cidades[c] = cidades[ c + 1];
+        cidades[ c + 1 ] = temp;
+    }
+}
+
 int main(int argc, char *argv[]) {
 
     int count;
@@ -81,24 +116,32 @@ int main(int argc, char *argv[]) {
 
 
                     // TODO Aplicar o 2 opt ao array de struct
-//    float improve;
-//
-//    while ( improve == 0 ) {
-//        double best_distance = custo;
-//
-//        for ( int i = 0; i < numberOfCities - 1; i++ ) {
-//
-//            for ( int k = i + 1; k < numberOfCities; k++) {
-//
-//                new_route = 2optSwap(existing_route, i, k)
-//                new_distance = calculateTotalDistance(new_route)
-//                if (new_distance < best_distance) {
-//                    existing_route = new_route
-//                    goto start_again
-//                }
-//            }
-//        }
-//    }
+    //TESTING//
+    float improve=1, bestDistance;
+
+    cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
+
+    while ( improve > 0 ) {
+
+        bestDistance = custo;
+
+        for ( int i = 0; i < numberOfCities - 1; i++ ) {
+            for ( int k = i + 1; k < numberOfCities; k++) {
+
+                newRoute = swap2opt(i, k);
+
+                float new_distance = 0;
+                for (int j = 0; j < numberOfCities-1 ; ++j) {
+                    new_distance += distance(cidades[j], cidades[j+1]);
+                }
+
+                if (new_distance < bestDistance) {
+                    cidades = newRoute;
+                }
+            }
+        }
+    }
+    //TESTING//
 
 
                     // TODO Imprimir novo eps com os links entre cada cidade optimizada
