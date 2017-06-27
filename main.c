@@ -17,7 +17,7 @@
 #define PI 3.141592653589793238
 #define SPACE_BETWEEN_CIRCLES_RATIO 0.05
 
-void createTourFile(char * file_path, char * filename, int width, int height);
+void createTourFile(char * filename, int width, int height);
 float getTourDistance(cidade * tour);
 cidade * swap2opt (cidade * newRoute, int i, int k);
 void setNewTour (cidade * tour, cidade * newTour);
@@ -37,8 +37,8 @@ int main(int argc, char *argv[]) {
 
     int count;
 
-    char * file_path = "../results/out.eps";
-    char * file_path2 = "../results/out2.eps";
+    //char * file_path = "../results/out.eps";
+    //char * file_path2 = "../results/out2.eps";
     char *chrDataLocation;
     float min_x, min_y;
     float max_x, max_y;
@@ -71,50 +71,21 @@ int main(int argc, char *argv[]) {
 
                             readFromFile(i);    //le o file da lista
 
-                            //printStruct();  //test print
+                            createTourFile(fileNames[i],width,height);
 
-                            char * tt = fileNames[i];
+                            tour2Opt();
 
-                            createTourFile(file_path,fileNames[i],width,height);
+                            char fileName[20];
+                            sprintf( fileName, "%s_opt", fileNames[i] );
 
-                            //free(cidades);
+                            createTourFile(fileName,width,height);
+
+                            free(cidades);
 
                             printf("-----------------------\n\n");
 
                         }
                     }
-
-
-
-                    // TODO Aplicar o 2 opt ao array de struct
-
-    tour2Opt();
-    createTourFile(file_path2,"teste",width,height);
-//    for (int j = 0; j < numberOfCities; j++) {
-//        printf("%d -> ", cidades[j].id);
-//    }
-    printf("\n");
-
-
-                    // TODO Imprimir novo eps com os links entre cada cidade optimizada
-
-//
-//                    // local search
-//                    for (int i=0;i<n;i++) {
-//                        cidades[i].visited = 1 ;
-//
-//                        for(int j = i + 1; j < n - 1; j++) {
-//
-//                            if (cidades[j].visited != 1){
-//                                total = distance(cidades[i],cidades[j]);
-//
-//
-//                            }
-//                        }
-//                    }
-
-
-
 //                } else {
 //                    printf("Uso: -o [directory]\n");
 //                    exit(EXIT_SUCCESS);
@@ -126,7 +97,6 @@ int main(int argc, char *argv[]) {
 //        printf("Uso: --help para uma lista completa de comandos.\n");
 //        exit(EXIT_SUCCESS);
 //    }
-    free(cidades);
     return 0;
 }
 
@@ -223,11 +193,14 @@ float getTourDistance(cidade * tour){
 }
 
 
-void createTourFile(char * file_path, char * filename, int width, int height){
+void createTourFile(char * filename, int width, int height){
     float custo=0.0;
     char tourPath[100000]={};
 
-    FILE * file_ptr = fopen(file_path, "w+");
+    char filePath[200];
+    sprintf( filePath, "../results/%s.eps", filename );
+
+    FILE * file_ptr = fopen(filePath, "w+");
     setHeader(file_ptr, "Travel Salesman Problem", width, height);
 
     drawText(file_ptr, (rgb){0,0,0}, 20,  0, height -15, filename);
