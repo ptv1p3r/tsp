@@ -25,7 +25,7 @@ int readFromDirectory(char * path) {
     while ( (dir = readdir(d)) ) {  //enquanto que existe algo na diretoria, entra
 
         if ((dir -> d_type != DT_DIR)) {    //se nao for uma diretoria entra, se não ignora
-            printf("%d -> %s\n", ++i, dir->d_name);
+            //printf("%d -> %s\n", ++i, dir->d_name);
             numberOfFiles++;    //incrementa o numero de ficheiros a ler
         }
     }
@@ -66,7 +66,7 @@ int readFromDirectory(char * path) {
 
         addPathToFile("../tspdata/");  //adiciona o path ao nome do ficheiro (temporario)
 
-        printString(filesToRead);   //imprime os ficheiros a ler
+        //printString(filesToRead);   //imprime os ficheiros a ler
 
         return 1;   //success
 

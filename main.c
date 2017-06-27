@@ -87,10 +87,15 @@ int main(int argc, char *argv[]) {
                     // TODO Aplicar o 2 opt ao array de struct
     //TESTING//
     int improve=1;
-    float bestDistance,new_distance;
+    float bestDistance,new_distance = 0;
 
     cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
     newRoute = cidades;
+
+//    for (int j = 0; j < numberOfCities; ++j) {
+//        printf("%d -> ", newRoute[j].id);
+//    }
+//    printf("\n");
 
     while ( improve < numberOfCities ) {
 
@@ -105,12 +110,21 @@ int main(int argc, char *argv[]) {
 
                 if (new_distance < bestDistance) {
                     cidades = newRoute;
-                    improve = numberOfCities;
+
+                    improve = 0;
+                    printf("%.2f - %.2f\n", bestDistance, new_distance);
+                    bestDistance = new_distance;
+
                 }
             }
         }
         improve++;
     }
+
+//    for (int j = 0; j < numberOfCities; ++j) {
+//        printf("%d -> ", cidades[j].id);
+//    }
+//    printf("\n");
     createTourFile(file_path2,width,height);
 
     //TESTING//
