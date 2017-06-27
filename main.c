@@ -115,16 +115,16 @@ int main(int argc, char *argv[]) {
                     printf("%.2f - %.2f\n", bestDistance, new_distance);
                     bestDistance = new_distance;
 
+                    for (int j = 0; j < numberOfCities; j++) {
+                        printf("%d -> ", cidades[j].id);
+                    }
+                    printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
+
                 }
             }
         }
         //printf("%d\n", improve);
         improve++;
-        for (int j = 0; j < numberOfCities; j++) {
-            printf("%d -> ", cidades[j].id);
-        }
-        printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
-
     }
 
     createTourFile(file_path2,"teste",width,height);
