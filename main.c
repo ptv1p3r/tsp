@@ -119,7 +119,7 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-        printf("%d\n", improve);
+        //printf("%d\n", improve);
         improve++;
     }
 
