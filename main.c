@@ -159,7 +159,7 @@ void testOpt (cidade * route, int inicial, int next) {
     for (i = 0; i < numberOfCities; i++) {
         for (j = next; j < numberOfCities ; j++) {
 
-            if ((i != inicial-1) && (i != inicial+2) && (i != j)) {
+            if ( !((i > inicial-1) && (i < inicial+2)) && (i != j)) {
 
                 custoNormal = distance(route[inicial], route[inicial+1]) + distance(route[i], route[j]);
                 custoAlterado = distance(route[inicial], route[j]) + distance(route[inicial+1], route[i]);
@@ -175,6 +175,20 @@ void testOpt (cidade * route, int inicial, int next) {
             }
         }
 
+        if ( !((i > inicial-1) && (i < inicial+2)) && (i != j) && (i != 0)) {
+
+            custoNormal = distance(route[inicial], route[inicial+1]) + distance(route[i], route[0]);
+            custoAlterado = distance(route[inicial], route[0]) + distance(route[inicial+1], route[i]);
+
+            if ( custoNormal > custoAlterado ) {
+
+                cidade temp;
+
+                temp = route[0];
+                route[0] = route[inicial+1];
+                route[inicial+1] = temp;
+            }
+        }
 
     }
 }
