@@ -246,7 +246,7 @@ void createTourFile(char * file_path, char * filename, int width, int height){
     sprintf( costText, "Tour cost: %.2f", custo );
     drawText(file_ptr, (rgb){0,0,0}, 20,  100, height -50, costText);
 
-    drawText(file_ptr, (rgb){0,0,0}, 20,  0, height -30, tourPath);
+    drawText(file_ptr, (rgb){0,0,0}, 5,  0, height -30, tourPath);
 
 
     fprintf(file_ptr, "showpage\n");
