@@ -23,6 +23,7 @@ cidade * swap2opt (cidade * newRoute, int i, int k);
 void setNewTour (cidade * tour, cidade * newTour);
 void copyTour (cidade * validTour, cidade * newTour);
 void tour2Opt ();
+void testOpt (cidade * route, int inicial, int next);
 
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
@@ -81,7 +82,7 @@ int main(int argc, char *argv[]) {
                             createTourFile(fileName,width,height);
 
                             free(cidades);
-//
+
                             printf("-----------------------\n\n");
 
                         }
@@ -117,7 +118,10 @@ void tour2Opt () {
 
                 copyTour(newRoute, cidades);
 
-                new_distance = getTourDistance(swap2opt(newRoute, i, k));
+                //new_distance = getTourDistance(swap2opt(newRoute, i, k));
+
+                testOpt(newRoute, i, k);
+                new_distance = getTourDistance(newRoute);
 
                 if (new_distance < bestDistance) {
                     copyTour(cidades , newRoute);
@@ -147,6 +151,29 @@ void copyTour (cidade * tour1, cidade * tour2) {
     }
 }
 
+void testOpt (cidade * route, int inicial, int next) {
+
+    for (int i = inicial; i < numberOfCities; i++) {
+        for (int j = next; j < numberOfCities-1 ; j++) {
+
+            if (!(i == inicial-1) && !(i == inicial+2)) {
+
+                float custoNormal = distance(route[inicial], route[inicial+1]) + distance(route[i], route[j]),
+                        custoAlterado = distance(route[inicial], route[i]) + distance(route[inicial+1], route[j]);
+
+                if ( custoNormal > custoAlterado ) {
+
+                    cidade temp;
+
+                    temp = route[i];
+                    route[i] = route[inicial+1];
+                    route[inicial+1] = temp;
+                }
+            }
+        }
+    }
+}
+
 cidade * swap2opt (cidade * newRoute, int i, int k) {
 
     cidade temp;
@@ -156,7 +183,6 @@ cidade * swap2opt (cidade * newRoute, int i, int k) {
         temp = newRoute[c];
         newRoute[c] = newRoute[c+1];
         newRoute[c+1] = temp;
-
     }
 
     // 2. take route[i] to route[k] and add them in reverse order to new_route
@@ -191,7 +217,6 @@ float getTourDistance(cidade * tour){
 
     return custoTotal;
 }
-
 
 void createTourFile(char * filename, int width, int height){
     float custo=0.0;
