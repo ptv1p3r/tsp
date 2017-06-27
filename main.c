@@ -17,7 +17,7 @@
 #define PI 3.141592653589793238
 #define SPACE_BETWEEN_CIRCLES_RATIO 0.05
 
-void createTourFile(char * file_path, int width, int height);
+void createTourFile(char * file_path, char * filename, int width, int height);
 float getTourDistance(cidade * tour);
 cidade * swap2opt (cidade * newRoute, int i, int k);
 void setNewTour (cidade * tour, cidade * newTour);
@@ -43,7 +43,6 @@ int main(int argc, char *argv[]) {
     float total = 0.0;
     int height = 800;
     int width = 600;
-    int myArray[5] = { 0 };
 
     float square_scale = 1.0f;
 
@@ -74,7 +73,7 @@ int main(int argc, char *argv[]) {
 
                             char * tt = fileNames[i];
 
-                            createTourFile(file_path,width,height);
+                            createTourFile(file_path,fileNames[i],width,height);
 
                             //free(cidades);
 
@@ -111,11 +110,6 @@ int main(int argc, char *argv[]) {
 
                 if (new_distance < bestDistance) {
                     cidades = newRoute;
-
-                    improve = 0;
-                    printf("%.2f - %.2f\n", bestDistance, new_distance);
-                    bestDistance = new_distance;
-
                 }
             }
         }
@@ -123,11 +117,7 @@ int main(int argc, char *argv[]) {
         improve++;
     }
 
-//    for (int j = 0; j < numberOfCities; j++) {
-//        printf("%d -> ", cidades[j].id);
-//    }
-//    printf("\n");
-    createTourFile(file_path2,width,height);
+    createTourFile(file_path2,"teste",width,height);
 
     //TESTING//
 
@@ -162,7 +152,7 @@ int main(int argc, char *argv[]) {
 //        printf("Uso: --help para uma lista completa de comandos.\n");
 //        exit(EXIT_SUCCESS);
 //    }
-
+    free(cidades);
     return 0;
 }
 
@@ -214,11 +204,14 @@ float getTourDistance(cidade * tour){
 }
 
 
-void createTourFile(char * file_path, int width, int height){
+void createTourFile(char * file_path, char * filename, int width, int height){
     float custo=0.0;
+    char tourPath[100000]={};
 
     FILE * file_ptr = fopen(file_path, "w+");
     setHeader(file_ptr, "Travel Salesman Problem", width, height);
+
+    drawText(file_ptr, (rgb){0,0,0}, 20,  0, height -15, filename);
 
     char headerText[50];
     sprintf( headerText, "Cities: %d", numberOfCities );
@@ -236,15 +229,25 @@ void createTourFile(char * file_path, int width, int height){
 
         custo += distance(cidades[i], cidades[i+1]);
 
+        char tourText[5];
+        sprintf( tourText, "%i=>", cidades[i].id );
+        strcat(tourPath, tourText);
+
     }
 
     drawLine(file_ptr, (rgb){0,0,1}, cidades[numberOfCities-1].normX, cidades[numberOfCities-1].normY, cidades[0].normX,cidades[0].normY, 2); // desenha o link entre ultima cidade e casa
     custo += distance(cidades[numberOfCities-1], cidades[0]); // addiciona custo final entre ultima cidade e casa
-    //printf("custo: %.2f \n", custo);
+
+    char tourText[5];
+    sprintf( tourText, "%i=>%i", cidades[numberOfCities-1].id, cidades[0].id );
+    strcat(tourPath, tourText);
 
     char costText[50];
     sprintf( costText, "Tour cost: %.2f", custo );
     drawText(file_ptr, (rgb){0,0,0}, 20,  100, height -50, costText);
+
+    drawText(file_ptr, (rgb){0,0,0}, 20,  0, height -30, tourPath);
+
 
     fprintf(file_ptr, "showpage\n");
     fprintf(file_ptr, "%%%%EOF");
