@@ -1,0 +1,24 @@
+% This file was created with JabRef 2.10.
+% Encoding: UTF-8
+
+
+@Manual{faroq,
+  Title                    = {Aulas Teórico-Práticas Algoritmia e Estruturas de Dados 2º ano, 2º semestre da Licenciatura em Engenharia Informática do Instituto Superior Manuel Teixeira Gomes},
+  Author                   = {Doutor Faroq AlTam},
+  Organization             = {ISMAT},
+  Year                     = {2016-2017},
+
+  Owner                    = {proldan},
+  Timestamp                = {2015.06.01}
+}
+
+@Manual{Garroz,
+  Title                    = {Sistemas Digitais-Apontamentos das aulas teóricas Instituto Superior TécnicoDepartamento de Engenharia Electrotécnica e de Computadores},
+  Author                   = {Guilherme Arroz,Carlos Sêrro},
+  Organization             = {IST},
+  Year                     = {2005},
+
+  Owner                    = {proldan},
+  Timestamp                = {2015.06.01}
+}
+
