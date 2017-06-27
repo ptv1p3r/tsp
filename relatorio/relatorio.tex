@@ -62,152 +62,8 @@
 			A tour TSP é um grafico direcionado, onde cada nó representa uma cidade, e cada edge representa um caminho entre 2 cidades.\\
 			Cada edge têm um peso, que é no seu caso mais simples a distancia euclidiana entre os seus nós.\\
 			Este peso pode ser composto por diversos fatores, no entanto neste projeto apenas se considera a distancia entre nós.\\ 			
-		\subsection{O circuito main}
-			\includegraphics[width=1.0\textwidth]{imagens/main}\\
-			Esta é a representação geral do circuito digital.\\
-			Conforme podemos observar o circuito encontra-se dividido em 4 circuitos que se interligam de forma a que o sistema funcione como um todo.\\
-			\begin{itemize}
-				\item Matriz de Leds 10x10 (300 leds).
-				\item Controlo Geral (Botão de controlo geral on/off e indicador visual).
-				\item Mostrador de padrões do sistema (10 padrões disponíveis).
-				\item Circuito com as ROM do sistema.
-				\item Circuito de controle da matriz de leds.
-			\end{itemize}
-			De salientar que existem diversos pontos no circuito que poderiam ser eliminados, existindo apenas para que seja possível a visualização dos seus valores binarios.\\
-			\subsubsection{Matriz de leds}
-				\begin{minipage}{1.1\textwidth}
-					\begin{minipage}[b]{0.49\textwidth}
-						A matriz de leds é composta por uma grelha de 10x10, onde em cada posição esta um conjunto de 3 leds, a fim de emular o correto funcionamento de um led RGB.\\
-						Temos então uma grelha composta por 300 leds conforme a imagem no seu estado desligado.\\
-						Cada grupo de RGB Leds é então endereçável através de um conjunto de bits de controlo, processo que é descrito em \ref{ssec:num1} e \ref{ssec:num2} onde se pode visualizar a implementação realizada no circuito.
-					\end{minipage}
-					\hfill
-					\begin{minipage}[b]{0.49\textwidth}
-						\centering
-						\includegraphics[width=1.0\textwidth]{imagens/ledmatrix}
-						\captionof{figure}{Matriz de Leds 10x10}
-					\end{minipage}
-				\end{minipage}\\
-		\subsection{Display de 7 segmentos}
-			O display de 7 segmentos é um dispositivo bastante usado para indicação de valores numéricos.\\
-			Desde que ele pode indicar dígitos de 0 a 9 (10 dígitos), a informação binária precisa ter 4 dígitos binários, pois, com três, só oito valores podem ser exibidos.\\
-			\includegraphics[width=0.5\textwidth]{imagens/7digit}\label{img:7digit}\\
-			Neste circuito, S0-S4 são as quatro entradas binárias e Q0-Q6 são as saídas para os sete segmentos do display.\\
-			%\clearpage
-			\begin{table}[!h]
-				\centering
-				\caption{Tabela de verdade}
-				\label{7digitl}
-				\resizebox{0.6\textwidth}{!}{%
-					\begin{tabular}{@{}|l|llll|lllllll|@{}}
-						\toprule
-						\rowcolor[HTML]{BBDAFF} 
-						 & D & C & B & A & Q0 & Q1 & Q2 & Q3 & Q4 & Q5 & Q6 \\ \midrule
-						0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0 \\
-						1 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\
-						2 & 0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 1 \\
-						3 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 1 \\
-						4 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
-						5 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 \\
-						6 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 1 & 1 & 1 \\
-						7 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 \\
-						8 & 1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-						9 & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 1 \\
-						 & 1 & 0 & 1 & 0 & x & x & x & x & x & x & x \\
-						 & 1 & 0 & 1 & 1 & x & x & x & x & x & x & x \\
-						 & 1 & 1 & 0 & 0 & x & x & x & x & x & x & x \\
-						 & 1 & 1 & 0 & 1 & x & x & x & x & x & x & x \\
-						 & 1 & 1 & 1 & 0 & x & x & x & x & x & x & x \\
-						 & 1 & 1 & 1 & 1 & x & x & x & x & x & x & x \\ \bottomrule
-					\end{tabular}
-				}
-			\end{table}
-			A notação x indica valor indiferente (pode ser 0 ou 1), uma vez que não há valor a exibir acima da combinação 9.\\
-			Conforme referido em \ref{sssec:bcd}, a informação binária não tem necessariamente relação com o número binário que ela representa.\\
-			Por exemplo, para a combinação 0, Q0 Q1 Q2 Q3 Q4 Q5 Q6 tem 1111110. Este número binário não é igual ao dígito correspondente no display (0).\\
-			Isto é, na realidade, um código para o display de 7 segmentos.\\			
-			\subsubsection{Mapa Veitch-Karnaugh}
-			 A partir da tabela de verdade, temos quatro entradas S0-S4 e 7 saidas Q0-Q6, que são eletricamente independentes, considera-se que cada saída é um circuito e foi elaborado um mapa para cada.\\
-			 Obtemos então uma expressão POS simplificada a partir do seu respetivo mapa para cada uma das saídas.\\
-			\begin{minipage}{1.1\textwidth}
-				\begin{minipage}[b]{0.49\textwidth}
-					\centering
-					\askmapiv{Q0}{abcd}{}{101x011x11xx11xx}{
-					}
-					\captionof{table}{Q0=$\overline{S2}$$\overline{S0}$+$S1$+$S2$$S0$+$S3$}
-				\end{minipage}
-				\hfill
-				\begin{minipage}[b]{0.49\textwidth}
-					\centering
-					\askmapiv{Q1}{abcd}{}{111x101x10xx11xx}{
-					}
-					\captionof{table}{Q1=$\overline{S2}$+$\overline{S1}$$\overline{S0}$+$S1$$S0$}
-				\end{minipage}
-			\end{minipage}\\
-			\begin{minipage}{1.1\textwidth}
-				\begin{minipage}[b]{0.49\textwidth}
-					\centering
-					\askmapiv{Q2}{abcd}{}{111x101x10xx11xx}{}
-					\captionof{table}{Q2=$\overline{S1}$+$S0$+$S2$}
-				\end{minipage}
-				\hfill
-				\begin{minipage}[b]{0.49\textwidth}
-					\centering
-					\askmapiv{Q3}{abcd}{}{111x101x10xx11xx}{}
-					\captionof{table}{Q3=$\overline{S2}$$\overline{S0}$ +$\overline{S2}$$S1$ + $S1$$\overline{S0}$ + $S2$$\overline{S1}$$S0$ +$S3$}
-				\end{minipage}
-			\end{minipage}\\
-			\begin{minipage}{1.1\textwidth}
-				\begin{minipage}[b]{0.49\textwidth}
-					\centering
-					\askmapiv{Q4}{abcd}{}{111x101x10xx11xx}{}\\
-					\captionof{table}{Q4=$\overline{S2}$$\overline{S0}$+$S1$$\overline{S0}$}
-				\end{minipage}
-				\hfill
-				\begin{minipage}[b]{0.49\textwidth}
-					\centering
-					\askmapiv{Q5}{abcd}{}{111x101x10xx11xx}{}
-					\captionof{table}{Q5=$\overline{S1}$$\overline{S0}$+$S2$$\overline{S1}$+$S2$ $\overline{S0}$+$S3$}
-				\end{minipage}
-			\end{minipage}\\
-			\begin{minipage}{1.1\textwidth}
-				\begin{minipage}[b]{0.49\textwidth}
-					\centering
-					\askmapiv{Q6}{abcd}{}{111x101x10xx11xx}{}\\
-					\captionof{table}{Q6=$\overline{S2}$${S1}$+$S2$$\overline{S1}$+$S2$ $\overline{S0}$+$S3$}
-				\end{minipage}
-				\hfill
-				\begin{minipage}[b]{0.49\textwidth}
-				\end{minipage}
-			\end{minipage}\\\\									
-			Os valores indiferentes (X) devem ser inseridos. Como podem ser 0 ou 1, supõem-se valores convenientes para formar grupos os maiores possíveis.Quanto maior o grupo, menor o número de variáveis e o circuito é mais simples.\\
-		\subsubsection{DSP Decoder} \label{ssec:num2}
-			De forma a que fosse possível implementar um display de 7 segmentos foi necessário efetuar diversas operações, de forma a obter o resultado implementado que mostra os 10 padrões disponíveis no sistema.\\\\
-			Tendo a expressão simplificada para cada uma das saídas Q0-Q7, podemos então implementar o respetivo circuito de forma a que cada digito binário recebido tenha a sua correspondência em \textbf{código BCD} na saída.\\\\
-			\includegraphics[width=1.0\textwidth]{imagens/dspdec}\\
-			\captionof{figure}{DSP Decoder}
-			EN: Bit de controlo enable/disable\\
-			S0-S3: Conjunto binário de 4 bits correspondendo ao seu valor decimal\\
-			Q0-Q7: Conjunto binário para ligação ao display 7-segmentos conforme indicado em \ref{img:7digit}.\\\\
-			
-			\begin{minipage}{1.1\textwidth}
-				\begin{minipage}[b]{0.49\textwidth}
-					De forma a exemplificar o valor $7_{10}$ tem a sua correspondência ao binário $0111_{BCD}$\\
-				\end{minipage}
-				\hfill
-				\begin{minipage}[b]{0.49\textwidth}
-					\centering
-					\includegraphics[width=0.7\textwidth]{imagens/7dispon}
-					\captionof{figure}{Display 7-Segmentos}
-				\end{minipage}
-			\end{minipage}\\
-		\subsection{LED Decoder}
-			Este é o circuito que controla a matriz de leds.\\
-			Contendo 3 entradas, recebe em S0 um conjunto de 3 bits que definem a cor do led, em S1 e S2, recebem um conjunto de 10 bits que definem as linhas e as colunas respetivamente, indicando o led a ser usado na grelha.\\\\		
-			\includegraphics[width=1.0\textwidth]{imagens/leddec}\\
-			\captionof{figure}{Circuito LED Decoder}
-			S0-S3: Conjunto binário de 4 bits correspondendo ao seu valor decimal\\
-			Q0-Q99: Conjunto  de saída para ligação ao led RGB\\
+
+			\includegraphics[width=1.0\textwidth]{imagens/1}
 			\newpage
 			\subsubsection{RGB Decoder} \label{ssec:num1}
 				A função deste circuito é a de ao receber a indicação de posição através do grupo binário de S0 e S1, efetuar a correspondência de cor para a saída do led correspondente, através da separação do grupo de 3 bits.\\
@@ -215,7 +71,7 @@
 				\captionof{figure}{RGB Decoder}
 				S0-S3: Conjunto binário de 4 bits correspondendo ao seu valor decimal\\
 		\newpage						
-		\subsection{ROM}
+
 			A ROM (read-only memory), é um tipo de memória que permite apenas a leitura, ou seja, as suas informações são gravadas uma única vez e após isso não podem ser alteradas ou apagadas, somente acedidas. São memórias cujo conteúdo é gravado permanentemente.\\\\
 			\includegraphics[width=1.0\textwidth]{imagens/romr1}
 			\captionof{figure}{Circuito de controle de ROMS}
@@ -285,7 +141,7 @@
 		\subsection{Motivação}
 			A principal motivação para a realização deste trabalho, resulta da importância em criar e otimizar um sistema digital, assim como demonstrar os conhecimentos alcançados na disciplina de sistemas digitais.\\
 		\subsection{Objectivos}
-			Pretende-se através deste trabalho, criar um sistema de luzes como \cite{Csoares}Sistema Digital que implementa um sistema de luzes de acordo com um ou mais padrões.\\		
+			Pretende-se através deste trabalho, criar um sistema de luzes como 	
 			Em ultima analise o sistema digital é um sistema eletrónico onde os níveis de tensão elétrica são  mapeados como “0” e “1”.\\
 			Na saída do circuito encontram-se ligados LEDs que estarão acesos ou apagados com “1” ou “0”, respetivamente.\\
 	\section{Conclusões}

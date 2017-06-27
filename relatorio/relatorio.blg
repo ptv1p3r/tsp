@@ -3,44 +3,52 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: relatorio.aux
 The style file: plain.bst
 Database file #1: ./bibliotecas.bib
-You've used 2 entries,
+Warning--entry type for "2opt" isn't style-file defined
+--line 15 of file ./bibliotecas.bib
+Warning--entry type for "tsp" isn't style-file defined
+--line 24 of file ./bibliotecas.bib
+Warning--I didn't find a database entry for "Garroz"
+Warning--to sort, need author or key in 2opt
+Warning--to sort, need author or key in tsp
+You've used 3 entries,
             2118 wiz_defined-function locations,
-            509 strings with 4393 characters,
-and the built_in function-call counts, 418 in all, are:
-= -- 40
-> -- 14
+            508 strings with 4318 characters,
+and the built_in function-call counts, 515 in all, are:
+= -- 44
+> -- 9
 < -- 0
-+ -- 6
-- -- 4
-* -- 18
-:= -- 81
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 6
++ -- 5
+- -- 2
+* -- 20
+:= -- 73
+add.period$ -- 5
+call.type$ -- 3
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 18
-empty$ -- 37
-format.name$ -- 4
-if$ -- 83
+cite$ -- 5
+duplicate$ -- 23
+empty$ -- 65
+format.name$ -- 2
+if$ -- 116
 int.to.chr$ -- 0
-int.to.str$ -- 2
+int.to.str$ -- 3
 missing$ -- 0
-newline$ -- 13
-num.names$ -- 4
-pop$ -- 10
+newline$ -- 14
+num.names$ -- 2
+pop$ -- 21
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 7
 quote$ -- 0
-skip$ -- 10
+skip$ -- 25
 stack$ -- 0
-substring$ -- 10
+substring$ -- 15
 swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
-warning$ -- 0
-while$ -- 4
-width$ -- 3
+type$ -- 12
+warning$ -- 2
+while$ -- 2
+width$ -- 4
 write$ -- 22
+(There were 5 warnings)

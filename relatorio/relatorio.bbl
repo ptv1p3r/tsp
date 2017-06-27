@@ -1,17 +1,16 @@
 \begin{thebibliography}{1}
 
-\bibitem{Garroz}
-Carlos~Sêrro Guilherme~Arroz.
-\newblock {\em Sistemas Digitais-Apontamentos das aulas teóricas Instituto
-  Superior Técnico Departamento de Engenharia Electrotécnica e de
-  Computadores}.
-\newblock IST, 2005.
+\bibitem{2opt}
+https://en.wikipedia.org/wiki/2-opt.
 
-\bibitem{Csoares}
-Doutor~Cristiano Soares.
-\newblock {\em Aulas Teórico-Práticas Sistemas Digitais 1º ano, 1º semestre
-  da Licenciatura em Engenharia Informática do Instituto Superior Manuel
-  Teixeira Gomes}.
+\bibitem{tsp}
+https://en.wikipedia.org/wiki/travelling salesman problem.
+
+\bibitem{faroq}
+Doutor~Faroq AlTam.
+\newblock {\em Aulas Teórico-Práticas Algoritmia e Estruturas de Dados 2º
+  ano, 2º semestre da Licenciatura em Engenharia Informática do Instituto
+  Superior Manuel Teixeira Gomes}.
 \newblock ISMAT, 2016-2017.
 
 \end{thebibliography}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.4)  26 JUN 2017 11:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.4)  27 JUN 2017 15:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -671,330 +671,144 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--65
 
  []
 
-<imagens/main.png, id=21, 1056.94875pt x 692.5875pt>
-File: imagens/main.png Graphic file (type png)
- <use imagens/main.png>
-Package pdftex.def Info: imagens/main.png used on input line 66.
-(pdftex.def)             Requested size: 390.0pt x 255.55586pt.
+<imagens/1.png, id=21, 499.8675pt x 563.10374pt>
+File: imagens/1.png Graphic file (type png)
+ <use imagens/1.png>
+Package pdftex.def Info: imagens/1.png used on input line 66.
+(pdftex.def)             Requested size: 390.0pt x 439.35663pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--69
-
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 66--67
+[][] 
  []
 
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
-
- []
-
-<imagens/ledmatrix.png, id=27, 506.89375pt x 416.55624pt>
-File: imagens/ledmatrix.png Graphic file (type png)
-
-<use imagens/ledmatrix.png>
-Package pdftex.def Info: imagens/ledmatrix.png used on input line 87.
-(pdftex.def)             Requested size: 210.21352pt x 172.74684pt.
-
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 78--91
-$[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 78--91
-
- []
-
-[3 <./imagens/main.png>] <imagens/7digit.png, id=32, 321.2pt x 176.66pt>
-File: imagens/7digit.png Graphic file (type png)
-
-<use imagens/7digit.png>
-Package pdftex.def Info: imagens/7digit.png used on input line 94.
-(pdftex.def)             Requested size: 195.0pt x 107.25296pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 92--129
-
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Overfull \hbox (113.81097pt too wide) detected at line 136
-[]
- []
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 137.
-
-Overfull \hbox (113.81097pt too wide) detected at line 143
-[]
- []
-
-
-Overfull \hbox (113.81097pt too wide) detected at line 150
-[]
- []
-
-
-Overfull \hbox (113.81097pt too wide) detected at line 156
-[]
- []
-
-
-Overfull \hbox (113.81097pt too wide) detected at line 163
-[]
- []
-
-
-Overfull \hbox (113.81097pt too wide) detected at line 169
-[]
- []
-
-
-Overfull \hbox (113.81097pt too wide) detected at line 176
-[]
- []
-
-
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 130--184
-[]$ 
- []
-
-
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 130--184
-[]$ 
- []
-
-
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 130--184
-[]$ 
- []
-
-
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 130--184
-[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 130--184
-
- []
-
-
-Overfull \hbox (9.72862pt too wide) in paragraph at lines 130--184
-\T1/cmr/m/n/12 supõem-se va-lo-res con-ve-ni-en-tes para for-mar gru-pos os mai
--o-res pos-sí-veis.Quanto
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 130--184
-
- []
-
-[4 <./imagens/ledmatrix.png> <./imagens/7digit.png>] [5]
-<imagens/dspdec.png, id=46, 1105.12875pt x 671.50874pt>
-File: imagens/dspdec.png Graphic file (type png)
-
-<use imagens/dspdec.png>
-Package pdftex.def Info: imagens/dspdec.png used on input line 187.
-(pdftex.def)             Requested size: 390.0pt x 236.96814pt.
-
-
-Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 188.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--188
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--188
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--188
-
- []
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 189--192
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 189--192
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
-
- []
-
-<imagens/7dispon.png, id=51, 310.15875pt x 264.99pt>
-File: imagens/7dispon.png Graphic file (type png)
- <use imagens/7dispon.png>
-Package pdftex.def Info: imagens/7dispon.png used on input line 200.
-(pdftex.def)             Requested size: 147.14882pt x 125.7179pt.
-
-Overfull \hbox (39.00238pt too wide) in paragraph at lines 193--204
-[]$[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 193--204
-
- []
-
-[7 <./imagens/dspdec.png>]
-<imagens/leddec.png, id=56, 834.11626pt x 828.09375pt>
-File: imagens/leddec.png Graphic file (type png)
-
-<use imagens/leddec.png>
-Package pdftex.def Info: imagens/leddec.png used on input line 207.
-(pdftex.def)             Requested size: 390.0pt x 387.1824pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--208
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--208
-
- []
-
-[8 <./imagens/7dispon.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 209--211
-
- []
-
-[9 <./imagens/leddec.png>]
-<imagens/rgbdec.png, id=68, 418.56375pt x 175.65625pt>
+[2] [3 <./imagens/1.png>]
+<imagens/rgbdec.png, id=31, 418.56375pt x 175.65625pt>
 File: imagens/rgbdec.png Graphic file (type png)
 
 <use imagens/rgbdec.png>
-Package pdftex.def Info: imagens/rgbdec.png used on input line 214.
+Package pdftex.def Info: imagens/rgbdec.png used on input line 70.
 (pdftex.def)             Requested size: 390.0pt x 163.66684pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--217
+
+Package caption Warning: \captionsetup{type*=...} or \captionof
+(caption)                outside box or environment on input line 71.
+See the caption package documentation for explanation.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
-[10 <./imagens/rgbdec.png>]
-<imagens/romr1.png, id=73, 1327.96124pt x 457.71pt>
+[4 <./imagens/rgbdec.png>] <imagens/romr1.png, id=38, 1327.96124pt x 457.71pt>
 File: imagens/romr1.png Graphic file (type png)
- <use imagens/romr1.png>
-Package pdftex.def Info: imagens/romr1.png used on input line 220.
+
+<use imagens/romr1.png>
+Package pdftex.def Info: imagens/romr1.png used on input line 76.
 (pdftex.def)             Requested size: 390.0pt x 134.42265pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 219--221
+Underfull \hbox (badness 10000) in paragraph at lines 75--77
 
  []
 
-<imagens/rom1.png, id=74, 259.97125pt x 151.56625pt>
+<imagens/rom1.png, id=39, 259.97125pt x 151.56625pt>
 File: imagens/rom1.png Graphic file (type png)
  <use imagens/rom1.png>
-Package pdftex.def Info: imagens/rom1.png used on input line 226.
+Package pdftex.def Info: imagens/rom1.png used on input line 82.
 (pdftex.def)             Requested size: 195.0pt x 113.68596pt.
 
-Underfull \hbox (badness 1048) in paragraph at lines 228--230
+Underfull \hbox (badness 1048) in paragraph at lines 84--86
 []\T1/cmr/m/n/12 Cada ROM tem uma es-tru-tura di-men-si-o-nada para cada con-ju
 nto de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--230
+Underfull \hbox (badness 10000) in paragraph at lines 84--86
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--255
+LaTeX Warning: Citation `Garroz' on page 5 undefined on input line 87.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--111
 
  []
 
-[11 <./imagens/romr1.png> <./imagens/rom1.png>]
-<imagens/romdec.png, id=80, 748.7975pt x 602.25pt>
+[5 <./imagens/romr1.png> <./imagens/rom1.png>]
+<imagens/romdec.png, id=45, 748.7975pt x 602.25pt>
 File: imagens/romdec.png Graphic file (type png)
  <use imagens/romdec.png>
-Package pdftex.def Info: imagens/romdec.png used on input line 256.
+Package pdftex.def Info: imagens/romdec.png used on input line 112.
 (pdftex.def)             Requested size: 390.0pt x 313.67722pt.
 
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 258--283
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 114--139
 
  []
 
-[13 <./imagens/romdec.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 284--285
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 286--287
+[7 <./imagens/romdec.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
 
  []
 
 
-Underfull \hbox (badness 1552) in paragraph at lines 288--291
-\T1/cmr/m/n/12 Pretende-se atra-vés deste tra-ba-lho, criar um sis-tema de lu-z
-es como
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 288--291
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--295
-
- []
-
-[14] (./relatorio.bbl) [15]
-Underfull \hbox (badness 10000) in paragraph at lines 302--304
+Underfull \hbox (badness 10000) in paragraph at lines 144--147
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 302--304
+Underfull \hbox (badness 10000) in paragraph at lines 148--151
+
+ []
+
+[8] (./relatorio.bbl) [9]
+Underfull \hbox (badness 10000) in paragraph at lines 158--160
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--160
 
  []
 
 
 AED: lastpage setting LastPage
-[16] (./relatorio.aux) ) 
+[10] (./relatorio.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6065 strings out of 494929
- 84897 string characters out of 6180143
- 190418 words of memory out of 5000000
- 9231 multiletter control sequences out of 15000+600000
- 20627 words of font info for 44 fonts, out of 8000000 for 9000
+ 6033 strings out of 494929
+ 84242 string characters out of 6180143
+ 174387 words of memory out of 5000000
+ 9205 multiletter control sequences out of 15000+600000
+ 18948 words of font info for 40 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 38i,16n,43p,311b,376s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ec
-ti0800.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600p
-k> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/v
-1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/v1p3r/.texmf
--var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/v1p3r/.texmf-var/fonts/
-pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecbx1200.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecbx1728.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.60
-0pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home
-/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1440.600pk> </home/v1p3r/.tex
-mf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/v1p3r/.texmf-var/font
-s/pk/ljfour/jknappen/ec/ecti1440.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour
-/jknappen/ec/ecbx2488.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/e
-c/eccc1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on relatorio.pdf (17 pages, 328983 bytes).
+ 38i,16n,43p,311b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0800.600pk> </home/v
+1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/v1p3r/.texmf
+-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/v1p3r/.texmf-var/fonts/
+pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/j
+knappen/ec/ecbx1440.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecbx1200.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.60
+0pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </home
+/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/v1p3r/.tex
+mf-var/fonts/pk/ljfour/jknappen/ec/eccc1440.600pk> </home/v1p3r/.texmf-var/font
+s/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour
+/jknappen/ec/ecti1440.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecbx2488.600pk> </home/v1p3r/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.
+600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+
+Output written on relatorio.pdf (11 pages, 205573 bytes).
 PDF statistics:
- 545 PDF objects out of 1000 (max. 8388607)
- 118 compressed objects within 2 object streams
+ 438 PDF objects out of 1000 (max. 8388607)
+ 86 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

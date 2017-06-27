@@ -153,7 +153,7 @@ void copyTour (cidade * tour1, cidade * tour2) {
 
 void testOpt (cidade * route, int inicial, int next) {
 
-    for (int i = inicial; i < numberOfCities; i++) {
+    for (int i = inicial; i < numberOfCities-1; i++) {
         for (int j = next; j < numberOfCities-1 ; j++) {
 
             if (!(i == inicial-1) && !(i == inicial+2)) {
