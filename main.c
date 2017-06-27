@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
                     // TODO Aplicar o 2 opt ao array de struct
     //TESTING//
     int improve=1;
-    float bestDistance;
+    float bestDistance,new_distance;
 
     cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
     newRoute = cidades;
@@ -101,7 +101,7 @@ int main(int argc, char *argv[]) {
 
                 newRoute = swap2opt(newRoute, i, k);
 
-                float new_distance = getTourDistance(newRoute);
+                new_distance = getTourDistance(newRoute);
 
                 if (new_distance < bestDistance) {
                     cidades = newRoute;
@@ -109,9 +109,10 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-
         improve++;
     }
+
+
     //TESTING//
 
 
@@ -174,7 +175,7 @@ cidade * swap2opt (cidade * newRoute, int i, int k) {
     }
 
     // 3. take route[k+1] to end and add them in order to new_route
-    for ( int c = k + 1; c < numberOfCities; ++c )
+    for ( int c = k + 1; c < numberOfCities-1; ++c )
     {
 
         temp = newRoute[c];
