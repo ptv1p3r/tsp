@@ -22,6 +22,7 @@ float getTourDistance(cidade * tour);
 cidade * swap2opt (cidade * newRoute, int i, int k);
 void setNewTour (cidade * tour, cidade * newTour);
 void copyTour (cidade * validTour, cidade * newTour);
+void tour2Opt ();
 
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
@@ -86,55 +87,13 @@ int main(int argc, char *argv[]) {
 
 
                     // TODO Aplicar o 2 opt ao array de struct
-    //TESTING//
-    int improve=1;
-    float bestDistance,new_distance = 0;
 
-    cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
-    copyTour(newRoute , cidades);
-
-//    for (int j = 0; j < numberOfCities; j++) {
-//        printf("%d -> ", newRoute[j].id);
-//    }
-//    printf("\n");
-
-    bestDistance = getTourDistance(cidades);
-
-    while ( improve < numberOfCities ) {
-
-        for ( int i = 0; i < numberOfCities - 1; i++ ) {
-            for ( int k = i + 1; k < numberOfCities; k++) {
-
-                copyTour(newRoute, cidades);
-
-                new_distance = getTourDistance(swap2opt(newRoute, i, k));
-
-                if (new_distance < bestDistance) {
-                    copyTour(cidades , newRoute);
-
-                    improve = 0;
-                    printf("%.2f - %.2f\n", bestDistance, new_distance);
-                    bestDistance = new_distance;
-
-                    for (int j = 0; j < numberOfCities; j++) {
-                        printf("%d -> ", cidades[j].id);
-                    }
-                    printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
-
-                }
-            }
-        }
-        //printf("%d\n", improve);
-        improve++;
-    }
-
+    tour2Opt();
     createTourFile(file_path2,"teste",width,height);
 //    for (int j = 0; j < numberOfCities; j++) {
 //        printf("%d -> ", cidades[j].id);
 //    }
     printf("\n");
-
-    //TESTING//
 
 
                     // TODO Imprimir novo eps com os links entre cada cidade optimizada
@@ -169,6 +128,46 @@ int main(int argc, char *argv[]) {
 //    }
     free(cidades);
     return 0;
+}
+
+void tour2Opt () {
+
+    //TESTING//
+    int improve=1;
+    float bestDistance,new_distance = 0;
+
+    cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
+
+    bestDistance = getTourDistance(cidades);
+
+    while ( improve < numberOfCities ) {
+
+        for ( int i = 1; i < numberOfCities - 2; i++ ) {
+            for ( int k = i + 1; k < numberOfCities-1; k++) {
+
+                copyTour(newRoute, cidades);
+
+                new_distance = getTourDistance(swap2opt(newRoute, i, k));
+
+                if (new_distance < bestDistance) {
+                    copyTour(cidades , newRoute);
+
+                    improve = 0;
+                    printf("%.2f - %.2f\n", bestDistance, new_distance);
+                    bestDistance = new_distance;
+
+                    for (int j = 0; j < numberOfCities; j++) {
+                        printf("%d -> ", cidades[j].id);
+                    }
+                    printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
+
+                }
+            }
+        }
+        //printf("%d\n", improve);
+        improve++;
+    }
+
 }
 
 void copyTour (cidade * tour1, cidade * tour2) {
