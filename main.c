@@ -17,6 +17,8 @@
 #define PI 3.141592653589793238
 #define SPACE_BETWEEN_CIRCLES_RATIO 0.05
 
+void createTourFile(char * file_path, int width, int height);
+
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
     printf("Opção           Descrição\n");
@@ -27,7 +29,7 @@ void printHelp() {
 int main(int argc, char *argv[]) {
 
     int count;
-    float custo=0.0;
+
     char * file_path = "../results/out.eps";
     //char * file_path = "../out.eps";
     char *chrDataLocation;
@@ -63,7 +65,11 @@ int main(int argc, char *argv[]) {
 
                             readFromFile(i);    //le o file da lista
 
-                            printStruct();  //test print
+                            //printStruct();  //test print
+
+                            char * tt = fileNames[i];
+
+                            createTourFile(file_path,width,height);
 
                             //free(cidades);
 
@@ -72,38 +78,7 @@ int main(int argc, char *argv[]) {
                         }
                     }
 
-                    FILE * file_ptr = fopen(file_path, "w+");
-                    setHeader(file_ptr, "Travel Salesman Problem", width, height);
 
-                    char headerText[50];
-                    sprintf( headerText, "Cities: %d", numberOfCities );
-
-                    drawText(file_ptr, (rgb){0,0,0}, 20,  0, height -50, headerText);
-                    drawLine(file_ptr, (rgb){0,0,0}, 2, height -52 ,  width -2, height -52, 1);
-
-                    // normaliza a posicao das cidades no viewport do eps
-                    draw_tsp(file_ptr, numberOfCities, width-2, height-55);
-
-                    for (int i=0 ; i < numberOfCities-1; i++) { // percorre todas as cidades e efetua a ligacao entre cada uma
-
-                        drawLine(file_ptr, (rgb){0,0,1}, cidades[i].normX, cidades[i].normY, cidades[i+1].normX,cidades[i+1].normY, 2); // desenha o link entre cidades
-                        //drawLink(file_ptr, (rgb){0,0,1}, cidades[i].normX, cidades[i].normY, cidades[i+1].normX-cidades[i].normX, cidades[i+1].normY-cidades[i].normY, 2); // desenha o link entre cidades
-
-                        custo += distance(cidades[i], cidades[i+1]);
-
-                    }
-
-                    drawLine(file_ptr, (rgb){0,0,1}, cidades[numberOfCities-1].normX, cidades[numberOfCities-1].normY, cidades[0].normX,cidades[0].normY, 2); // desenha o link entre ultima cidade e casa
-                    custo += distance(cidades[numberOfCities-1], cidades[0]); // addiciona custo final entre ultima cidade e casa
-                    //printf("custo: %.2f \n", custo);
-
-                    char costText[50];
-                    sprintf( costText, "Tour cost: %.2f", custo );
-                    drawText(file_ptr, (rgb){0,0,0}, 20,  100, height -50, costText);
-
-                    fprintf(file_ptr, "showpage\n");
-                    fprintf(file_ptr, "%%%%EOF");
-                    fclose(file_ptr);
 
                     // TODO Aplicar o 2 opt ao array de struct
 //    float improve;
@@ -158,4 +133,41 @@ int main(int argc, char *argv[]) {
 //    }
 
     return 0;
+}
+
+void createTourFile(char * file_path, int width, int height){
+    float custo=0.0;
+
+    FILE * file_ptr = fopen(file_path, "w+");
+    setHeader(file_ptr, "Travel Salesman Problem", width, height);
+
+    char headerText[50];
+    sprintf( headerText, "Cities: %d", numberOfCities );
+
+    drawText(file_ptr, (rgb){0,0,0}, 20,  0, height -50, headerText);
+    drawLine(file_ptr, (rgb){0,0,0}, 2, height -52 ,  width -2, height -52, 1);
+
+    // normaliza a posicao das cidades no viewport do eps
+    draw_tsp(file_ptr, numberOfCities, width-2, height-55);
+
+    for (int i=0 ; i < numberOfCities-1; i++) { // percorre todas as cidades e efetua a ligacao entre cada uma
+
+        drawLine(file_ptr, (rgb){0,0,1}, cidades[i].normX, cidades[i].normY, cidades[i+1].normX,cidades[i+1].normY, 2); // desenha o link entre cidades
+        //drawLink(file_ptr, (rgb){0,0,1}, cidades[i].normX, cidades[i].normY, cidades[i+1].normX-cidades[i].normX, cidades[i+1].normY-cidades[i].normY, 2); // desenha o link entre cidades
+
+        custo += distance(cidades[i], cidades[i+1]);
+
+    }
+
+    drawLine(file_ptr, (rgb){0,0,1}, cidades[numberOfCities-1].normX, cidades[numberOfCities-1].normY, cidades[0].normX,cidades[0].normY, 2); // desenha o link entre ultima cidade e casa
+    custo += distance(cidades[numberOfCities-1], cidades[0]); // addiciona custo final entre ultima cidade e casa
+    //printf("custo: %.2f \n", custo);
+
+    char costText[50];
+    sprintf( costText, "Tour cost: %.2f", custo );
+    drawText(file_ptr, (rgb){0,0,0}, 20,  100, height -50, costText);
+
+    fprintf(file_ptr, "showpage\n");
+    fprintf(file_ptr, "%%%%EOF");
+    fclose(file_ptr);
 }
