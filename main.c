@@ -24,6 +24,7 @@ void setNewTour (cidade * tour, cidade * newTour);
 void copyTour (cidade * validTour, cidade * newTour);
 void tour2Opt ();
 void testOpt (cidade * route, int inicial, int next);
+void removeIntersections();
 
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
@@ -75,6 +76,8 @@ int main(int argc, char *argv[]) {
                             createTourFile(fileNames[i],width,height);
 
                             tour2Opt();
+
+                            removeIntersections();
 
                             char fileName[20];
                             sprintf( fileName, "%s_opt", fileNames[i] );
@@ -191,6 +194,17 @@ void testOpt (cidade * route, int inicial, int next) {
 //        }
 
     }
+}
+
+void removeIntersections () {
+
+    int i, j;
+
+//    for (i = 0; i < numberOfCities; i++) {
+//        for (j = 0; j < numberOfCities - 1; j++) {
+//
+//        }
+//    }
 }
 
 cidade * swap2opt (cidade * newRoute, int i, int k) {
