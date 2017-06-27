@@ -72,7 +72,7 @@ void draw_tsp(FILE * file_ptr, int n, float eps_width, float eps_height) {
  *  @return the distance between a and b
  */
 float distance (cidade a, cidade b) {
-	 return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+	 return (float) sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
  }
 
 

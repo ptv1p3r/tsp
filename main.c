@@ -104,20 +104,34 @@ int main(int argc, char *argv[]) {
         for ( int i = 0; i < numberOfCities - 1; i++ ) {
             for ( int k = i + 1; k < numberOfCities; k++) {
 
-                newRoute = swap2opt(newRoute, i, k);
+                newRoute = cidades;
 
-                new_distance = getTourDistance(newRoute);
+                new_distance = getTourDistance(swap2opt(newRoute, i, k));
 
                 if (new_distance < bestDistance) {
                     cidades = newRoute;
+
+                    improve = 0;
+                    printf("%.2f - %.2f\n", bestDistance, new_distance);
+                    bestDistance = new_distance;
+
                 }
             }
         }
         //printf("%d\n", improve);
         improve++;
+        for (int j = 0; j < numberOfCities; j++) {
+            printf("%d -> ", cidades[j].id);
+        }
+        printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
+
     }
 
     createTourFile(file_path2,"teste",width,height);
+//    for (int j = 0; j < numberOfCities; j++) {
+//        printf("%d -> ", cidades[j].id);
+//    }
+    printf("\n");
 
     //TESTING//
 
@@ -170,8 +184,7 @@ cidade * swap2opt (cidade * newRoute, int i, int k) {
 
     // 2. take route[i] to route[k] and add them in reverse order to new_route
     int dec = 0;
-    for ( int c = i; c <= k; ++c )
-    {
+    for ( int c = i; c <= k; ++c ) {
 
         temp = newRoute[c];
         newRoute[c] = newRoute[ k - dec ];
@@ -181,8 +194,7 @@ cidade * swap2opt (cidade * newRoute, int i, int k) {
     }
 
     // 3. take route[k+1] to end and add them in order to new_route
-    for ( int c = k + 1; c < numberOfCities-1; ++c )
-    {
+    for ( int c = k + 1; c < numberOfCities-1; ++c ) {
 
         temp = newRoute[c];
         newRoute[c] = newRoute[ c + 1];
