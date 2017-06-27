@@ -40,26 +40,6 @@ int main(int argc, char *argv[]) {
 
     float square_scale = 1.0f;
 
-
-    int status = readFromDirectory("../tspdata");
-
-    if (status!=0) {
-        for (int i = 1 ; i <2 ; ++i) {
-            printf("--------- %d ----------\n", i + 1);
-
-            readFromFile(i);    //le o file da lista
-
-            printStruct();  //test print
-
-            //free(cidades);
-            printf("%s\n", fileNames[i]);
-
-            printf("-----------------------\n\n");
-
-        }
-    }
-
-
 //    if (argc > 1) { /* Valida número de argumentos */
 //
 //        for (count=1; count<argc; count++) {
@@ -75,6 +55,23 @@ int main(int argc, char *argv[]) {
 //                    chrDataLocation = argv[count+1];
 //                    printf("input %s \n", chrDataLocation);
 
+                    int status = readFromDirectory("../tspdata");
+
+                    if (status!=0) {
+                        for (int i = 1 ; i <2 ; ++i) {
+                            printf("--------- %d ----------\n", i + 1);
+
+                            readFromFile(i);    //le o file da lista
+
+                            printStruct();  //test print
+
+                            //free(cidades);
+
+                            printf("-----------------------\n\n");
+
+                        }
+                    }
+
                     FILE * file_ptr = fopen(file_path, "w+");
                     setHeader(file_ptr, "Travel Salesman Problem", width, height);
 
@@ -84,20 +81,20 @@ int main(int argc, char *argv[]) {
                     drawText(file_ptr, (rgb){0,0,0}, 20,  0, height -50, headerText);
                     drawLine(file_ptr, (rgb){0,0,0}, 2, height -52 ,  width -2, height -52, 1);
 
-                    //printf("Number of cities is: %d \n", numberOfCities);
                     // normaliza a posicao das cidades no viewport do eps
                     draw_tsp(file_ptr, numberOfCities, width-2, height-55);
 
                     for (int i=0 ; i < numberOfCities-1; i++) { // percorre todas as cidades e efetua a ligacao entre cada uma
 
                         drawLine(file_ptr, (rgb){0,0,1}, cidades[i].normX, cidades[i].normY, cidades[i+1].normX,cidades[i+1].normY, 2); // desenha o link entre cidades
-                        //drawLink(file_ptr, (rgb){0,0,1}, cidades[2].normX, cidades[2].normY, cidades[3].normX - cidades[2].normX, cidades[3].normY - cidades[2].normY, 2); // desenha o link entre cidades
+                        //drawLink(file_ptr, (rgb){0,0,1}, cidades[i].normX, cidades[i].normY, cidades[i+1].normX-cidades[i].normX, cidades[i+1].normY-cidades[i].normY, 2); // desenha o link entre cidades
 
                         custo += distance(cidades[i], cidades[i+1]);
+
                     }
 
                     drawLine(file_ptr, (rgb){0,0,1}, cidades[numberOfCities-1].normX, cidades[numberOfCities-1].normY, cidades[0].normX,cidades[0].normY, 2); // desenha o link entre ultima cidade e casa
-                    custo += distance(cidades[numberOfCities-1], cidades[0]); // addiciona custo final entre ultima cidade e casa020
+                    custo += distance(cidades[numberOfCities-1], cidades[0]); // addiciona custo final entre ultima cidade e casa
                     //printf("custo: %.2f \n", custo);
 
                     char costText[50];
@@ -131,10 +128,6 @@ int main(int argc, char *argv[]) {
 
                     // TODO Imprimir novo eps com os links entre cada cidade optimizada
 
-
-
-
-//                    myArray[0] = cidades[0].id;
 //
 //                    // local search
 //                    for (int i=0;i<n;i++) {
