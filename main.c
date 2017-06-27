@@ -19,7 +19,7 @@
 
 void createTourFile(char * file_path, int width, int height);
 float getTourDistance();
-cidade * swap2opt (int i, int k);
+cidade * swap2opt (cidade * newRoute, int i, int k);
 
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
@@ -89,6 +89,7 @@ int main(int argc, char *argv[]) {
     float improve=1, bestDistance;
 
     cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
+    newRoute = cidades;
 
     while ( improve > 0 ) {
 
@@ -97,7 +98,7 @@ int main(int argc, char *argv[]) {
         for ( int i = 0; i < numberOfCities - 1; i++ ) {
             for ( int k = i + 1; k < numberOfCities; k++) {
 
-                newRoute = swap2opt(i, k);
+                newRoute = swap2opt(newRoute, i, k);
 
                 float new_distance = 0;
                 for (int j = 0; j < numberOfCities-1 ; ++j) {
@@ -147,15 +148,15 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-cidade * swap2opt (int i, int k) {
+cidade * swap2opt (cidade * newRoute, int i, int k) {
 
     cidade temp;
 
     // 1. take route[0] to route[i-1] and add them in order to new_route
     for ( int c = 0; c <= i - 1; ++c ) {
-        temp = cidades[c];
-        cidades[c] = cidades[c+1];
-        cidades[c+1] = temp;
+        temp = newRoute[c];
+        newRoute[c] = newRoute[c+1];
+        newRoute[c+1] = temp;
 
     }
 
@@ -164,9 +165,9 @@ cidade * swap2opt (int i, int k) {
     for ( int c = i; c <= k; ++c )
     {
 
-        temp = cidades[c];
-        cidades[c] = cidades[ k - dec ];
-        cidades[ k - dec ] = temp;
+        temp = newRoute[c];
+        newRoute[c] = newRoute[ k - dec ];
+        newRoute[ k - dec ] = temp;
 
         dec++;
     }
@@ -175,10 +176,12 @@ cidade * swap2opt (int i, int k) {
     for ( int c = k + 1; c < numberOfCities; ++c )
     {
 
-        temp = cidades[c];
-        cidades[c] = cidades[ c + 1];
-        cidades[ c + 1 ] = temp;
+        temp = newRoute[c];
+        newRoute[c] = newRoute[ c + 1];
+        newRoute[ c + 1 ] = temp;
     }
+
+    return newRoute;
 }
 
 float getTourDistance(){
