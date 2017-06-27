@@ -18,7 +18,7 @@
 #define SPACE_BETWEEN_CIRCLES_RATIO 0.05
 
 void createTourFile(char * file_path, int width, int height);
-float getTouristance();
+float getTourDistance();
 
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
@@ -124,7 +124,7 @@ int main(int argc, char *argv[]) {
 
     while ( improve > 0 ) {
 
-        bestDistance = getTouristance();
+        bestDistance = getTourDistance();
 
         for ( int i = 0; i < numberOfCities - 1; i++ ) {
             for ( int k = i + 1; k < numberOfCities; k++) {
@@ -179,7 +179,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-float getTouristance(){
+float getTourDistance(){
     float custoTotal=0.0;
 
     for (int i=0 ; i < numberOfCities-1; i++) {
