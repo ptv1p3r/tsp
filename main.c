@@ -13,7 +13,11 @@ void setNewTour (cidade * tour, cidade * newTour);
 void copyTour (cidade * validTour, cidade * newTour);
 void tour2Opt ();
 void testOpt (cidade * route, int inicial, int next);
-void removeIntersections();
+void removeIntersections(cidade * route);
+int orientation(cidade cidade1, cidade cidade2, cidade cidade3);
+int onSegment(cidade cidade1, cidade cidade2, cidade cidade3);
+float getMax ( float a, float b);
+float getMin ( float a, float b);
 
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
@@ -47,7 +51,7 @@ int main(int argc, char *argv[]) {
                     int status = readFromDirectory("../tspdata");
 
                     if (status!=0) {
-                        for (int i = 0 ; i <6 ; ++i) {
+                        for (int i = 1 ; i <2 ; ++i) {
                             printf("--------- %d ----------\n", i + 1);
 
                             readFromFile(i);    //le o file da lista
@@ -55,8 +59,6 @@ int main(int argc, char *argv[]) {
                             createTourFile(fileNames[i],width,height);
 
                             tour2Opt();
-
-                            removeIntersections();
 
                             char fileName[20];
                             sprintf( fileName, "%s_opt", fileNames[i] );
@@ -123,6 +125,8 @@ void tour2Opt () {
         improve++;
     }
 
+    removeIntersections(newRoute);
+
 }
 
 void copyTour (cidade * tour1, cidade * tour2) {
@@ -174,15 +178,92 @@ void testOpt (cidade * route, int inicial, int next) {
     }
 }
 
-void removeIntersections () {
+void removeIntersections (cidade * route) {
 
     int i, j;
+    float m1, m2;
 
-//    for (i = 0; i < numberOfCities; i++) {
-//        for (j = 0; j < numberOfCities - 1; j++) {
+    for (i = 0; i < numberOfCities; i++) {
+        for (j = 1; j < numberOfCities - 1; j++) {
+
+            if ( !((j > i-1) && (j < i+2)) && (i != j) ) {
+
+                if ((route[i].id != route[j].id) && (route[i].id != route[j+1].id) &&
+                        (route[i+1].id != route[j].id) && (route[i+1].id != route[j+1].id)) {
+                    float p1 = orientation(route[i], route[i + 1], route[j]);
+                    float p2 = orientation(route[i], route[i + 1], route[j + 1]);
+                    float p3 = orientation(route[j], route[j + 1], route[i]);
+                    float p4 = orientation(route[j], route[j + 1], route[i + 1]);
+
+//                m1 = (route[i+1].y - route[i].y) / (route[i+1].x - route[i].x);
 //
-//        }
-//    }
+//                m2 = (route[j+1].y - route[j].y) / (route[j+1].x - route[j].x);
+
+                    //if ( (m1 - m2) != 0 ) {
+                    if ((p1 != p2 && p3 != p4)) {
+
+                        cidade temp;
+
+                        temp = route[j + 1];
+                        route[j + 1] = route[i + 1];
+                        route[i + 1] = temp;
+
+                        copyTour(cidades , route);
+                        printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
+                    }
+                }
+            }
+        }
+    }
+}
+int orientation(cidade cidade1, cidade cidade2, cidade cidade3) {
+
+    // See http://www.geeksforgeeks.org/orientation-3-ordered-points/
+    // for details of below formula.
+    int val = (int) ((cidade2.y - cidade1.y) * (cidade3.x - cidade2.x) -
+                  (cidade2.x - cidade1.x) * (cidade3.y - cidade2.y));
+
+    if (val == 0) {
+        return 0;
+    }  // colinear
+
+    if (val > 0) {
+        return 1;
+    } else {
+        return 2;
+    }
+}
+
+int onSegment(cidade cidade1, cidade cidade2, cidade cidade3) {
+
+    if (cidade2.x <= getMax(cidade1.x, cidade3.x) && cidade2.x >= getMin(cidade1.x, cidade3.x) &&
+            cidade2.y <= getMax(cidade1.y, cidade3.y) && cidade2.y >= getMin(cidade1.y, cidade3.y)) {
+        return 1;
+    }
+
+    return 0;
+}
+
+float getMax ( float a, float b) {
+
+    if (a > b) {
+        return a;
+    } else if (a < b) {
+        return b;
+    } else {
+        return a;
+    }
+}
+
+float getMin ( float a, float b) {
+
+    if (a < b) {
+        return a;
+    } else if (a > b) {
+        return b;
+    } else {
+        return a;
+    }
 }
 
 cidade * swap2opt (cidade * newRoute, int i, int k) {
