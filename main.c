@@ -113,7 +113,7 @@ void tour2Opt () {
 
     while ( improve < numberOfCities ) {
 
-        for ( int i = 1; i < numberOfCities - 1; i++ ) {
+        for ( int i = 0; i < numberOfCities - 1 ; i++ ) {
             for ( int k = i + 1; k < numberOfCities-1; k++) {
 
                 copyTour(newRoute, cidades);
