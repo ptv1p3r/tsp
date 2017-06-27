@@ -168,8 +168,8 @@ void testOpt (cidade * route, int inicial, int next) {
 
                     cidade temp;
 
-                    temp = route[i];
-                    route[i] = route[inicial+1];
+                    temp = route[j];
+                    route[j] = route[inicial+1];
                     route[inicial+1] = temp;
                 }
             }
