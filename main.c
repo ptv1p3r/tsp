@@ -18,7 +18,7 @@
 #define SPACE_BETWEEN_CIRCLES_RATIO 0.05
 
 void createTourFile(char * file_path, int width, int height);
-float getTourDistance();
+float getTourDistance(cidade * tour);
 cidade * swap2opt (cidade * newRoute, int i, int k);
 
 void printHelp() {
@@ -94,18 +94,14 @@ int main(int argc, char *argv[]) {
 
     while ( improve < numberOfCities ) {
 
-        bestDistance = getTourDistance();
+        bestDistance = getTourDistance(cidades);
 
         for ( int i = 0; i < numberOfCities - 1; i++ ) {
             for ( int k = i + 1; k < numberOfCities; k++) {
 
                 newRoute = swap2opt(newRoute, i, k);
 
-                float new_distance = 0;
-                for (int j = 0; j < numberOfCities-1 ; ++j) {
-                    new_distance += distance(newRoute[j], newRoute[j+1]);
-                }
-                new_distance += distance(newRoute[0], newRoute[numberOfCities-1]);
+                float new_distance = getTourDistance(newRoute);
 
                 if (new_distance < bestDistance) {
                     cidades = newRoute;
@@ -189,13 +185,13 @@ cidade * swap2opt (cidade * newRoute, int i, int k) {
     return newRoute;
 }
 
-float getTourDistance(){
+float getTourDistance(cidade * tour){
     float custoTotal=0.0;
 
     for (int i=0 ; i < numberOfCities-1; i++) {
-        custoTotal += distance(cidades[i], cidades[i+1]);
+        custoTotal += distance(tour[i], tour[i+1]);
     }
-    custoTotal += distance(cidades[numberOfCities-1], cidades[0]); // addiciona custo final entre ultima cidade e casa
+    custoTotal += distance(tour[numberOfCities-1], tour[0]); // addiciona custo final entre ultima cidade e casa
 
     return custoTotal;
 }
