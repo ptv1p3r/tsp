@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
     cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
     newRoute = cidades;
 
-    while ( improve > 0 ) {
+    while ( improve < numberOfCities ) {
 
         bestDistance = getTourDistance();
 
@@ -107,9 +107,12 @@ int main(int argc, char *argv[]) {
 
                 if (new_distance < bestDistance) {
                     cidades = newRoute;
+                    improve = 0;
                 }
             }
         }
+
+        improve++;
     }
     //TESTING//
 
