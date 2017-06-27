@@ -153,13 +153,16 @@ void copyTour (cidade * tour1, cidade * tour2) {
 
 void testOpt (cidade * route, int inicial, int next) {
 
-    for (int i = inicial; i < numberOfCities-1; i++) {
-        for (int j = next; j < numberOfCities-1 ; j++) {
+    float custoNormal, custoAlterado;
+    int i, j;
+
+    for (i = 0; i < numberOfCities; i++) {
+        for (j = next; j < numberOfCities ; j++) {
 
             if ((i != inicial-1) && (i != inicial+2)) {
 
-                float custoNormal = distance(route[inicial], route[inicial+1]) + distance(route[i], route[j]),
-                        custoAlterado = distance(route[inicial], route[i]) + distance(route[inicial+1], route[j]);
+                custoNormal = distance(route[inicial], route[inicial+1]) + distance(route[i], route[j]);
+                custoAlterado = distance(route[inicial], route[i]) + distance(route[inicial+1], route[j]);
 
                 if ( custoNormal > custoAlterado ) {
 
@@ -171,6 +174,8 @@ void testOpt (cidade * route, int inicial, int next) {
                 }
             }
         }
+
+
     }
 }
 
