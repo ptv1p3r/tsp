@@ -63,9 +63,10 @@
 			Cada edge têm um peso, que é no seu caso mais simples a distancia euclidiana entre os seus nós.\\
 			Este peso pode ser composto por diversos fatores, no entanto neste projeto apenas se considera a distancia entre nós.\\ 			
 			\newpage
-	\section{2-Opt} \label{ssec:num1}
+	\section{2-Opt} 
 			O algoritmo 2-Opt foi proposto por Croes em 1958, embora o movimento básico tenha sido sugerido por Flood em 1956.\\ 
 			O algoritmo 2-Opt basicamente remove 2 nós (Edges) da tour, e conecta os dois caminhos criados. Isto é normalmente referido como um movimento 2-Opt.\\
+			Quando falamos da complexidade deste algoritmo K-Opt, não podemos omitir que um movimento pode levar até $\mathcal{O}(n)$ a ser efetuado. A implementação simples do 2-Opt corre em $\mathcal{O}(n^{2})$, isto envolve selecionar um edge (c1,c2), procurar outro edge (c3,c4), completar o movimento apenas se a dist(c1,c2) + dist(c3,c4) > dist(c2,c3) + dist(c1,c4.)
 			\subsection{Técnica 2-Opt}	
 			\includegraphics[width=1.0\textwidth]{imagens/1}
 			Aqui vamos utilizar uma lista de 6 nós, em que a distancia total da tour é de 47.\\
@@ -102,6 +103,8 @@
 			\includegraphics[width=1.0\textwidth]{imagens/9}
 			Finalmente chegamos a uma solução optimizada. A solução apresenta um custo de 41, efetivamente inferior ao custo da solução inicial.\\\\
 			\newpage
+			\subsection{Intersecções}
+			asd
 	\section{Enquadramento}
 	O trabalho descrito neste relatório foi realizado recorrendo à linguagem de programação ANSI C, assim como os recursos disponibilizados na unidade curricular.\\
 		\subsection{Motivação}

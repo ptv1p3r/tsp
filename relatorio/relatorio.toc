@@ -3,6 +3,7 @@
 \contentsline {subsection}{\numberline {1.1}Requisitos Minimos}{2}
 \contentsline {section}{\numberline {2}2-Opt}{3}
 \contentsline {subsection}{\numberline {2.1}T\IeC {\'e}cnica 2-Opt}{4}
+\contentsline {subsection}{\numberline {2.2}Intersec\IeC {\c c}\IeC {\~o}es}{13}
 \contentsline {section}{\numberline {3}Enquadramento}{13}
 \contentsline {subsection}{\numberline {3.1}Motiva\IeC {\c c}\IeC {\~a}o}{13}
 \contentsline {subsection}{\numberline {3.2}Objectivos}{13}
