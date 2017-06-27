@@ -6,13 +6,6 @@
 #include "file.h"
 #include "tsp.h"
 
-// command line app
-// abre ficheiro
-// calcula rota
-// cria eps com cidades
-// cria ficheiro rota (tour + cost)
-// cria eps com rota grafica, texto tour + text cost + text date/time
-
 #define PI 3.141592653589793238
 #define SPACE_BETWEEN_CIRCLES_RATIO 0.05
 
@@ -31,8 +24,6 @@ void printHelp() {
     printf(" -h,--help      Lista completa de comandos\n");
     printf(" -o directory   Directoria onde se encontra os ficheiros de dados\n");
 }
-
-//TESTING//
 
 int main(int argc, char *argv[]) {
 
