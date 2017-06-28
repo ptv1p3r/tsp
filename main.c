@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
 void tour2Opt () {
 
     //TESTING//
-    int improve=1;
+    int improve=0;
     float bestDistance,new_distance = 0;
 
     cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
@@ -182,38 +182,43 @@ void removeIntersections (cidade * route) {
 
     int i, j;
     float m1, m2;
+    int improve=0;
 
-    for (i = 0; i < numberOfCities; i++) {
-        for (j = 1; j < numberOfCities - 1; j++) {
+    while ( improve < numberOfCities-1 ) {
+        for (i = 0; i < numberOfCities - 1; i++) {
+            for (j = 0; j < numberOfCities - 1; j++) {
 
-            if ( !((j > i-1) && (j < i+2)) && (i != j) ) {
+                if (!((j > i - 1) && (j < i + 2)) && (i != j)) {
 
-                if ((route[i].id != route[j].id) && (route[i].id != route[j+1].id) &&
-                        (route[i+1].id != route[j].id) && (route[i+1].id != route[j+1].id)) {
-                    float p1 = orientation(route[i], route[i + 1], route[j]);
-                    float p2 = orientation(route[i], route[i + 1], route[j + 1]);
-                    float p3 = orientation(route[j], route[j + 1], route[i]);
-                    float p4 = orientation(route[j], route[j + 1], route[i + 1]);
+                    if ((route[i].id != route[j].id) && (route[i].id != route[j + 1].id) &&
+                        (route[i + 1].id != route[j].id) && (route[i + 1].id != route[j + 1].id)) {
+                        float p1 = orientation(route[i], route[i + 1], route[j]);
+                        float p2 = orientation(route[i], route[i + 1], route[j + 1]);
+                        float p3 = orientation(route[j], route[j + 1], route[i]);
+                        float p4 = orientation(route[j], route[j + 1], route[i + 1]);
 
 //                m1 = (route[i+1].y - route[i].y) / (route[i+1].x - route[i].x);
 //
 //                m2 = (route[j+1].y - route[j].y) / (route[j+1].x - route[j].x);
 
-                    //if ( (m1 - m2) != 0 ) {
-                    if ((p1 != p2 && p3 != p4)) {
+                        //if ( (m1 - m2) != 0 ) {
+                        if ((p1 != p2 && p3 != p4)) {
 
-                        cidade temp;
+                            cidade temp;
 
-                        temp = route[j + 1];
-                        route[j + 1] = route[i + 1];
-                        route[i + 1] = temp;
+                            temp = route[j + 1];
+                            route[j + 1] = route[i + 1];
+                            route[i + 1] = temp;
 
-                        copyTour(cidades , route);
-                        printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
+                            copyTour(cidades, route);
+                            printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
+                        }
                     }
                 }
             }
         }
+
+        improve++;
     }
 }
 int orientation(cidade cidade1, cidade cidade2, cidade cidade3) {
