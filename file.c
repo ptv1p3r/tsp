@@ -56,7 +56,7 @@ int readFromDirectory(char * path) {
             }
         }
 
-        printf("\n%d\n", numberOfFiles);    //verificar se foram todos lidos
+        //printf("\n%d\n", numberOfFiles);    //verificar se foram todos lidos
 
 
         closedir(d);    //fecha a diretoria
@@ -170,7 +170,7 @@ void printString (char ** string) {
  */
 void readFromFile (int fileNumber) {
 
-    printf("%s\n", filesToRead[fileNumber]);    //teste de impressao do nome do ficheiro
+    //printf("%s\n", filesToRead[fileNumber]);    //teste de impressao do nome do ficheiro
 
     FILE *file = fopen(filesToRead[fileNumber], "r");
 
