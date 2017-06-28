@@ -257,6 +257,12 @@ float getTourDistance(cidade * tour, int cities){
     return custoTotal;
 }
 
+/**
+ * Metodo que cria o output em eps e txt
+ * @param filename nome do ficheiro
+ * @param width largura
+ * @param height altura
+ */
 void createTourFile(char * filename, int width, int height){
     float custo=0.0;
     char tourPath[100000]={};
