@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
                     int status = readFromDirectory("../tspdata");
 
                     if (status!=0) {
-                        for (int i = 0 ; i < 6 ; ++i) {
+                        for (int i = 1 ; i < 4 ; ++i) {
                             printf("--------- %d ----------\n", i + 1);
 
                             readFromFile(i);    //le o file da lista
@@ -185,9 +185,9 @@ void testOpt (cidade * route, int inicial, int next) {
 void removeIntersections (cidade * route) {
 
     int i, j;
-    int improve=0;
+    int improve = 0;
 
-    while ( improve < numberOfCities ) {
+    while (improve < numberOfCities) {
         for (i = 0; i < numberOfCities - 1; i++) {
             for (j = 0; j < numberOfCities - 1; j++) {
 
@@ -206,8 +206,8 @@ void removeIntersections (cidade * route) {
                             cidade temp;
 
                             temp = route[j];
-                            route[j] = route[i];
-                            route[i] = temp;
+                            route[j] = route[i+1];
+                            route[i+1] = temp;
 
                             copyTour(cidades, route);
                             //printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
@@ -229,8 +229,8 @@ void removeIntersections (cidade * route) {
                     cidade temp;
 
                     temp = route[j];
-                    route[j] = route[i];
-                    route[i] = temp;
+                    route[j] = route[i+1];
+                    route[i+1] = temp;
 
                     copyTour(cidades, route);
                     printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
