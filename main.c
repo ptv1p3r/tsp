@@ -8,16 +8,11 @@
 
 void createTourFile(char * filename, int width, int height);
 float getTourDistance(cidade * tour, int cities);
-cidade * swap2opt (cidade * newRoute, int i, int k);
-void setNewTour (cidade * tour, cidade * newTour);
 void copyTour (cidade * validTour, cidade * newTour);
 void tour2Opt ();
-void testOpt (cidade * route, int inicial, int next);
+void swap2Opt (cidade * route, int inicial);
 void removeIntersections(cidade * route);
 int orientation(cidade cidade1, cidade cidade2, cidade cidade3);
-int onSegment(cidade cidade1, cidade cidade2, cidade cidade3);
-float getMax ( float a, float b);
-float getMin ( float a, float b);
 
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
@@ -30,8 +25,6 @@ int main(int argc, char *argv[]) {
 
     int height = 800;
     int width = 600;
-
-    float square_scale = 1.0f;
 
 //    if (argc > 1) { /* Valida número de argumentos */
 //
@@ -52,8 +45,6 @@ int main(int argc, char *argv[]) {
 
                     if (status!=0) {
                         for (int i = 1 ; i < 4 ; ++i) {
-                            printf("--------- %d ----------\n", i + 1);
-
                             readFromFile(i);    //le o file da lista
 
                             createTourFile(fileNames[i],width,height);
@@ -66,9 +57,6 @@ int main(int argc, char *argv[]) {
                             createTourFile(fileName,width,height);
 
                             free(cidades);
-
-                            printf("-----------------------\n\n");
-
                         }
                     }
 //                } else {
@@ -85,15 +73,17 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+/**
+ * Metodo que aplica o algoritmo 2opt
+ */
 void tour2Opt () {
 
-    //TESTING//
     int improve=0;
     float bestDistance,new_distance = 0;
 
     cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
 
-    bestDistance = getTourDistance(cidades,numberOfCities);
+    bestDistance = getTourDistance(cidades,numberOfCities); // calcula a distancia da tour
 
     while ( improve < numberOfCities-1 ) {
 
@@ -102,23 +92,14 @@ void tour2Opt () {
 
                 copyTour(newRoute, cidades);
 
-                //new_distance = getTourDistance(swap2opt(newRoute, i, k));
-
-                testOpt(newRoute, i, k);
+                swap2Opt(newRoute, i);
                 new_distance = getTourDistance(newRoute,numberOfCities);
 
-                if (new_distance < bestDistance) {
-                    copyTour(cidades , newRoute);
+                if (new_distance < bestDistance) { // encontra uma rota com melhor distancia
+                    copyTour(cidades , newRoute); // copia nova rota
 
                     improve = 0;
-                    //printf("%.2f - %.2f\n", bestDistance, new_distance);
                     bestDistance = new_distance;
-
-//                    for (int j = 0; j < numberOfCities; j++) {
-//                        printf("%d -> ", cidades[j].id);
-//                    }
-//                    printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
-
                 }
             }
         }
@@ -140,7 +121,12 @@ void copyTour (cidade * tour1, cidade * tour2) {
     }
 }
 
-void testOpt (cidade * route, int inicial, int next) {
+/**
+ * Metodo que efetua o swap 2opt a uma tour
+ * @param route
+ * @param inicial
+ */
+void swap2Opt (cidade * route, int inicial) {
 
     float custoNormal, custoAlterado;
     int i, j;
@@ -163,25 +149,13 @@ void testOpt (cidade * route, int inicial, int next) {
                 }
             }
         }
-
-//        if ( !((i > inicial-1) && (i < inicial+2)) && (i != j)) {
-//
-//            custoNormal = distance(route[inicial], route[inicial+1]) + distance(route[j], route[j+1]);
-//            custoAlterado = distance(route[inicial], route[j+1]) + distance(route[inicial+1], route[j]);
-//
-//            if ( custoNormal > custoAlterado ) {
-//
-//                cidade temp;
-//
-//                temp = route[j+1];
-//                route[j+1] = route[inicial+1];
-//                route[inicial+1] = temp;
-//            }
-//        }
-
     }
 }
 
+/**
+ * Metodo que remove intersecoes de uma tour
+ * @param route
+ */
 void removeIntersections (cidade * route) {
 
     int i, j;
@@ -210,7 +184,6 @@ void removeIntersections (cidade * route) {
                             route[i+1] = temp;
 
                             copyTour(cidades, route);
-                            //printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
                         }
                     }
                 }
@@ -233,7 +206,6 @@ void removeIntersections (cidade * route) {
                     route[i+1] = temp;
 
                     copyTour(cidades, route);
-                    printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
                 }
             }
         }
@@ -242,6 +214,13 @@ void removeIntersections (cidade * route) {
     }
 }
 
+/**
+ *
+ * @param cidade1
+ * @param cidade2
+ * @param cidade3
+ * @return
+ */
 int orientation(cidade cidade1, cidade cidade2, cidade cidade3) {
 
     // See http://www.geeksforgeeks.org/orientation-3-ordered-points/
@@ -260,71 +239,6 @@ int orientation(cidade cidade1, cidade cidade2, cidade cidade3) {
     }
 }
 
-int onSegment(cidade cidade1, cidade cidade2, cidade cidade3) {
-
-    if (cidade2.x <= getMax(cidade1.x, cidade3.x) && cidade2.x >= getMin(cidade1.x, cidade3.x) &&
-            cidade2.y <= getMax(cidade1.y, cidade3.y) && cidade2.y >= getMin(cidade1.y, cidade3.y)) {
-        return 1;
-    }
-
-    return 0;
-}
-
-float getMax ( float a, float b) {
-
-    if (a > b) {
-        return a;
-    } else if (a < b) {
-        return b;
-    } else {
-        return a;
-    }
-}
-
-float getMin ( float a, float b) {
-
-    if (a < b) {
-        return a;
-    } else if (a > b) {
-        return b;
-    } else {
-        return a;
-    }
-}
-
-cidade * swap2opt (cidade * newRoute, int i, int k) {
-
-    cidade temp;
-
-    // 1. take route[0] to route[i-1] and add them in order to new_route
-    for ( int c = 0; c <= i - 1; ++c ) {
-        temp = newRoute[c];
-        newRoute[c] = newRoute[c+1];
-        newRoute[c+1] = temp;
-    }
-
-    // 2. take route[i] to route[k] and add them in reverse order to new_route
-    int dec = 0;
-    for ( int c = i; c <= k; ++c ) {
-
-        temp = newRoute[c];
-        newRoute[c] = newRoute[ k - dec ];
-        newRoute[ k - dec ] = temp;
-
-        dec++;
-    }
-
-    // 3. take route[k+1] to end and add them in order to new_route
-    for ( int c = k + 1; c < numberOfCities-1; ++c ) {
-
-        temp = newRoute[c];
-        newRoute[c] = newRoute[ c + 1];
-        newRoute[ c + 1 ] = temp;
-    }
-
-    return newRoute;
-}
-
 /**
  * Metodo que calcula a distancia de uma tour
  * @param tour
@@ -337,7 +251,7 @@ float getTourDistance(cidade * tour, int cities){
         for (int i=0 ; i < numberOfCities-1; i++) {
             custoTotal += distance(tour[i], tour[i+1]);
         }
-        custoTotal += distance(tour[numberOfCities-1], tour[0]); // addiciona custo final entre ultima cidade e casa
+        custoTotal += distance(tour[numberOfCities-1], tour[0]); // adiciona custo final entre ultima cidade e casa
     }
 
     return custoTotal;
