@@ -22,26 +22,29 @@ void printHelp() {
 }
 
 int main(int argc, char *argv[]) {
-
+    char *chrDataLocation;
+    int count = 0;
     int height = 800;
     int width = 600;
 
-//    if (argc > 1) { /* Valida número de argumentos */
-//
-//        for (count=1; count<argc; count++) {
-//
-//            /* Valida opção --help */
-//            if ((strcmp(argv[count], "--help") == 0) || (strcmp(argv[count], "-h") == 0)) {
-//                printHelp();
-//                exit(EXIT_SUCCESS);
-//            }   /* Valida opção -o */
-//            else if ((strcmp(argv[count], "-o") == 0)) {
-//
-//                if (count+1 < argc) {
-//                    chrDataLocation = argv[count+1];
-//                    printf("input %s \n", chrDataLocation);
+    if (argc > 1) { /* Valida número de argumentos */
 
-                    int status = readFromDirectory("../tspdata");
+        for (count=1; count<argc; count++) {
+
+            /* Valida opção --help */
+            if ((strcmp(argv[count], "--help") == 0) || (strcmp(argv[count], "-h") == 0)) {
+                printHelp();
+                exit(EXIT_SUCCESS);
+            }   /* Valida opção -o */
+            else if ((strcmp(argv[count], "-o") == 0)) {
+
+                if (count+1 < argc) {
+                    chrDataLocation = argv[count+1];
+
+                    char fileText[50];
+                    sprintf( fileText, "../%s", chrDataLocation );
+
+                    int status = readFromDirectory(fileText);
 
                     if (status!=0) {
                         for (int i = 0 ; i < numberOfFiles ; ++i) {
@@ -59,17 +62,17 @@ int main(int argc, char *argv[]) {
                             free(cidades);
                         }
                     }
-//                } else {
-//                    printf("Uso: -o [directory]\n");
-//                    exit(EXIT_SUCCESS);
-//                }
-//            }
-//        }
-//
-//    }  else {
-//        printf("Uso: --help para uma lista completa de comandos.\n");
-//        exit(EXIT_SUCCESS);
-//    }
+                } else {
+                    printf("Uso: -o [directory]\n");
+                    exit(EXIT_SUCCESS);
+                }
+            }
+        }
+
+    }  else {
+        printf("Uso: --help para uma lista completa de comandos.\n");
+        exit(EXIT_SUCCESS);
+    }
     return 0;
 }
 
