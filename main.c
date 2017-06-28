@@ -7,7 +7,7 @@
 #include "tsp.h"
 
 void createTourFile(char * filename, int width, int height);
-float getTourDistance(cidade * tour);
+float getTourDistance(cidade * tour, int cities);
 cidade * swap2opt (cidade * newRoute, int i, int k);
 void setNewTour (cidade * tour, cidade * newTour);
 void copyTour (cidade * validTour, cidade * newTour);
@@ -93,7 +93,7 @@ void tour2Opt () {
 
     cidade *newRoute = (cidade*) malloc(numberOfCities * sizeof(cidade));
 
-    bestDistance = getTourDistance(cidades);
+    bestDistance = getTourDistance(cidades,numberOfCities);
 
     while ( improve < numberOfCities-1 ) {
 
@@ -105,7 +105,7 @@ void tour2Opt () {
                 //new_distance = getTourDistance(swap2opt(newRoute, i, k));
 
                 testOpt(newRoute, i, k);
-                new_distance = getTourDistance(newRoute);
+                new_distance = getTourDistance(newRoute,numberOfCities);
 
                 if (new_distance < bestDistance) {
                     copyTour(cidades , newRoute);
@@ -129,6 +129,11 @@ void tour2Opt () {
 
 }
 
+/**
+ * Metodo que efetua copia entre duas tours
+ * @param tour1
+ * @param tour2
+ */
 void copyTour (cidade * tour1, cidade * tour2) {
 
     for (int i = 0; i < numberOfCities; i++) {
@@ -221,6 +226,7 @@ void removeIntersections (cidade * route) {
         improve++;
     }
 }
+
 int orientation(cidade cidade1, cidade cidade2, cidade cidade3) {
 
     // See http://www.geeksforgeeks.org/orientation-3-ordered-points/
@@ -304,13 +310,20 @@ cidade * swap2opt (cidade * newRoute, int i, int k) {
     return newRoute;
 }
 
-float getTourDistance(cidade * tour){
+/**
+ * Metodo que calcula a distancia de uma tour
+ * @param tour
+ * @return
+ */
+float getTourDistance(cidade * tour, int cities){
     float custoTotal=0.0;
 
-    for (int i=0 ; i < numberOfCities-1; i++) {
-        custoTotal += distance(tour[i], tour[i+1]);
+    if (is_valid_tour(tour,cities)){
+        for (int i=0 ; i < numberOfCities-1; i++) {
+            custoTotal += distance(tour[i], tour[i+1]);
+        }
+        custoTotal += distance(tour[numberOfCities-1], tour[0]); // addiciona custo final entre ultima cidade e casa
     }
-    custoTotal += distance(tour[numberOfCities-1], tour[0]); // addiciona custo final entre ultima cidade e casa
 
     return custoTotal;
 }
