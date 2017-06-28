@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
 #include <memory.h>
 #include "eps.h"
@@ -14,6 +13,9 @@ void swap2Opt (cidade * route, int inicial);
 void removeIntersections(cidade * route);
 int orientation(cidade cidade1, cidade cidade2, cidade cidade3);
 
+/**
+ * Metodo que imprime a lista de ajuda na consola
+ */
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
     printf("Opção           Descrição\n");
@@ -21,6 +23,12 @@ void printHelp() {
     printf(" -o directory   Directoria onde se encontra os ficheiros de dados\n");
 }
 
+/**
+ * Metodo principal da aplicação de linha de comandos
+ * @param argc numero de argumentos
+ * @param argv array de argumentos
+ * @return
+ */
 int main(int argc, char *argv[]) {
     char *chrDataLocation;
     int count = 0;
