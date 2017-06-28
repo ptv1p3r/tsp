@@ -234,7 +234,7 @@ void removeIntersections (cidade * route) {
 }
 
 /**
- *
+ * Metodo que valida a orientacao
  * @param cidade1
  * @param cidade2
  * @param cidade3
