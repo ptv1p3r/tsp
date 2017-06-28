@@ -8,15 +8,17 @@
 
 void createTourFile(char * filename, int width, int height);
 float getTourDistance(cidade * tour, int cities);
+cidade * swap2opt (cidade * newRoute, int i, int k);
+void setNewTour (cidade * tour, cidade * newTour);
 void copyTour (cidade * validTour, cidade * newTour);
 void tour2Opt ();
-void set2Opt (cidade * route, int inicial);
+void testOpt (cidade * route, int inicial, int next);
 void removeIntersections(cidade * route);
 int orientation(cidade cidade1, cidade cidade2, cidade cidade3);
+int onSegment(cidade cidade1, cidade cidade2, cidade cidade3);
+float getMax ( float a, float b);
+float getMin ( float a, float b);
 
-/**
- * Metodo que imprime na consola ajuda
- */
 void printHelp() {
     printf("Uso: tsp -o directory \n\n");
     printf("Opção           Descrição\n");
@@ -25,8 +27,11 @@ void printHelp() {
 }
 
 int main(int argc, char *argv[]) {
+
     int height = 800;
     int width = 600;
+
+    float square_scale = 1.0f;
 
 //    if (argc > 1) { /* Valida número de argumentos */
 //
@@ -46,7 +51,9 @@ int main(int argc, char *argv[]) {
                     int status = readFromDirectory("../tspdata");
 
                     if (status!=0) {
-                        for (int i = 1 ; i <2 ; ++i) {
+                        for (int i = 0 ; i < 6 ; ++i) {
+                            printf("--------- %d ----------\n", i + 1);
+
                             readFromFile(i);    //le o file da lista
 
                             createTourFile(fileNames[i],width,height);
@@ -59,6 +66,9 @@ int main(int argc, char *argv[]) {
                             createTourFile(fileName,width,height);
 
                             free(cidades);
+
+                            printf("-----------------------\n\n");
+
                         }
                     }
 //                } else {
@@ -75,10 +85,9 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-/**
- * Metodo que aplica o algoritmo 2-opt
- */
 void tour2Opt () {
+
+    //TESTING//
     int improve=0;
     float bestDistance,new_distance = 0;
 
@@ -92,7 +101,10 @@ void tour2Opt () {
             for ( int k = i + 1; k < numberOfCities-1; k++) {
 
                 copyTour(newRoute, cidades);
-                set2Opt(newRoute, i);
+
+                //new_distance = getTourDistance(swap2opt(newRoute, i, k));
+
+                testOpt(newRoute, i, k);
                 new_distance = getTourDistance(newRoute,numberOfCities);
 
                 if (new_distance < bestDistance) {
@@ -119,8 +131,8 @@ void tour2Opt () {
 
 /**
  * Metodo que efetua copia entre duas tours
- * @param tour1 lista de cidades
- * @param tour2 lista de cidades a copiar
+ * @param tour1
+ * @param tour2
  */
 void copyTour (cidade * tour1, cidade * tour2) {
 
@@ -129,7 +141,7 @@ void copyTour (cidade * tour1, cidade * tour2) {
     }
 }
 
-void set2Opt (cidade * route, int inicial) {
+void testOpt (cidade * route, int inicial, int next) {
 
     float custoNormal, custoAlterado;
     int i, j;
@@ -152,45 +164,77 @@ void set2Opt (cidade * route, int inicial) {
                 }
             }
         }
+
+//        if ( !((i > inicial-1) && (i < inicial+2)) && (i != j)) {
+//
+//            custoNormal = distance(route[inicial], route[inicial+1]) + distance(route[j], route[j+1]);
+//            custoAlterado = distance(route[inicial], route[j+1]) + distance(route[inicial+1], route[j]);
+//
+//            if ( custoNormal > custoAlterado ) {
+//
+//                cidade temp;
+//
+//                temp = route[j+1];
+//                route[j+1] = route[inicial+1];
+//                route[inicial+1] = temp;
+//            }
+//        }
+
     }
 }
 
 void removeIntersections (cidade * route) {
 
     int i, j;
-    float m1, m2;
     int improve=0;
 
-    while ( improve < numberOfCities-1 ) {
+    while ( improve < numberOfCities ) {
         for (i = 0; i < numberOfCities - 1; i++) {
             for (j = 0; j < numberOfCities - 1; j++) {
 
-                if (!((j > i - 1) && (j < i + 2)) && (i != j)) {
+                if ((i != j)) {
 
                     if ((route[i].id != route[j].id) && (route[i].id != route[j + 1].id) &&
                         (route[i + 1].id != route[j].id) && (route[i + 1].id != route[j + 1].id)) {
+
                         float p1 = orientation(route[i], route[i + 1], route[j]);
                         float p2 = orientation(route[i], route[i + 1], route[j + 1]);
                         float p3 = orientation(route[j], route[j + 1], route[i]);
                         float p4 = orientation(route[j], route[j + 1], route[i + 1]);
 
-//                m1 = (route[i+1].y - route[i].y) / (route[i+1].x - route[i].x);
-//
-//                m2 = (route[j+1].y - route[j].y) / (route[j+1].x - route[j].x);
-
-                        //if ( (m1 - m2) != 0 ) {
                         if ((p1 != p2 && p3 != p4)) {
 
                             cidade temp;
 
-                            temp = route[j + 1];
-                            route[j + 1] = route[i + 1];
-                            route[i + 1] = temp;
+                            temp = route[j];
+                            route[j] = route[i];
+                            route[i] = temp;
 
                             copyTour(cidades, route);
                             printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
                         }
                     }
+                }
+            }
+
+            if ((route[i].id != route[j].id) && (route[i].id != route[0].id) &&
+                (route[i + 1].id != route[j].id) && (route[i + 1].id != route[0].id)) {
+
+                float p1 = orientation(route[i], route[i + 1], route[j]);
+                float p2 = orientation(route[i], route[i + 1], route[0]);
+                float p3 = orientation(route[j], route[j + 1], route[i]);
+                float p4 = orientation(route[j], route[j + 1], route[0]);
+
+                if ((p1 != p2 && p3 != p4)) {
+
+                    cidade temp;
+
+                    temp = route[j];
+                    route[j] = route[i];
+                    route[i] = temp;
+
+                    copyTour(cidades, route);
+                    printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
                 }
             }
         }
@@ -217,10 +261,75 @@ int orientation(cidade cidade1, cidade cidade2, cidade cidade3) {
     }
 }
 
+int onSegment(cidade cidade1, cidade cidade2, cidade cidade3) {
+
+    if (cidade2.x <= getMax(cidade1.x, cidade3.x) && cidade2.x >= getMin(cidade1.x, cidade3.x) &&
+            cidade2.y <= getMax(cidade1.y, cidade3.y) && cidade2.y >= getMin(cidade1.y, cidade3.y)) {
+        return 1;
+    }
+
+    return 0;
+}
+
+float getMax ( float a, float b) {
+
+    if (a > b) {
+        return a;
+    } else if (a < b) {
+        return b;
+    } else {
+        return a;
+    }
+}
+
+float getMin ( float a, float b) {
+
+    if (a < b) {
+        return a;
+    } else if (a > b) {
+        return b;
+    } else {
+        return a;
+    }
+}
+
+cidade * swap2opt (cidade * newRoute, int i, int k) {
+
+    cidade temp;
+
+    // 1. take route[0] to route[i-1] and add them in order to new_route
+    for ( int c = 0; c <= i - 1; ++c ) {
+        temp = newRoute[c];
+        newRoute[c] = newRoute[c+1];
+        newRoute[c+1] = temp;
+    }
+
+    // 2. take route[i] to route[k] and add them in reverse order to new_route
+    int dec = 0;
+    for ( int c = i; c <= k; ++c ) {
+
+        temp = newRoute[c];
+        newRoute[c] = newRoute[ k - dec ];
+        newRoute[ k - dec ] = temp;
+
+        dec++;
+    }
+
+    // 3. take route[k+1] to end and add them in order to new_route
+    for ( int c = k + 1; c < numberOfCities-1; ++c ) {
+
+        temp = newRoute[c];
+        newRoute[c] = newRoute[ c + 1];
+        newRoute[ c + 1 ] = temp;
+    }
+
+    return newRoute;
+}
+
 /**
  * Metodo que calcula a distancia de uma tour
- * @param tour lista de cidades
- * @return float valor calculado da distancia entre cidades da tour
+ * @param tour
+ * @return
  */
 float getTourDistance(cidade * tour, int cities){
     float custoTotal=0.0;
@@ -235,12 +344,6 @@ float getTourDistance(cidade * tour, int cities){
     return custoTotal;
 }
 
-/**
- * Metodo que cria o output eps e txt
- * @param filename nome do ficheiro
- * @param width largura
- * @param height altura
- */
 void createTourFile(char * filename, int width, int height){
     float custo=0.0;
     char tourPath[100000]={};
