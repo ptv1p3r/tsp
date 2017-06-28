@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
                     int status = readFromDirectory("../tspdata");
 
                     if (status!=0) {
-                        for (int i = 1 ; i < 4 ; ++i) {
+                        for (int i = 0 ; i < numberOfFiles ; ++i) {
                             readFromFile(i);    //le o file da lista
 
                             createTourFile(fileNames[i],width,height);
