@@ -99,13 +99,13 @@ void tour2Opt () {
                     copyTour(cidades , newRoute);
 
                     improve = 0;
-                    printf("%.2f - %.2f\n", bestDistance, new_distance);
+                    //printf("%.2f - %.2f\n", bestDistance, new_distance);
                     bestDistance = new_distance;
 
-                    for (int j = 0; j < numberOfCities; j++) {
-                        printf("%d -> ", cidades[j].id);
-                    }
-                    printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
+//                    for (int j = 0; j < numberOfCities; j++) {
+//                        printf("%d -> ", cidades[j].id);
+//                    }
+//                    printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
 
                 }
             }
@@ -123,7 +123,6 @@ void tour2Opt () {
  * @param tour2 lista de cidades a copiar
  */
 void copyTour (cidade * tour1, cidade * tour2) {
-
     for (int i = 0; i < numberOfCities; i++) {
         tour1[i] = tour2[i];
     }
@@ -188,7 +187,7 @@ void removeIntersections (cidade * route) {
                             route[i + 1] = temp;
 
                             copyTour(cidades, route);
-                            printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
+                            //printf("\n%d\n", is_valid_tour(cidades, numberOfCities));
                         }
                     }
                 }
