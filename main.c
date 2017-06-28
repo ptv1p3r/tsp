@@ -96,7 +96,7 @@ void tour2Opt () {
 
     bestDistance = getTourDistance(cidades,numberOfCities); // calcula a distancia da tour
 
-    while ( improve < numberOfCities-1 ) {
+    while ( improve < numberOfCities-1 ) {  //enquanto que ha melhorias, continua
 
         for ( int i = 0; i < numberOfCities - 1 ; i++ ) {
             for ( int k = i + 1; k < numberOfCities-1; k++) {
@@ -145,12 +145,12 @@ void swap2Opt (cidade * route, int inicial) {
     for (i = 0; i < numberOfCities; i++) {
         for (j = 0; j < numberOfCities-1 ; j++) {
 
-            if ( !((i > inicial-1) && (i < inicial+2)) && (i != j)) {
+            if ( !((j > inicial-1) && (j < inicial+2)) && (i != j)) {   //caso nao seja adjacente, continua
 
-                custoNormal = distance(route[inicial], route[inicial+1]) + distance(route[j], route[j+1]);
-                custoAlterado = distance(route[inicial], route[j+1]) + distance(route[inicial+1], route[j]);
+                custoNormal = distance(route[inicial], route[inicial+1]) + distance(route[j], route[j+1]);  //custo normal
+                custoAlterado = distance(route[inicial], route[j+1]) + distance(route[inicial+1], route[j]);    //custo com 2 pontos alterados
 
-                if ( custoNormal > custoAlterado ) {
+                if ( custoNormal > custoAlterado ) {    //se o custo normal foi maior que o novo custo, swap aos pontos
 
                     cidade temp;
 
@@ -178,15 +178,19 @@ void removeIntersections (cidade * route) {
 
                 if ((i != j)) {
 
+                    //verifica se o id das cidades sao iguais
                     if ((route[i].id != route[j].id) && (route[i].id != route[j + 1].id) &&
                         (route[i + 1].id != route[j].id) && (route[i + 1].id != route[j + 1].id)) {
 
+                        //Definicao de interseccao entre dois segmentos de reta
+                        //Dado o segmento p1p2 e o segmento p3p4, existe intersecção entre p1p2 e p3p4
+                        //se p1 estiver de um lado de p3p4 e p2 do outro, e p3 estiver de um lado de p1p2 e p4 do outro.
                         float p1 = orientation(route[i], route[i + 1], route[j]);
                         float p2 = orientation(route[i], route[i + 1], route[j + 1]);
                         float p3 = orientation(route[j], route[j + 1], route[i]);
                         float p4 = orientation(route[j], route[j + 1], route[i + 1]);
 
-                        if ((p1 != p2 && p3 != p4)) {
+                        if ((p1 != p2 && p3 != p4)) {   //swap
 
                             cidade temp;
 
@@ -203,12 +207,15 @@ void removeIntersections (cidade * route) {
             if ((route[i].id != route[j].id) && (route[i].id != route[0].id) &&
                 (route[i + 1].id != route[j].id) && (route[i + 1].id != route[0].id)) {
 
+                //Definicao de interseccao entre dois segmentos de reta
+                //Dado o segmento p1p2 e o segmento p3p4, existe intersecção entre p1p2 e p3p4
+                //se p1 estiver de um lado de p3p4 e p2 do outro, e p3 estiver de um lado de p1p2 e p4 do outro.
                 float p1 = orientation(route[i], route[i + 1], route[j]);
                 float p2 = orientation(route[i], route[i + 1], route[0]);
                 float p3 = orientation(route[j], route[j + 1], route[i]);
                 float p4 = orientation(route[j], route[j + 1], route[0]);
 
-                if ((p1 != p2 && p3 != p4)) {
+                if ((p1 != p2 && p3 != p4)) {// swap
 
                     cidade temp;
 
@@ -230,18 +237,16 @@ void removeIntersections (cidade * route) {
  * @param cidade1
  * @param cidade2
  * @param cidade3
- * @return
+ * @return 0 colinear, 1 sentido do relogio, 2 contra relogio
  */
 int orientation(cidade cidade1, cidade cidade2, cidade cidade3) {
 
-    // See http://www.geeksforgeeks.org/orientation-3-ordered-points/
-    // for details of below formula.
     int val = (int) ((cidade2.y - cidade1.y) * (cidade3.x - cidade2.x) -
                   (cidade2.x - cidade1.x) * (cidade3.y - cidade2.y));
 
     if (val == 0) {
         return 0;
-    }  // colinear
+    }
 
     if (val > 0) {
         return 1;
