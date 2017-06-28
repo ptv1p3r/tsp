@@ -164,6 +164,7 @@ void swap2Opt (cidade * route, int inicial) {
 }
 
 /**
+ * VER: http://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
  * Metodo que remove intersecoes de uma tour
  * @param route lista de cidades
  */
