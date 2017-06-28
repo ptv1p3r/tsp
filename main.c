@@ -112,8 +112,8 @@ void tour2Opt () {
 
 /**
  * Metodo que efetua copia entre duas tours
- * @param tour1
- * @param tour2
+ * @param tour1 lista de cidades
+ * @param tour2 lista de cidades a copiar
  */
 void copyTour (cidade * tour1, cidade * tour2) {
     for (int i = 0; i < numberOfCities; i++) {
@@ -123,7 +123,7 @@ void copyTour (cidade * tour1, cidade * tour2) {
 
 /**
  * Metodo que efetua o swap 2opt a uma tour
- * @param route
+ * @param route lista de cidades
  * @param inicial
  */
 void swap2Opt (cidade * route, int inicial) {
@@ -154,7 +154,7 @@ void swap2Opt (cidade * route, int inicial) {
 
 /**
  * Metodo que remove intersecoes de uma tour
- * @param route
+ * @param route lista de cidades
  */
 void removeIntersections (cidade * route) {
 
@@ -241,8 +241,8 @@ int orientation(cidade cidade1, cidade cidade2, cidade cidade3) {
 
 /**
  * Metodo que calcula a distancia de uma tour
- * @param tour
- * @return
+ * @param tour lista de cidades
+ * @return float soma das distancias entre as cidades de uma tour
  */
 float getTourDistance(cidade * tour, int cities){
     float custoTotal=0.0;
